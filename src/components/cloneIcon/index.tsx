@@ -1,4 +1,5 @@
-import { cloneElement, Children } from "react";
+import { Children,cloneElement } from "react";
+
 import { CloneIconInterface } from "./type";
 
 export const CloneIcon: React.FC<CloneIconInterface> = (props) => {

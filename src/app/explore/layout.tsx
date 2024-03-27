@@ -1,5 +1,6 @@
-import { Header } from "@/components";
 import { Fragment } from "react";
+
+import { Header } from "@/components";
 
 export default function ExploreLayout({
   children,
@@ -8,7 +9,8 @@ export default function ExploreLayout({
 }) {
   return (
     <Fragment>
-      <Header /> {children}
+      <Header />
+      {children}
     </Fragment>
   );
 }

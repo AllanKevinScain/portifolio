@@ -1,7 +1,8 @@
 "use client";
-import { CodeTag } from "@/components";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+
+import { CodeTag } from "@/components";
 
 export default function Page() {
   const navigate = useRouter();
@@ -70,7 +71,7 @@ export default function Page() {
           </button>
         </div>
       </section>
-      <div className="w-full h-[25vh] bg-gradient-to-b from-black to-gray-900"></div>
+      <div className="w-full h-[25vh] bg-gradient-to-b from-black to-gray-900" />
     </main>
   );
 }

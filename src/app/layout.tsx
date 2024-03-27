@@ -1,6 +1,7 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
-import "./globals.css";
 
 const inter = Roboto_Condensed({ subsets: ["latin"] });
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={inter.className}>
+      <body
+        suppressHydrationWarning={true}
+        className={`bg-gray-900 ${inter.className}`}
+      >
         {children}
       </body>
     </html>

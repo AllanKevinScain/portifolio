@@ -1,8 +1,9 @@
 "use client";
-import { twMerge } from "tailwind-merge";
-import { ScrollContainerInterface } from "./type";
-
 import "./drag-sides.css";
+
+import { twMerge } from "tailwind-merge";
+
+import { ScrollContainerInterface } from "./type";
 
 export const ScrollContainer: React.FC<ScrollContainerInterface> = (props) => {
   const { children, index } = props;
