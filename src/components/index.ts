@@ -1,3 +1,5 @@
+export * from "./animation-components";
+export * from "./button";
 export * from "./cloneIcon";
 export * from "./codeTag";
 export * from "./header";

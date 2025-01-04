@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+import { gradients, spacing } from "./src/theme";
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,22 +9,8 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    letterSpacing: {
-      tightest: "0",
-      tighter: ".025em",
-      tight: ".05em",
-      normal: ".075em",
-      wide: ".1em",
-      wider: ".25em",
-      widest: ".5em",
-    },
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-    },
+    letterSpacing: spacing.letterSpacing,
+    extend: { backgroundImage: gradients },
   },
 };
 export default config;

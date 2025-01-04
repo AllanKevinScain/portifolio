@@ -1,7 +1,8 @@
-import "./globals.css";
+import "../theme/globals.css";
 
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
+import { twMerge } from "tailwind-merge";
 
 const inter = Roboto_Condensed({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={`bg-gray-900 ${inter.className}`}
+        className={twMerge("bg-gray-900", inter.className)}
       >
         {children}
       </body>
