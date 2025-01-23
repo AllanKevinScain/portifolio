@@ -2,7 +2,7 @@ import "./has-show.css";
 
 import { twMerge } from "tailwind-merge";
 
-import { TextRevealInterface } from "./type";
+import { TextRevealInterface } from "@/types";
 
 export const TextReveal: React.FC<TextRevealInterface> = (props) => {
   const { children, className, index } = props;

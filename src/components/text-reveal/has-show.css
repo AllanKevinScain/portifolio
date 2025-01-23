@@ -4,7 +4,7 @@
 }
 .show-box-1::after {
   animation: show-box 2s ease-in forwards;
-  content: '';
+  content: "";
   background-color: white;
   display: block;
   left: 0;
@@ -20,7 +20,7 @@
 }
 .show-box-2::after {
   animation: show-box 3s ease-in forwards;
-  content: '';
+  content: "";
   background-color: white;
   display: block;
   left: 0;
@@ -36,7 +36,7 @@
 }
 .show-box-3::after {
   animation: show-box 4.5s ease-in forwards;
-  content: '';
+  content: "";
   background-color: white;
   display: block;
   left: 0;

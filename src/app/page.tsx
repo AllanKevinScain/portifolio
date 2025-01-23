@@ -36,13 +36,6 @@ export default function Page() {
         <Animation.title stringContent="Allan Kevin Scain" />
         <FullStackDevCodeTag />
         <Button onClick={() => navigate.push("/explore")}>Explore more</Button>
-        {/* <Animation.lottie
-          loadingComponent={<div>Loading animation...</div>}
-          src={firstAnimation}
-          loop={false}
-          keepLastFrame={true}
-          style={{ border: "1px solid #ff0", width: 749, height: 749 }}
-        /> */}
       </div>
     </main>
   );

@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import { CodeTagInterface } from "./type";
+import { CodeTagInterface } from "@/types";
 
 export const CodeTag: React.FC<CodeTagInterface> = (props) => {
   const { children, className } = props;

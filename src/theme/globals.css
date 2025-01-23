@@ -30,3 +30,89 @@
     border-radius: 0;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 54, 57, 63;
+    --boxes-and-borders: 32, 34, 37;
+
+    --primary-texts: 255, 255, 255;
+    --secondary: 47, 49, 54;
+    --secondary-texts: 185, 187, 190;
+
+    --primary-light: 29, 185, 84;
+    --primary-natural: 46, 139, 87;
+    --primary-pastel: 58, 95, 54;
+    --primary-500: 34, 139, 34;
+  }
+}
+
+.light {
+  --background: 255, 255, 255;
+  --boxes-and-borders: 227, 229, 232;
+
+  --primary-texts: 46, 51, 56;
+  --secondary: 242, 243, 245;
+  --secondary-texts: 114, 118, 125;
+
+  --primary-light: 163, 217, 165;
+  --primary-natural: 129, 199, 132;
+  --primary-pastel: 200, 230, 201;
+  --primary-500: 86, 197, 150;
+}
+
+.dark {
+  --background: 54, 57, 63;
+  --boxes-and-borders: 32, 34, 37;
+
+  --primary-texts: 255, 255, 255;
+  --secondary: 47, 49, 54;
+  --secondary-texts: 185, 187, 190;
+
+  --primary-light: 29, 185, 84;
+  --primary-natural: 46, 139, 87;
+  --primary-pastel: 58, 95, 54;
+  --primary-500: 34, 139, 34;
+}
+
+.alura {
+  --background: 5, 45, 86;
+  --boxes-and-borders: 28, 79, 155;
+
+  --primary-texts: 26, 26, 26;
+  --secondary: 245, 245, 245;
+  --secondary-texts: 185, 187, 190;
+
+  --primary-light: 42, 122, 228;
+  --primary-natural: 30, 136, 229;
+  --primary-pastel: 30, 136, 229;
+  --primary-500: 42, 122, 228;
+}
+
+.youtube {
+  --background: 255, 255, 255;
+  --boxes-and-borders: 240, 240, 240;
+
+  --primary-texts: 0, 0, 0;
+  --secondary: 245, 245, 245;
+  --secondary-texts: 119, 119, 119;
+
+  --primary-light: 255, 0, 0;
+  --primary-natural: 198, 0, 0;
+  --primary-pastel: 255, 77, 77;
+  --primary-500: 255, 0, 0;
+}
+
+.instagram {
+  --background: 24, 25, 30;
+  --boxes-and-borders: 33, 35, 41;
+
+  --primary-texts: 255, 255, 255;
+  --secondary: 40, 42, 48;
+  --secondary-texts: 142, 142, 147;
+
+  --primary-light: 83, 58, 203;
+  --primary-natural: 245, 80, 80;
+  --primary-pastel: 255, 184, 79;
+  --primary-500: 246, 65, 115;
+}

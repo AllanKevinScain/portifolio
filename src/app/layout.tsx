@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
+import { ThemeProvider } from "@/providers";
+
 const inter = Roboto_Condensed({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,13 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        suppressHydrationWarning={true}
-        className={twMerge("bg-gray-900 antialiased", inter.className)}
-      >
-        {children}
-      </body>
-    </html>
+    <ThemeProvider>
+      <html lang="en">
+        <body
+          suppressHydrationWarning={true}
+          className={twMerge("bg-gray-900 antialiased", inter.className)}
+        >
+          {children}
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }

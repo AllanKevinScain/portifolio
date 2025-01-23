@@ -10,7 +10,20 @@ const config: Config = {
   ],
   theme: {
     letterSpacing: spacing.letterSpacing,
-    extend: { backgroundImage: gradients },
+    extend: {
+      backgroundImage: gradients,
+      colors: {
+        background: "rgba(var(--background))",
+        "boxes-and-borders": "rgba(var(--boxes-and-borders))",
+        "primary-texts": "rgba(var(--primary-texts))",
+        "primary-light": "rgba(var(--primary-light))",
+        "primary-natural": "rgba(var(--primary-natural))",
+        "primary-pastel": "rgba(var(--primary-pastel))",
+        "primary-500": "rgba(var(--primary-500))",
+        secondary: "rgba(var(--secondary))",
+        "secondary-texts": "rgba(var(--secondary-texts))",
+      },
+    },
   },
 };
 export default config;
