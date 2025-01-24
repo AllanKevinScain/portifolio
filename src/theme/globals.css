@@ -60,7 +60,7 @@
 }
 
 .light {
-  --primary-background: 69, 90, 100, 1;
+  --primary-background: 255, 255, 255, 1;
   --secondary-background: 139, 195, 74, 1;
   --boxes-primary-background: 207, 216, 220, 1;
   --boxes-secondary-background: 207, 216, 220, 1;

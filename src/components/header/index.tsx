@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
     <>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
-      <nav className="bg-black py-4 mb-6">
+      <nav className="bg-boxes-primary-background py-4 mb-6">
         <div
           className={twMerge(
             "flex flex-row items-center justify-between",

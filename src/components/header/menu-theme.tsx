@@ -33,7 +33,12 @@ export const ToggleTheme: React.FC<ToggleThemeInterface> = (props) => {
       <MenuButton
         className={twMerge(showInSmallScreen ? "flex" : "hidden md:flex")}
       >
-        <CloneIcon className="text-text-primary-color">
+        <CloneIcon
+          className={twMerge(
+            "text-text-primary-color",
+            "hover:text-text-secondary-color"
+          )}
+        >
           <Icon size={30} />
         </CloneIcon>
       </MenuButton>
