@@ -13,15 +13,20 @@ const config: Config = {
     extend: {
       backgroundImage: gradients,
       colors: {
-        background: "rgba(var(--background))",
-        "boxes-and-borders": "rgba(var(--boxes-and-borders))",
-        "primary-texts": "rgba(var(--primary-texts))",
-        "primary-light": "rgba(var(--primary-light))",
-        "primary-natural": "rgba(var(--primary-natural))",
-        "primary-pastel": "rgba(var(--primary-pastel))",
-        "primary-500": "rgba(var(--primary-500))",
-        secondary: "rgba(var(--secondary))",
-        "secondary-texts": "rgba(var(--secondary-texts))",
+        "primary-background": "rgba(var(--primary-background))",
+        "secondary-background": "rgba(var(--secondary-background))",
+
+        "boxes-primary-background": "rgba(var(--boxes-primary-background))",
+        "boxes-secondary-background": "rgba(var(--boxes-secondary-background))",
+
+        "text-primary-color": "rgba(var(--text-primary-color))",
+        "text-secondary-color": "rgba(var(--text-secondary-color))",
+
+        "border-primary-color": "rgba(var(--border-primary-color))",
+        "border-secondary-color": "rgba(var(--border-secondary-color))",
+
+        "title-primary-color": "rgba(var(--title-primary-color))",
+        "title-secondary-color": "rgba(var(--title-secondary-color))",
       },
     },
   },

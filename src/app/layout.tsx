@@ -23,7 +23,10 @@ export default function RootLayout({
       <html lang="en">
         <body
           suppressHydrationWarning={true}
-          className={twMerge("bg-gray-900 antialiased", inter.className)}
+          className={twMerge(
+            "bg-primary-background antialiased",
+            inter.className
+          )}
         >
           {children}
         </body>

@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 import { Animation, Button } from "@/components";
+import { ToggleTheme } from "@/components/header/menu-theme";
 
 import { FullStackDevCodeTag } from "./components";
 
@@ -12,16 +13,18 @@ export default function Page() {
   return (
     <main
       className={twMerge(
-        "h-screen w-screen px-[10%]",
+        "relative",
+        "overflow-y-auto",
+        "px-[10%] pb-[10vh]",
         "bg-apresentation-gradient",
-        "flex flex-col justify-center items-center gap-10",
-        "lg:flex-row"
+        "flex flex-col justify-center items-center gap-10 ",
+        "lg:flex-row lg:py-0"
       )}
     >
       <div
         className={twMerge(
-          "h-[30vh] w-full bg-black pb-[10%]",
-          "rounded-b-3xl border-gray-600 border-b-2",
+          "h-[70vh] w-full bg-boxes-primary-background pb-[10%]",
+          "rounded-b-3xl border-border-secondary-color border-b-2",
           "flex justify-center items-end",
           "lg:h-[80vh]"
         )}
@@ -35,7 +38,16 @@ export default function Page() {
       <div className="flex flex-col gap-8 w-full">
         <Animation.title stringContent="Allan Kevin Scain" />
         <FullStackDevCodeTag />
-        <Button onClick={() => navigate.push("/explore")}>Explore more</Button>
+        <Button
+          onClick={() => navigate.push("/explore")}
+          variant="primary"
+          className="hidden lg:flex"
+        >
+          Explore more
+        </Button>
+      </div>
+      <div className="absolute top-5 right-5">
+        <ToggleTheme showInSmallScreen={false} />
       </div>
     </main>
   );

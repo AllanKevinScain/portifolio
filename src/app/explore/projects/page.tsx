@@ -71,8 +71,8 @@ export default function ProjectPage() {
               <ScrollContainer index={index}>
                 <div className="flex flex-col-reverse w-full space-y-8 md:gap-4 md:flex-row">
                   <div className="flex flex-col w-full gap-4">
-                    <h1 className="text-green-900 text-2xl">{title}</h1>
-                    <span className="text-gray-600 text-lg">{description}</span>
+                    <h1 className="text-green-500 text-2xl">{title}</h1>
+                    <span className="text-gray-400 text-lg">{description}</span>
                     <a
                       className="bg-green-800 transition-all opacity-10 rounded-lg px-6 py-2 w-fit text-gray-300 text-md hover:text-white hover:bg-transparent hover:ring-[1px] hover:ring-green-700"
                       href={urlLink}

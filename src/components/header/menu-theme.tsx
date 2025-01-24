@@ -3,10 +3,10 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { twMerge } from "tailwind-merge";
 
+import { Button, CloneIcon } from "@/components";
 import { useMediaQuery, useTheme } from "@/hooks";
 import { ToggleThemeInterface } from "@/types";
 
-import { CloneIcon } from "../clone-icon";
 import { ListOfIconThemes, listOfThemes } from "./contants";
 
 export const ToggleTheme: React.FC<ToggleThemeInterface> = (props) => {
@@ -33,7 +33,7 @@ export const ToggleTheme: React.FC<ToggleThemeInterface> = (props) => {
       <MenuButton
         className={twMerge(showInSmallScreen ? "flex" : "hidden md:flex")}
       >
-        <CloneIcon className="text-white">
+        <CloneIcon className="text-text-primary-color">
           <Icon size={30} />
         </CloneIcon>
       </MenuButton>
@@ -41,11 +41,12 @@ export const ToggleTheme: React.FC<ToggleThemeInterface> = (props) => {
         anchor="bottom end"
         className={twMerge(
           "flex flex-col",
-          "bg-slate-500 border-[2px] border-gray-200 rounded-lg p-4"
+          "bg-boxes-secondary-background border-[2px] border-border-secondary-color rounded-lg p-4",
+          "shadow-lg"
         )}
       >
         <MenuItem as="div">
-          <span className="text-xs font-light text-gray-100 mb-[10px]">
+          <span className="text-xs font-light text-text-secondary-color mb-[10px]">
             Selecione um tema
           </span>
         </MenuItem>
@@ -53,17 +54,21 @@ export const ToggleTheme: React.FC<ToggleThemeInterface> = (props) => {
           {listOfThemes.map((currTheme) => {
             const MenuIcon = ListOfIconThemes[currTheme];
             return (
-              <button
+              <Button
                 key={currTheme}
+                variant="ghost"
                 onClick={() => toggleTheme(currTheme)}
                 className={twMerge("flex justify-center", "w-full")}
               >
                 <CloneIcon
-                  className={twMerge("text-white", "hover:text-slate-600")}
+                  className={twMerge(
+                    "text-text-secondary-color",
+                    "hover:opacity-80"
+                  )}
                 >
                   <MenuIcon size={25} />
                 </CloneIcon>
-              </button>
+              </Button>
             );
           })}
         </MenuItem>

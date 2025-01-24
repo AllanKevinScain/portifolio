@@ -9,14 +9,15 @@ export const Title: React.FC<TitleInterface> = (props) => {
     <h1
       {...rest}
       className={twMerge(
-        "text-[#F3EDE9] tracking-widest text-3xl lg:text-6xl",
+        "text-title-secondary-color tracking-widest text-3xl text-center",
+        "lg:text-6xl",
         className
       )}
     >
       {stringContent.split("").map((letter, index) => (
         <span
           key={`${index}-${letter}`}
-          className="inline transition-all hover:uppercase hover:text-green-700"
+          className="inline transition-all hover:uppercase hover:text-title-primary-color"
         >
           {letter}
         </span>
