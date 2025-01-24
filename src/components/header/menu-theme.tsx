@@ -1,9 +1,10 @@
 "use client";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { FaHandPointDown } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
 
-import { Button, CloneIcon } from "@/components";
+import { Button, CloneIcon, Divider } from "@/components";
 import { useMediaQuery, useTheme } from "@/hooks";
 import { ToggleThemeInterface } from "@/types";
 
@@ -18,13 +19,34 @@ export const ToggleTheme: React.FC<ToggleThemeInterface> = (props) => {
 
   if (!isLargeScreen && showInSmallScreen) {
     return (
-      <ul className="bg-pink-500">
-        {listOfThemes.map((currTheme) => (
-          <li key={currTheme}>
-            <span>{currTheme}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="flex flex-col gap-8">
+        <div
+          className={twMerge(
+            "flex justify-between",
+            "text-title-primary-color"
+          )}
+        >
+          <span className="text-lg ">Altere o tema</span>
+          <FaHandPointDown size={20} className="inline" />
+        </div>
+        <Divider />
+        <ul className="list-none w-full">
+          {listOfThemes.map((currTheme) => (
+            <li key={currTheme}>
+              <Button
+                variant="unstyled"
+                onClick={() => toggleTheme(currTheme)}
+                className={twMerge(
+                  "p-2 text-2xl text-text-primary-color w-full text-start rounded-lg",
+                  "focus:bg-secondary-background focus:text-white"
+                )}
+              >
+                <span>{currTheme}</span>
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   }
 

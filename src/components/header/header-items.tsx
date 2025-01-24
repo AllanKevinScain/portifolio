@@ -23,9 +23,10 @@ export const HeaderItems: React.FC<HeaderItemsInterface> = (props) => {
             key={id}
             href={href}
             className={twMerge(
-              "text-text-primary-color text-2xl font-medium rounded-md px-3 py-2",
+              "text-text-primary-color text-2xl font-medium rounded-md p-2",
               "md:border md:border-border-secondary-color md:text-text-primary-color md:text-sm",
-              "hover:text-text-secondary-color"
+              "hover:text-text-secondary-color",
+              "focus:bg-secondary-background focus:text-white"
             )}
           >
             {label}

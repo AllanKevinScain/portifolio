@@ -38,11 +38,7 @@ export default function Page() {
       <div className="flex flex-col gap-8 w-full">
         <Animation.title stringContent="Allan Kevin Scain" />
         <FullStackDevCodeTag />
-        <Button
-          onClick={() => navigate.push("/explore")}
-          variant="primary"
-          className="hidden lg:flex"
-        >
+        <Button onClick={() => navigate.push("/explore")} variant="primary">
           Explore more
         </Button>
       </div>

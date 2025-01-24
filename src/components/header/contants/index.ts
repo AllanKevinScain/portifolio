@@ -26,7 +26,7 @@ export const ListOfIconThemes = {
 };
 
 export const headerLinks = [
-  { id: "1", label: "Inicio", href: "/" },
+  { id: "1", label: "Inicio", href: "/explore" },
   { id: "2", label: "Projetos", href: "/explore/projects" },
   { id: "3", label: "Contato", href: "/" },
   { id: "4", label: "Empresa", href: "/" },
