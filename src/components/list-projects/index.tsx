@@ -1,7 +1,7 @@
 import { projetos } from "../../data/projetos";
 import { motion } from "framer-motion";
-import { ProjectCard } from "./project-card";
 import { twMerge } from "tailwind-merge";
+import { Card } from "../card";
 
 export function ListOfProjects() {
   return (
@@ -37,7 +37,7 @@ export function ListOfProjects() {
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projetos.map((p) => (
-            <ProjectCard key={p.descricao + p.id} {...p} />
+            <Card.project key={p.descricao + p.id} {...p} />
           ))}
         </ul>
       </motion.div>

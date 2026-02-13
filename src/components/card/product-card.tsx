@@ -1,29 +1,28 @@
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
-type ProductType = {
+type ProductCardProps = {
   titulo: string;
   desc: string;
   faixa: string;
 };
 
-export function ProductCard(props: ProductType) {
+export function ProductCard(props: ProductCardProps) {
   const { titulo, desc, faixa } = props;
-
-  const item = {
-    hidden: { opacity: 0, y: 28 },
-    show: { opacity: 1, y: 0 },
-  };
 
   return (
     <motion.li
       key={titulo}
-      variants={item}
+      variants={{
+        hidden: { opacity: 0, y: 28 },
+        show: { opacity: 1, y: 0 },
+      }}
       whileHover={{ y: -12, scale: 1.01 }}
       className={twMerge(
-        "relative group rounded-2xl p-7 flex flex-col overflow-hidden transition-all border",
+        "relative group rounded-2xl p-7 flex flex-col overflow-hidden transition-all",
+        "border",
         "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-surface)_95%,transparent),color-mix(in_srgb,var(--color-surface)_85%,transparent))]",
-        "bg-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
+        "border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
       )}
     >
       <div

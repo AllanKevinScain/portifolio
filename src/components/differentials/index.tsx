@@ -1,7 +1,7 @@
 import { skills } from "@/data/skills";
 import { motion } from "framer-motion";
-import { SkillCard } from "./skill-card";
 import { twMerge } from "tailwind-merge";
+import { Card } from "../card";
 
 export function Diferenciais() {
   const container = {
@@ -53,7 +53,7 @@ export function Diferenciais() {
 
         <ul className="grid sm:grid-cols-2 xl:grid-cols-4 gap-8">
           {skills.map((i) => (
-            <SkillCard key={i.desc} {...i} />
+            <Card.icon key={i.desc} {...i} />
           ))}
         </ul>
       </motion.div>

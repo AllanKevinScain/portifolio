@@ -1,24 +1,22 @@
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
-type SkilType = {
+type IconCardProps = {
   titulo: string;
   desc: string;
   icon: string;
 };
 
-export function SkillCard(props: SkilType) {
+export function IconCard(props: IconCardProps) {
   const { titulo, desc, icon } = props;
-
-  const item = {
-    hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0 },
-  };
 
   return (
     <motion.li
       key={titulo}
-      variants={item}
+      variants={{
+        hidden: { opacity: 0, y: 24 },
+        show: { opacity: 1, y: 0 },
+      }}
       whileHover={{ y: -10 }}
       className={twMerge(
         "relative group rounded-2xl p-6 overflow-hidden transition-all",

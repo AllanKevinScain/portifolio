@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { ProductCard } from "./product-card";
 import { products } from "@/data/products";
 import { twMerge } from "tailwind-merge";
+import { Card } from "../card";
 
 export function Servicos() {
   const container = {
@@ -48,7 +48,7 @@ export function Servicos() {
 
         <ul className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
           {products.map((s) => (
-            <ProductCard key={s.desc} {...s} />
+            <Card.product key={s.desc} {...s} />
           ))}
         </ul>
       </motion.div>
