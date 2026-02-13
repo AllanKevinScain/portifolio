@@ -1,35 +1,95 @@
-"use client";
-import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { useNavitems } from "./useNavItems";
+import { Menu } from "../menu";
 
-import { HeaderItems } from "./header-items";
-import { Modal } from "./header-links-drawer";
-import { Logo } from "./logo";
-import { MenuButton } from "./menu-button";
-import { ToggleTheme } from "./menu-theme";
+export function Header() {
+  const { open, scrolled, toggle } = useNavitems();
 
-export const Header: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const navItems = [
+    { href: "#projetos", label: "Projetos" },
+    { href: "#diferenciais", label: "Diferenciais" },
+    { href: "#servicos", label: "Serviços" },
+    { href: "#contato", label: "Contato" },
+  ];
 
   return (
-    <>
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+    <header
+      className={twMerge(
+        "z-50 fixed w-full backdrop-blur-md transition-all",
+        scrolled ? "bg-(--color-bg) shadow-md" : "bg-(--color-bg)/80",
+      )}
+    >
+      <div
+        className={twMerge(
+          "flex items-center justify-between",
+          "max-w-7xl mx-auto px-6 py-4",
+        )}
+      >
+        <div className="text-(--color-primary) text-2xl font-bold">
+          <a href="#home">MeuPortfólio</a>
+        </div>
 
-      <nav className="bg-boxes-primary-background py-4 mb-6">
+        <nav className={twMerge("hidden gap-8 md:flex")}>
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className={twMerge(
+                "text-(--color-text)",
+                "hover:text-(--color-primary)",
+                "transition-colors",
+              )}
+            >
+              {item.label}
+            </a>
+          ))}
+          <Menu
+            items={[
+              { label: "Dark", value: "dark" },
+              { label: "Light", value: "light" },
+              { label: "Rocketseat", value: "rocketseat" },
+              { label: "Minecraft", value: "minecraft" },
+            ]}
+          />
+        </nav>
+
+        <button
+          onClick={toggle}
+          className={twMerge("text-(--color-primary) text-2xl md:hidden")}
+          aria-label="Abrir menu"
+        >
+          ☰
+        </button>
+      </div>
+
+      {open && (
         <div
           className={twMerge(
-            "flex flex-row items-center justify-between",
-            "w-full mx-auto max-w-7xl px-2"
+            "md:hidden border-t",
+            "border-(--color-border)",
+            "bg-(--color-secondary)",
           )}
         >
-          <Logo />
-          <div className="flex gap-4 items-center">
-            <HeaderItems showInSmallScreen={false} />
-            <ToggleTheme showInSmallScreen={false} />
-            <MenuButton toggleMenu={() => setIsOpen(true)} />
-          </div>
+          <nav className="px-6 py-3 space-y-1">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={toggle}
+                className={twMerge(
+                  "block px-3 py-2 rounded-md text-sm font-medium",
+                  "text-(--color-text)",
+                  "hover:text-(--color-primary)",
+                  "hover:bg-(--color-bg)",
+                  "transition-all",
+                )}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
         </div>
-      </nav>
-    </>
+      )}
+    </header>
   );
-};
+}
