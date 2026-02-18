@@ -1,7 +1,7 @@
 import { skills } from "@/data/skills";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { Card } from "../card";
+import { Card } from "../../../../components/card";
 
 export function Diferenciais() {
   const container = {

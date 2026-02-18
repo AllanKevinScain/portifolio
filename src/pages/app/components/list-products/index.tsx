@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { products } from "@/data/products";
 import { twMerge } from "tailwind-merge";
-import { Card } from "../card";
+import { Card } from "../../../../components/card";
 
 export function Servicos() {
   const container = {

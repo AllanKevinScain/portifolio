@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { Tag } from "../tag";
+import { Tag } from "../../pages/app/components/tag";
 
 export type ProjetCardProps = {
   id: string;

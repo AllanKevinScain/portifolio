@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { CardTech } from "./card";
-import { CtaLink } from "../cta-link";
 import { twMerge } from "tailwind-merge";
+import { CustomLink } from "@/components";
 
 export function Banner() {
   return (
@@ -47,12 +47,10 @@ export function Banner() {
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
-          <CtaLink variant="solid" label="Ver projetos" href="#projetos" />
-          <CtaLink
-            variant="outline"
-            label="Enviar e-mail"
-            href="mailto:seu@email.com"
-          />
+          <CustomLink.solid href="#projetos">Ver projetos</CustomLink.solid>
+          <CustomLink.outline href="mailto:seu@email.com">
+            Enviar e-mail
+          </CustomLink.outline>
         </div>
       </motion.div>
 

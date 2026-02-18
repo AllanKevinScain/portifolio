@@ -1,16 +1,17 @@
+import { Header } from "@/components";
 import {
   Banner,
   Diferenciais,
-  Header,
   ListOfProjects,
   Rodape,
   Servicos,
 } from "./components";
+import { appNavItems } from "@/data/app-header-nav-items";
 
-export default function App() {
+export function AppPage() {
   return (
     <div className="bg-(--color-bg)">
-      <Header />
+      <Header navItems={appNavItems} />
       <main className="flex flex-col gap-24">
         <section id="home">
           <Banner />

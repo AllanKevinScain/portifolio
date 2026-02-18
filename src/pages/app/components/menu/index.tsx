@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { useTheme } from "@/hooks/use-theme";
+import { useTheme } from "@/hooks";
 import { TbPick } from "react-icons/tb";
 
 interface MenuProps {
