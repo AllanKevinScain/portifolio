@@ -1,9 +1,9 @@
-import { Button, Input } from "@/components";
+import { Button, Input, Textarea } from "@/components";
 import { RiApps2AddLine } from "react-icons/ri";
 import { FaTrashArrowUp } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { Textarea } from "@/components/textarea";
 import { useListForm } from "@/hooks";
+import { Title } from "./_title";
 
 type DiferentialsType = {
   id: string;
@@ -17,9 +17,11 @@ export function FeaturesSection() {
   });
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Seus Diferenciais</h2>
-      <p className="opacity-70 mb-4">Destaque seus principais pontos fortes.</p>
+    <>
+      <Title
+        title="Seus Diferenciais"
+        description="Destaque seus principais pontos fortes."
+      />
       <div className="flex flex-col gap-12 md:gap-4">
         {formValue.map((item, index) => {
           return (
@@ -78,6 +80,6 @@ export function FeaturesSection() {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }

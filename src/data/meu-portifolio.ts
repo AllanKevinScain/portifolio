@@ -50,6 +50,7 @@ type FooterType = {
       linkedin?: string;
       github?: string;
       instagram?: string;
+      google?: string;
     };
   };
 };

@@ -18,6 +18,7 @@ export function OutlineButton(props: HTMLMotionProps<"button">) {
         "hover:bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]",
         "hover:border-(--color-primary)",
         "hover:text-(--color-primary)",
+        "cursor-pointer",
         rest.disabled && "disabled:border-neutral-500",
         rest.disabled && "disabled:text-neutral-500",
         rest.disabled && "disabled:cursor-not-allowed",

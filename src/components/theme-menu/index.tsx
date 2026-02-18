@@ -20,6 +20,7 @@ export function ThemeMenu(props: ThemeMenurops) {
           "relative z-50",
           "w-11 h-11 rounded-xl",
           "flex items-center justify-center",
+          "cursor-pointer",
           "bg-[color-mix(in_srgb,var(--color-surface)_90%,transparent)]",
           "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
           "hover:bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]",
@@ -72,6 +73,7 @@ export function ThemeMenu(props: ThemeMenurops) {
                     "font-medium",
                     "transition-all",
                     "text-(--color-text)",
+                    "cursor-pointer",
                     "hover:bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]",
                     "hover:text-(--color-primary)",
                   )}

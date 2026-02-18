@@ -34,29 +34,28 @@ export function MultiStepPage() {
   return (
     <div
       className={twMerge(
-        "min-h-screen flex flex-col items-center p-6 transition-colors duration-300",
+        "min-h-screen transition-colors duration-300",
+        "p-6 pt-24",
+        "flex flex-col items-center",
         "bg-[linear-gradient(to_right,color-mix(in_srgb,var(--color-text)_10%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_srgb,var(--color-text)_10%,transparent)_1px,transparent_1px)]",
         "bg-size-[28px_28px]",
       )}
     >
       <div className="flex gap-2 mb-8 flex-wrap justify-center">
         {sections.map((section, index) => (
-          <button
+          <Button.ghost
             key={section.id}
             onClick={() => setStep(index)}
             className={twMerge(
-              "px-4 py-2 rounded-xl text-sm font-medium transition-all",
-              index === step
-                ? "bg-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]"
-                : "bg-transparent",
-              "border",
-              index === step
-                ? "border-[color-mix(in_srgb,var(--color-primary)_40%,transparent)]"
-                : "border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
+              "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
+              index === step &&
+                "bg-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]",
+              index === step &&
+                "border-[color-mix(in_srgb,var(--color-primary)_40%,transparent)]",
             )}
           >
             {section.title}
-          </button>
+          </Button.ghost>
         ))}
       </div>
 
@@ -88,13 +87,9 @@ export function MultiStepPage() {
             Voltar
           </Button.ghost>
 
-          <Button.outline
-            onClick={nextStep}
-            disabled={step === sections.length - 1}
-            className="text-black font-normal"
-          >
-            Continuar
-          </Button.outline>
+          <Button.ghost onClick={nextStep}>
+            {step === sections.length - 1 ? "Finalizar" : "Continuar"}
+          </Button.ghost>
         </div>
       </div>
     </div>

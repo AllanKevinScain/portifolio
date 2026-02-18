@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { Tag } from "../../pages/app/components/tag";
+import { CustomLink } from "../custom-link";
 
 export type ProjetCardProps = {
   id: string;
@@ -59,28 +60,25 @@ export function ProjectCard(props: ProjetCardProps) {
 
         <div className="mt-6 flex items-center gap-5 text-sm">
           {demo && (
-            <a
+            <CustomLink.ghost
               href={demo}
               target="_blank"
               rel="noreferrer"
-              className="font-medium transition text-(--color-primary)"
+              className="font-medium text-(--color-primary)"
             >
               Demo →
-            </a>
+            </CustomLink.ghost>
           )}
 
           {repo && (
-            <a
+            <CustomLink.ghost
               href={repo}
               target="_blank"
               rel="noreferrer"
-              className={twMerge(
-                "transition",
-                "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
-              )}
+              className="text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]"
             >
               Código
-            </a>
+            </CustomLink.ghost>
           )}
         </div>
       </div>

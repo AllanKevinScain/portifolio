@@ -1,5 +1,7 @@
 import { type TextareaHTMLAttributes, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
+import { Tooltip } from "../tootlip";
+import { TbEyeQuestion } from "react-icons/tb";
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
@@ -28,19 +30,27 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <div className={twMerge("flex flex-col gap-1 w-full", className)}>
-        {label && (
-          <label
-            htmlFor={inputId}
-            className={twMerge(
-              "text-sm font-medium",
-              "text-(--color-border)",
-              hasError && "text-[color-mix(in_srgb,red)_70%,var(--color-text)]",
-            )}
-          >
-            {label}
-            {required && <span className="ml-1 text-red-500">*</span>}
-          </label>
-        )}
+        <div className="flex w-full justify-between">
+          {label && (
+            <label
+              htmlFor={inputId}
+              className={twMerge(
+                "text-sm font-medium",
+                "text-(--color-text)",
+                hasError &&
+                  "text-[color-mix(in_srgb,red)_70%,var(--color-text)]",
+              )}
+            >
+              {label}
+              {required && <span className="ml-1 text-red-500">*</span>}
+            </label>
+          )}
+          {helperText && (
+            <Tooltip className="hidden md:inline-flex" content={helperText}>
+              <TbEyeQuestion className="text-(--color-text)" size={22} />
+            </Tooltip>
+          )}
+        </div>
 
         <textarea
           id={inputId}
@@ -48,10 +58,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...props}
           required={required}
           className={twMerge(
-            "px-4 py-3 rounded-xl outline-none transition-all duration-200 disabled:opacity-50",
+            "px-4 py-3 outline-none transition-all duration-200",
             "bg-[color-mix(in_srgb,var(--color-primary)_8%,transparent)]",
-            "border",
-            "border-[color-mix(in_srgb,var(--color-primary)_30%,transparent)]",
+            "border border-[color-mix(in_srgb,var(--color-primary)_30%,transparent)] rounded-xl ",
+            "placeholder:text-(--color-text) placeholder:opacity-50",
+            "font-normal text-(--color-text)",
+            "disabled:opacity-50",
             hasError && "border-[color-mix(in_srgb,red_60%,transparent)]",
             classNameTextarea,
           )}
@@ -70,15 +82,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           rows={5}
         />
 
-        {hasError ? (
+        {hasError && (
           <span className="text-xs mt-1 text-[color-mix(in_srgb,red_70%,var(--color-text))]">
             {error}
           </span>
-        ) : helperText ? (
-          <span className="text-xs mt-1 opacity-70 text-(--color-text)">
+        )}
+
+        {!hasError && helperText && (
+          <span className="text-xs mt-1 text-(--color-border) md:hidden">
             {helperText}
           </span>
-        ) : null}
+        )}
       </div>
     );
   },

@@ -1,4 +1,3 @@
-export * from "./header";
 export * from "./banner";
 export * from "./list-projects";
 export * from "./cta-link";

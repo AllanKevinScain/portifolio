@@ -24,7 +24,7 @@ export function Header(props: HeaderProps) {
         )}
       >
         <div className="text-(--color-primary) text-2xl font-bold">
-          <a href="#home">MeuPortfólio</a>
+          <a href="/">MeuPortfólio</a>
         </div>
 
         <nav className={twMerge("hidden gap-8", "md:flex md:items-center")}>

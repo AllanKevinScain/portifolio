@@ -47,7 +47,9 @@ export function Banner() {
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
-          <CustomLink.solid href="#projetos">Ver projetos</CustomLink.solid>
+          <CustomLink.solid href="/create-portifolio">
+            Fazer portifólio
+          </CustomLink.solid>
           <CustomLink.outline href="mailto:seu@email.com">
             Enviar e-mail
           </CustomLink.outline>

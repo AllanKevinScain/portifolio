@@ -16,6 +16,7 @@ export function SolidButton(props: HTMLMotionProps<"button">) {
         "shadow-lg",
         "bg-linear-to-r from-(--color-primary) to-(--color-secondary)",
         "shadow-[0_10px_30px_color-mix(in_srgb,var(--color-primary)_40%,transparent)]",
+        "cursor-pointer",
         rest.disabled &&
           "disabled:bg-linear-to-r from-neutral-500 to-neutral-400",
         rest.disabled && "disabled:text-neutral-500",

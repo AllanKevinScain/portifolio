@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
+import { CustomLink } from "../custom-link";
 
 type ProductCardProps = {
   titulo: string;
@@ -57,17 +58,7 @@ export function ProductCard(props: ProductCardProps) {
         {desc}
       </p>
 
-      <a
-        href="#contato"
-        className={twMerge(
-          "inline-flex justify-center items-center px-5 py-3 mt-7 rounded-lg font-medium transition-all",
-          "bg-[linear-gradient(to_right,var(--color-primary),var(--color-secondary))]",
-          "text-white",
-          "shadow-[0_10px_30px_color-mix(in_srgb,var(--color-primary)_40%,transparent)]",
-        )}
-      >
-        Solicitar orçamento
-      </a>
+      <CustomLink.solid href="#contato">Solicitar orçamento</CustomLink.solid>
 
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition pointer-events-none">
         <div

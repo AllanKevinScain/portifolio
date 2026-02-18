@@ -1,12 +1,12 @@
 import { Input } from "@/components";
+import { Title } from "./_title";
 
 export function HeaderSection() {
   return (
-    <div>
-      <h2 className="text-2xl font-bold">Configuração do Cabeçalho</h2>
-      <p className="opacity-70 mb-4">Defina:</p>
+    <>
+      <Title title="Configuração do Cabeçalho" description="Defina:" />
       <div className="flex flex-col gap-2">
-        <div className="flex gap-2">
+        <div className="flex flex-col gap-2 md:flex-row">
           <Input
             label="Nome completo"
             name="name"
@@ -31,6 +31,6 @@ export function HeaderSection() {
           placeholder="Digite a descricao aqui"
         />
       </div>
-    </div>
+    </>
   );
 }
