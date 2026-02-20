@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { useTheme } from "@/hooks";
 import { TbPick } from "react-icons/tb";
+import type { ThemeType } from "@/types";
+import { useTheme } from "@/hooks";
 
 interface MenuProps {
-  items: { label: string; value: string; icon?: Element }[];
+  items: { label: string; value: ThemeType; icon?: Element }[];
 }
 
 export function Menu(props: MenuProps) {

@@ -8,6 +8,9 @@ import {
 } from "./components";
 import { twMerge } from "tailwind-merge";
 import { Button } from "@/components";
+import { generatePortfolioPDF } from "@/utils";
+import { meuPortifolio } from "@/data/meu-portifolio";
+import { useTheme } from "@/hooks";
 
 const sections = [
   { id: 0, title: "Cabeçalho" },
@@ -18,10 +21,16 @@ const sections = [
 
 export function MultiStepPage() {
   const [step, setStep] = useState(0);
+  const { theme } = useTheme();
 
-  function nextStep() {
+  async function nextStep() {
     if (step < sections.length - 1) {
       setStep(step + 1);
+    } else {
+      await generatePortfolioPDF({
+        meuPortifolio,
+        theme,
+      });
     }
   }
 
@@ -87,7 +96,7 @@ export function MultiStepPage() {
             Voltar
           </Button.ghost>
 
-          <Button.ghost onClick={nextStep}>
+          <Button.ghost onClick={nextStep} disabled={true}>
             {step === sections.length - 1 ? "Finalizar" : "Continuar"}
           </Button.ghost>
         </div>

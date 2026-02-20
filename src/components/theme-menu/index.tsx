@@ -2,9 +2,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { useTheme } from "@/hooks";
+import type { ThemeType } from "@/types";
 
 interface ThemeMenurops {
-  items: { label: string; value: string; icon?: Element }[];
+  items: { label: string; value: ThemeType; icon?: Element }[];
 }
 
 export function ThemeMenu(props: ThemeMenurops) {
@@ -32,6 +33,7 @@ export function ThemeMenu(props: ThemeMenurops) {
           {theme === "light" && "☀️"}
           {theme === "rocketseat" && "🚀"}
           {theme === "minecraft" && "⛏️"}
+          {theme === "alura" && "📚"}
         </div>
       </button>
 

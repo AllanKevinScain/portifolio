@@ -47,6 +47,7 @@ export function Header(props: HeaderProps) {
               { label: "Light", value: "light" },
               { label: "Rocketseat", value: "rocketseat" },
               { label: "Minecraft", value: "minecraft" },
+              { label: "Alura", value: "alura" },
             ]}
           />
         </nav>

@@ -46,6 +46,7 @@ type FooterType = {
   tech_stack_footer: string;
   contact: {
     email: string;
+    phone: string;
     social_media: {
       linkedin?: string;
       github?: string;
@@ -55,7 +56,7 @@ type FooterType = {
   };
 };
 
-type MeuPortifolioType = {
+export type MeuPortifolioType = {
   profile: ProfileType;
   projects_section: ProjectsSectionType;
   differentials_section: DifferentialsSectionType;
@@ -122,10 +123,12 @@ export const meuPortifolio: MeuPortifolioType = {
     tech_stack_footer: "Construído com React, Vite, TypeScript e Tailwind.",
     contact: {
       email: "test@gmail.com",
+      phone: "51995368765",
       social_media: {
         linkedin: "http://asasass.linkeding.com.br",
         github: "http://asasaas.github.com.br",
         instagram: "http://asasas.instagram.br",
+        google: "http://asasas.google.br",
       },
     },
   },
