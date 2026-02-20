@@ -1,16 +1,14 @@
 import { twMerge } from "tailwind-merge";
 import { useNavitems } from "./useNavItems";
-import { Menu } from "../menu";
+import { ThemeMenu } from "../theme-menu";
 
-export function Header() {
+interface HeaderProps {
+  navItems?: { href: string; label: string }[];
+}
+
+export function Header(props: HeaderProps) {
+  const { navItems = [] } = props;
   const { open, scrolled, toggle } = useNavitems();
-
-  const navItems = [
-    { href: "#projetos", label: "Projetos" },
-    { href: "#diferenciais", label: "Diferenciais" },
-    { href: "#servicos", label: "Serviços" },
-    { href: "#contato", label: "Contato" },
-  ];
 
   return (
     <header
@@ -26,10 +24,10 @@ export function Header() {
         )}
       >
         <div className="text-(--color-primary) text-2xl font-bold">
-          <a href="#home">MeuPortfólio</a>
+          <a href="/">MeuPortfólio</a>
         </div>
 
-        <nav className={twMerge("hidden gap-8 md:flex")}>
+        <nav className={twMerge("hidden gap-8", "md:flex md:items-center")}>
           {navItems.map((item) => (
             <a
               key={item.label}
@@ -43,12 +41,13 @@ export function Header() {
               {item.label}
             </a>
           ))}
-          <Menu
+          <ThemeMenu
             items={[
               { label: "Dark", value: "dark" },
               { label: "Light", value: "light" },
               { label: "Rocketseat", value: "rocketseat" },
               { label: "Minecraft", value: "minecraft" },
+              { label: "Alura", value: "alura" },
             ]}
           />
         </nav>
