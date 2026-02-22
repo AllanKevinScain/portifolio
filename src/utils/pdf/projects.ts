@@ -27,6 +27,20 @@ export async function generateProjectPart(
   });
   y -= 20;
 
+  page.drawText(
+    `Tecnologias principais: ${meuPortifolio.projects_section.principal_tecnologies}`,
+    {
+      x: 50,
+      y,
+      size: 12,
+      font,
+      maxWidth: 510,
+      lineHeight: 15,
+      color: themeColors.primary,
+    },
+  );
+  y -= 20;
+
   page.drawText(meuPortifolio.projects_section.description, {
     x: 50,
     y,
@@ -61,20 +75,9 @@ export async function generateProjectPart(
     });
     y -= 18;
 
-    page.drawText(`Tecnologias: ${project.technologies.join(", ")}`, {
-      x: 50,
-      y,
-      size: 12,
-      font,
-      maxWidth: 510,
-      lineHeight: 15,
-      color: themeColors.primary,
-    });
-    y -= 18;
-
     drawUnderlinedText({
       page,
-      text: `Deploy: ${project.links.deploy}`,
+      text: `Deploy: ${project.link}`,
       x: 50,
       y,
       size: 11,
@@ -85,7 +88,7 @@ export async function generateProjectPart(
 
     drawUnderlinedText({
       page,
-      text: `Repositório: ${project.links.repository}`,
+      text: `Repositório: ${project.repository}`,
       x: 50,
       y,
       size: 11,

@@ -3,25 +3,25 @@ import { RiApps2AddLine } from "react-icons/ri";
 import { FaTrashArrowUp } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { Title } from "./title";
-import { projectsSchema, type ProjectsSchemaType } from "@/schemas";
+import { servicesSchema, type ServicesSchemaType } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useFieldArray, useForm, type SubmitHandler } from "react-hook-form";
+import { twMerge } from "tailwind-merge";
 import { useRegisterForm } from "@/hooks";
 
-export function ProjectsSection() {
+export function ServicesSection() {
   const methods = useForm({
-    resolver: yupResolver(projectsSchema),
+    resolver: yupResolver(servicesSchema),
     defaultValues: {
-      title: "Projetos em destaque",
+      title: "Serviços",
       description:
-        "Alguns trabalhos e experimentos que demonstram minha experiência com front-end moderno e arquitetura de aplicações.",
-      projects: [
+        "Soluções focadas em resultado, performance e escalabilidade — do site institucional ao front-end de aplicações complexas.",
+      services: [
         {
-          title: "Dashboard de Vendas",
+          title: "Landing Page / Site Institucional",
           description:
-            "Dashboard responsivo com gráficos e filtros em tempo real, focado em KPIs de e-commerce.",
-          link: "https://dashboard-vendas.vercel.app/",
-          repository: "https://github.com/allankevin/dashboard-vendas",
+            "Páginas otimizadas para conversão, SEO e alta performance.",
+          starting_price: "2000",
         },
       ],
     },
@@ -30,19 +30,19 @@ export function ProjectsSection() {
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "projects",
+    name: "services",
   });
 
-  const onSubmit: SubmitHandler<ProjectsSchemaType> = (data) =>
+  const onSubmit: SubmitHandler<ServicesSchemaType> = (data) =>
     console.log(data);
 
-  useRegisterForm("projects_section", methods);
+  useRegisterForm("services_section", methods);
 
   return (
     <>
       <Title
-        title="Seus Projetos"
-        description="Adicione projetos que representem sua experiência."
+        title="Seus Serviços"
+        description="Adicione serviços que representem sua experiência."
       />
       <form
         className="flex flex-col gap-12 md:gap-4"
@@ -55,23 +55,35 @@ export function ProjectsSection() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               key={field.id}
-              className="flex flex-col gap-2 md:gap-4 md:flex-row"
+              className={twMerge(
+                "flex flex-col gap-2 p-4",
+                "border rounded-2xl border-(--color-secondary)",
+                "md:gap-4 md:flex-row",
+              )}
             >
-              <Input
-                placeholder="Título"
-                className="md:w-[30%]"
-                {...register(`projects.${index}.title`)}
-              />
-              <Input
-                classNameInput="hidden md:flex"
-                placeholder="Descrição"
-                {...register(`projects.${index}.description`)}
-              />
-              <Textarea
-                className="flex md:hidden"
-                placeholder="Descrição"
-                {...register(`projects.${index}.description`)}
-              />
+              <div className="flex flex-col gap-2 md:gap-4 w-full">
+                <div className="flex flex-col gap-2 md:gap-4 md:flex-row">
+                  <Input
+                    placeholder="Título"
+                    {...register(`services.${index}.title`)}
+                  />
+                  <Input
+                    placeholder="Preço"
+                    {...register(`services.${index}.starting_price`)}
+                  />
+                </div>
+                <Input
+                  classNameInput="hidden md:flex"
+                  placeholder="Descrição"
+                  {...register(`services.${index}.description`)}
+                />
+                <Textarea
+                  className="flex md:hidden"
+                  placeholder="Descrição"
+                  {...register(`services.${index}.description`)}
+                />
+              </div>
+
               <Button.solid
                 className="w-full flex justify-center md:w-fit"
                 disabled={index === 0 && fields.length === 1}
@@ -84,11 +96,11 @@ export function ProjectsSection() {
         })}
         {fields.length >= 10 && (
           <span className="text-xs mt-1 opacity-70 text-(--color-text)">
-            Voce pode adicionar somente 10 projetos
+            Voce pode adicionar somente 5 serviços
           </span>
         )}
         {fields.length <= 10 && (
-          <div className="flex w-full justify-end">
+          <div className="flex w-full justify-end px-4">
             <Button.solid
               onClick={() => append({ title: "", description: "" })}
               className="w-full flex justify-center md:w-fit"

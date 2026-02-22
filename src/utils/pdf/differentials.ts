@@ -38,7 +38,7 @@ export async function generateDifferentialsPart(
   });
   y -= 25;
 
-  meuPortifolio.differentials_section.items.forEach((item) => {
+  meuPortifolio.differentials_section.differentials.forEach((item) => {
     page.drawText(item.title, {
       x: 50,
       y,

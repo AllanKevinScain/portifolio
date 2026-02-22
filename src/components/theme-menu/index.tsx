@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { useTheme } from "@/hooks";
 import type { ThemeType } from "@/types";
+import { optionsTheme } from "@/data/theme";
+import { MdLightMode } from "react-icons/md";
 
 interface ThemeMenurops {
   items: { label: string; value: ThemeType; icon?: Element }[];
@@ -29,11 +31,7 @@ export function ThemeMenu(props: ThemeMenurops) {
         )}
       >
         <div className="space-y-1">
-          {(theme === "dark" || theme === null) && "🌙"}
-          {theme === "light" && "☀️"}
-          {theme === "rocketseat" && "🚀"}
-          {theme === "minecraft" && "⛏️"}
-          {theme === "alura" && "📚"}
+          {optionsTheme[theme].icon || <MdLightMode size={22} />}
         </div>
       </button>
 

@@ -55,3 +55,11 @@ html {
   --color-secondary: #00e0ff;
   --color-border: #123d6b;
 }
+
+[data-theme="instagram"] {
+  --color-bg: #000000;
+  --color-text: #fafafa;
+  --color-primary: #fd1d1d;
+  --color-secondary: #c13584;
+  --color-border: #1a1a1a;
+}

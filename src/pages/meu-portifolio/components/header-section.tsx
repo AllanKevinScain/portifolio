@@ -1,36 +1,61 @@
-import { Input } from "@/components";
-import { Title } from "./_title";
+import { Input, Textarea } from "@/components";
+import { Title } from "./title";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { headerSchema, type HeaderSchemaType } from "@/schemas";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useRegisterForm } from "@/hooks";
 
 export function HeaderSection() {
+  const methods = useForm({
+    resolver: yupResolver(headerSchema),
+    defaultValues: {
+      name: "Allan Kevin Scain",
+      role: "Desenvolvedor Front-end II",
+      status: "Disponível para novos projetos",
+      headline:
+        "Crio interfaces modernas, performáticas e escaláveis com foco em experiência do usuário e arquitetura sólida.",
+      title: "Seja bem vindo!",
+    },
+  });
+  const { register, handleSubmit } = methods;
+
+  const onSubmit: SubmitHandler<HeaderSchemaType> = (data) => console.log(data);
+
+  useRegisterForm("profile", methods);
+
   return (
     <>
       <Title title="Configuração do Cabeçalho" description="Defina:" />
-      <div className="flex flex-col gap-2">
+      <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-2 md:flex-row">
           <Input
             label="Nome completo"
-            name="name"
+            {...register("name")}
             placeholder="Digite seu nome aqui"
           />
           <Input
             label="Profissão"
-            name="role"
+            {...register("role")}
             placeholder="Digite seu profissão aqui"
           />
         </div>
 
-        <Input label="Título" name="title" placeholder="Digite o título aqui" />
+        <Input
+          label="Título"
+          {...register("title")}
+          placeholder="Digite o título aqui"
+        />
         <Input
           label="Status"
-          name="status"
+          {...register("status")}
           placeholder="Digite seu status aqui"
         />
-        <Input
+        <Textarea
           label="Descrição"
-          name="headline"
+          {...register("headline")}
           placeholder="Digite a descricao aqui"
         />
-      </div>
+      </form>
     </>
   );
 }

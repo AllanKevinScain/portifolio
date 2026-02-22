@@ -8,22 +8,19 @@ type ProfileType = {
 type ProjectsSectionType = {
   title: string;
   description: string;
+  principal_tecnologies: string;
   projects: {
-    id: number;
     title: string;
     description: string;
-    technologies: string[];
-    links: {
-      deploy: string;
-      repository: string;
-    };
+    link: string;
+    repository: string;
   }[];
 };
 
 export type DifferentialsSectionType = {
   title: string;
   description: string;
-  items: {
+  differentials: {
     title: string;
     description: string;
   }[];
@@ -35,8 +32,7 @@ type ServicesSectionType = {
   services: {
     title: string;
     description: string;
-    starting_price: number;
-    currency: string;
+    starting_price: string;
   }[];
 };
 
@@ -72,33 +68,30 @@ export const meuPortifolio: MeuPortifolioType = {
     headline:
       "Crio interfaces modernas, performáticas e escaláveis com foco em experiência do usuário e arquitetura sólida.",
   },
-  projects_section: {
-    title: "Projetos em destaque",
-    description:
-      "Alguns trabalhos e experimentos que demonstram minha experiência com front-end moderno e arquitetura de aplicações.",
-    projects: [
-      {
-        id: 1,
-        title: "Dashboard de Vendas",
-        description:
-          "Dashboard responsivo com gráficos e filtros em tempo real, focado em KPIs de e-commerce.",
-        technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-        links: {
-          deploy: "https://dashboard-vendas.vercel.app/",
-          repository: "https://github.com/allankevin/dashboard-vendas",
-        },
-      },
-    ],
-  },
   differentials_section: {
     title: "Diferenciais",
     description:
       "Práticas e mentalidade que guiam minhas decisões técnicas e de produto.",
-    items: [
+    differentials: [
       {
         title: "Performance e Acessibilidade",
         description:
           "Páginas leves, rápidas e inclusivas (Lighthouse e boas práticas WCAG).",
+      },
+    ],
+  },
+  projects_section: {
+    title: "Projetos em destaque",
+    description:
+      "Alguns trabalhos e experimentos que demonstram minha experiência com front-end moderno e arquitetura de aplicações.",
+    principal_tecnologies: "React, TypeScript, Tailwind, Vite",
+    projects: [
+      {
+        title: "Dashboard de Vendas",
+        description:
+          "Dashboard responsivo com gráficos e filtros em tempo real, focado em KPIs de e-commerce.",
+        link: "https://dashboard-vendas.vercel.app/",
+        repository: "https://github.com/allankevin/dashboard-vendas",
       },
     ],
   },
@@ -111,8 +104,7 @@ export const meuPortifolio: MeuPortifolioType = {
         title: "Landing Page / Site Institucional",
         description:
           "Páginas otimizadas para conversão, SEO e alta performance.",
-        starting_price: 2000.0,
-        currency: "BRL",
+        starting_price: "2000",
       },
     ],
   },

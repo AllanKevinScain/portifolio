@@ -4,4 +4,4 @@ export type ThemeType =
   | "rocketseat"
   | "minecraft"
   | "alura"
-  | null;
+  | "instagram";

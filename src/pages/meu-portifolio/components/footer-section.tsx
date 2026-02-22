@@ -1,58 +1,96 @@
 import { Input, Textarea } from "@/components";
-import { Title } from "./_title";
+import { Title } from "./title";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { footerSchema, type FooterSchemaType } from "@/schemas/footer.schema";
+import { useRegisterForm } from "@/hooks";
 
 export function FooterSection() {
+  const methods = useForm({
+    resolver: yupResolver(footerSchema),
+    defaultValues: {
+      cta_title: "Vamos conversar?",
+      cta_description:
+        "Me chame para falarmos sobre seu projeto, produto ou ideia. Posso ajudar a transformar isso em uma experiência sólida.",
+      tech_stack_footer: "Construído com React, Vite, TypeScript e Tailwind.",
+      contact: {
+        email: "test@gmail.com",
+        phone: "51995368765",
+        social_media: {
+          linkedin: "http://asasass.linkeding.com.br",
+          github: "http://asasaas.github.com.br",
+          instagram: "http://asasas.instagram.br",
+          google: "http://asasas.google.br",
+        },
+      },
+    },
+  });
+  const { register, handleSubmit } = methods;
+
+  const onSubmit: SubmitHandler<FooterSchemaType> = (data) => console.log(data);
+
+  useRegisterForm("footer", methods);
+
   return (
     <>
       <Title
         title="Configuração do Rodapé"
         description="Redes sociais, contato e direitos autorais."
       />
-      <div className="flex flex-col gap-2">
+      <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="Título à convite"
-          name="cta_title"
+          {...register("cta_title")}
           placeholder="Digite seu título aqui"
           helperText="Este título será apresentado a quem acessar seu portifólio como um convite de trabalho"
         />
         <Textarea
           label="Descrição do convite"
-          name="cta_description"
+          {...register("cta_description")}
           placeholder="Digite sua descrição"
           helperText="Uma frase que chame a atenção do recrutador"
         />
         <Input
           label="Frase motivacional"
-          name="tech_stack_footer"
+          {...register("tech_stack_footer")}
           placeholder="Digite a frase aqui"
           helperText="Frase que você gosta, relacionado ao trabalho"
         />
         <Input
           label="Email"
-          name="contact.email"
+          {...register("contact.email")}
           placeholder="Digite seu e-mail"
         />
         <Input
+          label="Telefone"
+          {...register("contact.phone")}
+          placeholder="(99) 9 9999-9999"
+        />
+        <Input
           label="Linkedin"
-          name="contact.social_media.linkedin"
+          required={false}
+          {...register("contact.social_media.linkedin")}
           placeholder="Seu perfil"
         />
         <Input
           label="Instagram"
-          name="contact.social_media.instagram"
+          required={false}
+          {...register("contact.social_media.instagram")}
           placeholder="Seu perfil"
         />
         <Input
           label="Github"
-          name="contact.social_media.github"
+          required={false}
+          {...register("contact.social_media.github")}
           placeholder="Seu perfil"
         />
         <Input
           label="Google"
-          name="contact.social_media.google"
+          required={false}
+          {...register("contact.social_media.google")}
           placeholder="Sua empresa do google"
         />
-      </div>
+      </form>
     </>
   );
 }

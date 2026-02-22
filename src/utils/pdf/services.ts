@@ -11,11 +11,12 @@ type GenerateServicesPartParamsType = {
   themeColors: PdfThemeColors;
 };
 
-function formatPrice(value: number, currency: string) {
+function formatPrice(value: string) {
+  const valueNumber = parseFloat(value);
   return new Intl.NumberFormat("pt-BR", {
     style: "currency",
-    currency,
-  }).format(value);
+    currency: "BRL",
+  }).format(valueNumber);
 }
 
 export async function generateServicesPart(
@@ -67,17 +68,14 @@ export async function generateServicesPart(
     });
     y -= 18;
 
-    page.drawText(
-      `Preço inicial: ${formatPrice(service.starting_price, service.currency)}`,
-      {
-        x: 50,
-        y,
-        size: 12,
-        font,
-        color: themeColors.primary,
-        opacity: 0.7,
-      },
-    );
+    page.drawText(`Preço inicial: ${formatPrice(service.starting_price)}`, {
+      x: 50,
+      y,
+      size: 12,
+      font,
+      color: themeColors.primary,
+      opacity: 0.7,
+    });
     y -= 25;
   });
 

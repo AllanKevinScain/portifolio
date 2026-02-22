@@ -2,19 +2,41 @@ import { Button, Input, Textarea } from "@/components";
 import { RiApps2AddLine } from "react-icons/ri";
 import { FaTrashArrowUp } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { useListForm } from "@/hooks";
-import { Title } from "./_title";
-
-type DiferentialsType = {
-  id: string;
-  title: string;
-  description: string;
-};
+import { Title } from "./title";
+import { useFieldArray, useForm, type SubmitHandler } from "react-hook-form";
+import { differentialsSchema, type DifferentialsSchemaType } from "@/schemas";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { twMerge } from "tailwind-merge";
+import { useRegisterForm } from "@/hooks";
 
 export function FeaturesSection() {
-  const { formValue, handleAdd, handleRemove } = useListForm<DiferentialsType>({
-    initialValue: [{ id: crypto.randomUUID(), title: "", description: "" }],
+  const methods = useForm({
+    resolver: yupResolver(differentialsSchema),
+    defaultValues: {
+      title: "Diferenciais",
+      description:
+        "Práticas e mentalidade que guiam minhas decisões técnicas e de produto.",
+      principal_tecnologies: "React,TypeScript,Tailwind CSS,Vite",
+      differentials: [
+        {
+          title: "Performance e Acessibilidade",
+          description:
+            "Páginas leves, rápidas e inclusivas (Lighthouse e boas práticas WCAG).",
+        },
+      ],
+    },
   });
+  const { control, handleSubmit, register } = methods;
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "differentials",
+  });
+
+  const onSubmit: SubmitHandler<DifferentialsSchemaType> = (data) =>
+    console.log(data);
+
+  useRegisterForm("differentials_section", methods);
 
   return (
     <>
@@ -22,56 +44,77 @@ export function FeaturesSection() {
         title="Seus Diferenciais"
         description="Destaque seus principais pontos fortes."
       />
-      <div className="flex flex-col gap-12 md:gap-4">
-        {formValue.map((item, index) => {
-          return (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              key={item.id}
-              className="flex flex-col gap-2 md:gap-4 md:flex-row"
-            >
-              <Input
-                placeholder="Título"
-                value={item.title[index]}
-                className="md:w-[30%]"
-              />
-              <Input
-                classNameInput="hidden md:flex"
-                placeholder="Descrição"
-                value={item.description[index]}
-              />
-              <Textarea
-                className="flex md:hidden"
-                placeholder="Descrição"
-                value={item.description[index]}
-              />
-              <Button.solid
-                className="w-full flex justify-center md:w-fit"
-                disabled={index === 0 && formValue.length === 1}
-                onClick={() => handleRemove(item.id)}
+      <form
+        className="flex flex-col gap-4 md:gap-4"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <Input
+          label="Título de slogan"
+          placeholder="Título"
+          {...register("title")}
+        />
+        <Textarea
+          label="Principais tecnologias"
+          placeholder="Tecnologias"
+          {...register("principal_tecnologies")}
+        />
+        <Textarea
+          label="Frase de efeito descrevendo você"
+          placeholder="Descrição"
+          {...register("description")}
+        />
+
+        <div className="flex flex-col md:gap-4">
+          <span className="text-(--color-text) opacity-70">Diferenciais</span>
+          {fields.map((field, index) => {
+            return (
+              <motion.div
+                key={field.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className={twMerge(
+                  "flex flex-col gap-2 p-4",
+                  "border rounded-2xl border-(--color-secondary)",
+                  "md:gap-4 md:flex-row",
+                )}
               >
-                <FaTrashArrowUp size={22} />
-              </Button.solid>
-            </motion.div>
-          );
-        })}
-        {formValue.length >= 5 && (
+                <Input
+                  placeholder="Título"
+                  className="md:w-[30%]"
+                  {...register(`differentials.${index}.title`)}
+                />
+                <Input
+                  {...register(`differentials.${index}.description`)}
+                  classNameInput="hidden md:flex"
+                  placeholder="Descrição"
+                />
+                <Textarea
+                  {...register(`differentials.${index}.description`)}
+                  className="flex md:hidden"
+                  placeholder="Descrição"
+                />
+                <Button.solid
+                  className="w-full flex justify-center md:w-fit"
+                  disabled={index === 0 && fields.length === 1}
+                  onClick={() => remove(index)}
+                >
+                  <FaTrashArrowUp size={22} />
+                </Button.solid>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {fields.length >= 5 && (
           <span className="text-xs mt-1 opacity-70 text-(--color-text)">
             Voce só pode adicionar 5 pontos diferenciais
           </span>
         )}
-        {formValue.length <= 5 && (
-          <div className="flex w-full justify-end">
+        {fields.length <= 5 && (
+          <div className="flex w-full justify-end px-4">
             <Button.solid
-              onClick={() =>
-                handleAdd({
-                  id: crypto.randomUUID(),
-                  title: "",
-                  description: "",
-                })
-              }
+              onClick={() => append({ title: "", description: "" })}
               className="w-full flex justify-center md:w-fit"
             >
               <span className="md:hidden">Adicionar</span>
@@ -79,7 +122,7 @@ export function FeaturesSection() {
             </Button.solid>
           </div>
         )}
-      </div>
+      </form>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { RootLayout } from "@/layouts";
-import { AppPage, LoadingPage, MultiStepPage } from "@/pages";
+import { AppPage, LoadingPage, MultiStepPage, SocialLoginPage } from "@/pages";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -14,6 +14,10 @@ export const router = createBrowserRouter([
       {
         path: "/create-portifolio",
         Component: MultiStepPage,
+      },
+      {
+        path: "/login",
+        Component: SocialLoginPage,
       },
     ],
   },
