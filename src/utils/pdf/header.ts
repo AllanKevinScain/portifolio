@@ -1,19 +1,19 @@
-import type { MeuPortifolioType } from "@/data/meu-portifolio";
 import { PDFFont, PDFPage } from "pdf-lib";
 import type { PdfThemeColors } from "./styles/select-colors-by-theme";
 import { drawGradientText } from "./styles";
+import type { InfoForPortifolioType } from "@/types";
 
 type GenerateHeaderPartParamsType = {
   page: PDFPage;
   font: PDFFont;
   fontBold: PDFFont;
   y: number;
-  meuPortifolio: MeuPortifolioType;
+  infoForPortifolio: InfoForPortifolioType;
   themeColors: PdfThemeColors;
 };
 
 export async function generateHeaderPart(params: GenerateHeaderPartParamsType) {
-  const { page, font, fontBold, meuPortifolio, themeColors } = params;
+  const { page, font, fontBold, infoForPortifolio, themeColors } = params;
   let { y } = params;
 
   await drawGradientText({
@@ -24,11 +24,11 @@ export async function generateHeaderPart(params: GenerateHeaderPartParamsType) {
     font: fontBold,
     fromColor: themeColors.primary,
     toColor: themeColors.secondary,
-    text: meuPortifolio.profile.name,
+    text: infoForPortifolio.profile.name,
   });
   y -= 30;
 
-  page.drawText(meuPortifolio.profile.role, {
+  page.drawText(infoForPortifolio.profile.role, {
     x: 150,
     y,
     size: 14,
@@ -37,7 +37,7 @@ export async function generateHeaderPart(params: GenerateHeaderPartParamsType) {
   });
   y -= 50;
 
-  page.drawText(meuPortifolio.profile.headline, {
+  page.drawText(infoForPortifolio.profile.headline, {
     x: 50,
     y,
     size: 12,

@@ -1,23 +1,23 @@
-import type { MeuPortifolioType } from "@/data/meu-portifolio";
 import { PDFFont, PDFPage } from "pdf-lib";
 import type { PdfThemeColors } from "./styles/select-colors-by-theme";
+import type { InfoForPortifolioType } from "@/types";
 
 type GenerateDifferentialsPartParamsType = {
   page: PDFPage;
   font: PDFFont;
   fontBold: PDFFont;
   y: number;
-  meuPortifolio: MeuPortifolioType;
+  infoForPortifolio: InfoForPortifolioType;
   themeColors: PdfThemeColors;
 };
 
 export async function generateDifferentialsPart(
   params: GenerateDifferentialsPartParamsType,
 ) {
-  const { page, font, fontBold, meuPortifolio, themeColors } = params;
+  const { page, font, fontBold, infoForPortifolio, themeColors } = params;
   let { y } = params;
 
-  page.drawText(meuPortifolio.differentials_section.title, {
+  page.drawText(infoForPortifolio.differentials_section.title, {
     x: 50,
     y,
     size: 18,
@@ -26,7 +26,7 @@ export async function generateDifferentialsPart(
   });
   y -= 20;
 
-  page.drawText(meuPortifolio.differentials_section.description, {
+  page.drawText(infoForPortifolio.differentials_section.description, {
     x: 50,
     y,
     size: 12,
@@ -38,7 +38,7 @@ export async function generateDifferentialsPart(
   });
   y -= 25;
 
-  meuPortifolio.differentials_section.differentials.forEach((item) => {
+  infoForPortifolio.differentials_section.differentials?.forEach((item) => {
     page.drawText(item.title, {
       x: 50,
       y,

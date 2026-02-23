@@ -1,13 +1,13 @@
-import type { MeuPortifolioType } from "@/data/meu-portifolio";
 import { PDFFont, PDFPage } from "pdf-lib";
 import type { PdfThemeColors } from "./styles/select-colors-by-theme";
+import type { InfoForPortifolioType } from "@/types";
 
 type GenerateServicesPartParamsType = {
   page: PDFPage;
   font: PDFFont;
   fontBold: PDFFont;
   y: number;
-  meuPortifolio: MeuPortifolioType;
+  infoForPortifolio: InfoForPortifolioType;
   themeColors: PdfThemeColors;
 };
 
@@ -22,10 +22,10 @@ function formatPrice(value: string) {
 export async function generateServicesPart(
   params: GenerateServicesPartParamsType,
 ) {
-  const { page, font, fontBold, meuPortifolio, themeColors } = params;
+  const { page, font, fontBold, infoForPortifolio, themeColors } = params;
   let { y } = params;
 
-  page.drawText(meuPortifolio.services_section.title, {
+  page.drawText(infoForPortifolio.services_section.title, {
     x: 50,
     y,
     size: 18,
@@ -34,7 +34,7 @@ export async function generateServicesPart(
   });
   y -= 20;
 
-  page.drawText(meuPortifolio.services_section.description, {
+  page.drawText(infoForPortifolio.services_section.description, {
     x: 50,
     y,
     size: 12,
@@ -46,7 +46,7 @@ export async function generateServicesPart(
   });
   y -= 45;
 
-  meuPortifolio.services_section.services.forEach((service) => {
+  infoForPortifolio.services_section.services?.forEach((service) => {
     page.drawText(service.title, {
       x: 50,
       y,
@@ -68,15 +68,17 @@ export async function generateServicesPart(
     });
     y -= 18;
 
-    page.drawText(`Preço inicial: ${formatPrice(service.starting_price)}`, {
-      x: 50,
-      y,
-      size: 12,
-      font,
-      color: themeColors.primary,
-      opacity: 0.7,
-    });
-    y -= 25;
+    if (service.starting_price) {
+      page.drawText(`Preço inicial: ${formatPrice(service.starting_price)}`, {
+        x: 50,
+        y,
+        size: 12,
+        font,
+        color: themeColors.primary,
+        opacity: 0.7,
+      });
+      y -= 25;
+    }
   });
 
   // separa a próxima sessão

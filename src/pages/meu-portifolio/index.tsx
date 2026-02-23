@@ -6,7 +6,7 @@ export function MultiStepPage() {
   return (
     <>
       <SignedOut>
-        <RedirectToSignIn redirectUrl="/login" />
+        <RedirectToSignIn />
       </SignedOut>
 
       <SignedIn>

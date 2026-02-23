@@ -69,38 +69,34 @@ export function FeaturesSection() {
           {fields.map((field, index) => {
             return (
               <motion.div
-                key={field.id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
+                key={field.id}
                 className={twMerge(
                   "flex flex-col gap-2 p-4",
                   "border rounded-2xl border-(--color-secondary)",
                   "md:gap-4 md:flex-row",
                 )}
               >
-                <Input
-                  placeholder="Título"
-                  className="md:w-[30%]"
-                  {...register(`differentials.${index}.title`)}
-                />
-                <Input
-                  {...register(`differentials.${index}.description`)}
-                  classNameInput="hidden md:flex"
-                  placeholder="Descrição"
-                />
-                <Textarea
-                  {...register(`differentials.${index}.description`)}
-                  className="flex md:hidden"
-                  placeholder="Descrição"
-                />
-                <Button.solid
+                <div className="flex flex-col gap-2 md:gap-4 w-full">
+                  <Input
+                    placeholder="Título"
+                    {...register(`differentials.${index}.title`)}
+                  />
+                  <Textarea
+                    {...register(`differentials.${index}.description`)}
+                    placeholder="Descrição"
+                  />
+                </div>
+
+                <Button.ghost
                   className="w-full flex justify-center md:w-fit"
                   disabled={index === 0 && fields.length === 1}
                   onClick={() => remove(index)}
                 >
                   <FaTrashArrowUp size={22} />
-                </Button.solid>
+                </Button.ghost>
               </motion.div>
             );
           })}

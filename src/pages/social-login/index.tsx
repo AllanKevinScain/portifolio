@@ -94,10 +94,6 @@ export function SocialLoginPage() {
                 onClick={() => handleSignIn("oauth_facebook")}
               />
               <SocialButton
-                provider="oauth_instagram"
-                onClick={() => handleSignIn("oauth_instagram")}
-              />
-              <SocialButton
                 provider="oauth_linkedin"
                 onClick={() => handleSignIn("oauth_linkedin")}
               />

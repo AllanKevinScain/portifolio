@@ -1,13 +1,18 @@
 import { twMerge } from "tailwind-merge";
 import { useNavitems } from "./useNavItems";
 import { ThemeMenu } from "../theme-menu";
-
+import { MdLogout } from "react-icons/md";
+import { Button } from "../button";
+import { SignOutButton, useSession } from "@clerk/clerk-react";
 interface HeaderProps {
   navItems?: { href: string; label: string }[];
 }
 
 export function Header(props: HeaderProps) {
   const { navItems = [] } = props;
+
+  const { isSignedIn } = useSession();
+
   const { open, scrolled, toggle } = useNavitems();
 
   return (
@@ -41,6 +46,13 @@ export function Header(props: HeaderProps) {
               {item.label}
             </a>
           ))}
+          {isSignedIn && (
+            <SignOutButton>
+              <Button.ghost>
+                <MdLogout size={22} />
+              </Button.ghost>
+            </SignOutButton>
+          )}
           <ThemeMenu
             items={[
               { label: "Dark", value: "dark" },

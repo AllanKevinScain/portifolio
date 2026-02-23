@@ -4,6 +4,7 @@ type GenerateAvatarPartParamsType = {
   page: PDFPage;
   pdfDoc: PDFDocument;
   y: number;
+  imageUrl?: string;
 };
 
 async function createCircularAvatar(
@@ -44,14 +45,10 @@ async function createCircularAvatar(
 }
 
 export async function generateAvatarPart(params: GenerateAvatarPartParamsType) {
-  const { page, pdfDoc, y } = params;
+  const { page, pdfDoc, y, imageUrl } = params;
 
-  const githubData = await fetch(
-    "https://api.github.com/users/AllanKevinScain",
-  ).then((res) => res.json());
-
-  if (githubData.avatar_url) {
-    const circularAvatar = await createCircularAvatar(githubData.avatar_url);
+  if (imageUrl) {
+    const circularAvatar = await createCircularAvatar(imageUrl);
     const avatarBytes = await circularAvatar.arrayBuffer();
 
     const avatarImage = await pdfDoc.embedPng(avatarBytes);

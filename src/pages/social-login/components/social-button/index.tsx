@@ -5,7 +5,7 @@ import { FaFacebook } from "react-icons/fa6";
 import type { SocialLoginProvider } from "@/types/social-login";
 import { BsInstagram } from "react-icons/bs";
 import type { ComponentProps } from "react";
-
+import { FaLinkedin } from "react-icons/fa6";
 interface SocialButtonProps extends ComponentProps<"button"> {
   provider: SocialLoginProvider;
 }
@@ -32,7 +32,7 @@ const providers: Record<
   },
   oauth_linkedin: {
     label: "Continuar com Linkedin",
-    icon: <FaFacebook size={22} className="text-cyan-500" />,
+    icon: <FaLinkedin size={22} className="text-cyan-700" />,
   },
 };
 

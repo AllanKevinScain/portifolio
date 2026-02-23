@@ -68,29 +68,25 @@ export function ServicesSection() {
                     {...register(`services.${index}.title`)}
                   />
                   <Input
+                    className="max-w-[20%]"
                     placeholder="Preço"
                     {...register(`services.${index}.starting_price`)}
                   />
                 </div>
-                <Input
-                  classNameInput="hidden md:flex"
-                  placeholder="Descrição"
-                  {...register(`services.${index}.description`)}
-                />
+
                 <Textarea
-                  className="flex md:hidden"
                   placeholder="Descrição"
                   {...register(`services.${index}.description`)}
                 />
               </div>
 
-              <Button.solid
+              <Button.ghost
                 className="w-full flex justify-center md:w-fit"
                 disabled={index === 0 && fields.length === 1}
                 onClick={() => remove(index)}
               >
                 <FaTrashArrowUp size={22} />
-              </Button.solid>
+              </Button.ghost>
             </motion.div>
           );
         })}

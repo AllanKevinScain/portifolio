@@ -1,24 +1,24 @@
-import type { MeuPortifolioType } from "@/data/meu-portifolio";
 import { PDFFont, PDFPage } from "pdf-lib";
 import type { PdfThemeColors } from "./styles/select-colors-by-theme";
 import { drawUnderlinedText } from "./styles";
+import type { InfoForPortifolioType } from "@/types";
 
 type GenerateProjectPartParamsType = {
   page: PDFPage;
   font: PDFFont;
   fontBold: PDFFont;
   y: number;
-  meuPortifolio: MeuPortifolioType;
+  infoForPortifolio: InfoForPortifolioType;
   themeColors: PdfThemeColors;
 };
 
 export async function generateProjectPart(
   params: GenerateProjectPartParamsType,
 ) {
-  const { page, font, fontBold, meuPortifolio, themeColors } = params;
+  const { page, font, fontBold, infoForPortifolio, themeColors } = params;
   let { y } = params;
 
-  page.drawText(meuPortifolio.projects_section.title, {
+  page.drawText(infoForPortifolio.projects_section.title, {
     x: 50,
     y,
     size: 18,
@@ -28,7 +28,7 @@ export async function generateProjectPart(
   y -= 20;
 
   page.drawText(
-    `Tecnologias principais: ${meuPortifolio.projects_section.principal_tecnologies}`,
+    `Tecnologias principais: ${infoForPortifolio.projects_section.principal_tecnologies}`,
     {
       x: 50,
       y,
@@ -41,7 +41,7 @@ export async function generateProjectPart(
   );
   y -= 20;
 
-  page.drawText(meuPortifolio.projects_section.description, {
+  page.drawText(infoForPortifolio.projects_section.description, {
     x: 50,
     y,
     size: 12,
@@ -53,7 +53,7 @@ export async function generateProjectPart(
   });
   y -= 45;
 
-  meuPortifolio.projects_section.projects.forEach((project) => {
+  infoForPortifolio.projects_section.projects?.forEach((project) => {
     page.drawText(project.title, {
       x: 50,
       y,

@@ -1,21 +1,21 @@
-import type { MeuPortifolioType } from "@/data/meu-portifolio";
 import { PDFFont, PDFPage } from "pdf-lib";
 import type { PdfThemeColors } from "./styles/select-colors-by-theme";
 import { drawUnderlinedText } from "./styles";
+import type { InfoForPortifolioType } from "@/types";
 
 type GenerateContactPartParamsType = {
   page: PDFPage;
   font: PDFFont;
   fontBold: PDFFont;
   y: number;
-  meuPortifolio: MeuPortifolioType;
+  infoForPortifolio: InfoForPortifolioType;
   themeColors: PdfThemeColors;
 };
 
 export async function generateContactPart(
   params: GenerateContactPartParamsType,
 ) {
-  const { page, font, fontBold, meuPortifolio, themeColors } = params;
+  const { page, font, fontBold, infoForPortifolio, themeColors } = params;
   let { y } = params;
 
   page.drawText("Contato", {
@@ -27,7 +27,7 @@ export async function generateContactPart(
   });
   y -= 25;
 
-  const contact = meuPortifolio.footer.contact;
+  const contact = infoForPortifolio.footer.contact;
 
   drawUnderlinedText({
     page,

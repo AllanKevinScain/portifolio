@@ -7,6 +7,7 @@ import { projectsSchema, type ProjectsSchemaType } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useFieldArray, useForm, type SubmitHandler } from "react-hook-form";
 import { useRegisterForm } from "@/hooks";
+import { twMerge } from "tailwind-merge";
 
 export function ProjectsSection() {
   const methods = useForm({
@@ -55,30 +56,40 @@ export function ProjectsSection() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               key={field.id}
-              className="flex flex-col gap-2 md:gap-4 md:flex-row"
+              className={twMerge(
+                "flex flex-col gap-2 p-4",
+                "border rounded-2xl border-(--color-secondary)",
+                "md:gap-4 md:flex-row",
+              )}
             >
-              <Input
-                placeholder="Título"
-                className="md:w-[30%]"
-                {...register(`projects.${index}.title`)}
-              />
-              <Input
-                classNameInput="hidden md:flex"
-                placeholder="Descrição"
-                {...register(`projects.${index}.description`)}
-              />
-              <Textarea
-                className="flex md:hidden"
-                placeholder="Descrição"
-                {...register(`projects.${index}.description`)}
-              />
-              <Button.solid
+              <div className="flex flex-col gap-2 md:gap-4 w-full">
+                <Input
+                  placeholder="Título"
+                  {...register(`projects.${index}.title`)}
+                />
+                <Input
+                  placeholder="Link de apresentação"
+                  required={false}
+                  {...register(`projects.${index}.link`)}
+                />
+                <Input
+                  placeholder="Link do conteudo"
+                  {...register(`projects.${index}.repository`)}
+                />
+
+                <Textarea
+                  placeholder="Descrição"
+                  {...register(`projects.${index}.description`)}
+                />
+              </div>
+
+              <Button.ghost
                 className="w-full flex justify-center md:w-fit"
                 disabled={index === 0 && fields.length === 1}
                 onClick={() => remove(index)}
               >
                 <FaTrashArrowUp size={22} />
-              </Button.solid>
+              </Button.ghost>
             </motion.div>
           );
         })}

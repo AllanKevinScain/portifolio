@@ -8,15 +8,15 @@ const socialMediaSchema = yup.object({
 });
 
 const contactSchema = yup.object({
-  email: yup.string().email(),
-  phone: yup.string(),
+  email: yup.string().email().required("Campo obrigatório."),
+  phone: yup.string().required("Campo obrigatório."),
   social_media: socialMediaSchema,
 });
 
 export const footerSchema = yup.object({
-  cta_title: yup.string(),
-  cta_description: yup.string(),
-  tech_stack_footer: yup.string(),
+  cta_title: yup.string().required("Campo obrigatório."),
+  cta_description: yup.string().required("Campo obrigatório."),
+  tech_stack_footer: yup.string().required("Campo obrigatório."),
   contact: contactSchema,
 });
 

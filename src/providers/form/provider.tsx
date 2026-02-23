@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { FieldValues, UseFormReturn } from "react-hook-form";
 import { FormPortifolioContext } from "./context";
+import type { InfoForPortifolioType } from "@/types";
 
 export function FormPortifolioProvider({
   children,
@@ -35,7 +36,7 @@ export function FormPortifolioProvider({
       result[key] = formsState[key].getValues();
     }
 
-    return result;
+    return result as InfoForPortifolioType;
   }
 
   return (

@@ -5,7 +5,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { footerSchema, type FooterSchemaType } from "@/schemas/footer.schema";
 import { useRegisterForm } from "@/hooks";
 
-export function FooterSection() {
+interface FooterSectionProps {
+  email?: string;
+  phone?: string;
+}
+
+export function FooterSection(props: FooterSectionProps) {
+  const { email, phone } = props;
+
   const methods = useForm({
     resolver: yupResolver(footerSchema),
     defaultValues: {
@@ -14,8 +21,8 @@ export function FooterSection() {
         "Me chame para falarmos sobre seu projeto, produto ou ideia. Posso ajudar a transformar isso em uma experiência sólida.",
       tech_stack_footer: "Construído com React, Vite, TypeScript e Tailwind.",
       contact: {
-        email: "test@gmail.com",
-        phone: "51995368765",
+        email: email,
+        phone: phone,
         social_media: {
           linkedin: "http://asasass.linkeding.com.br",
           github: "http://asasaas.github.com.br",
@@ -58,11 +65,13 @@ export function FooterSection() {
         />
         <Input
           label="Email"
+          disabled={!email}
           {...register("contact.email")}
           placeholder="Digite seu e-mail"
         />
         <Input
           label="Telefone"
+          disabled={!phone}
           {...register("contact.phone")}
           placeholder="(99) 9 9999-9999"
         />

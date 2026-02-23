@@ -10,7 +10,6 @@ import {
 import { twMerge } from "tailwind-merge";
 import { Button } from "@/components";
 import { generatePortfolioPDF } from "@/utils";
-import { meuPortifolio } from "@/data/meu-portifolio";
 import { useTheme } from "@/hooks";
 import { useUser } from "@clerk/clerk-react";
 import { FormPortifolioContext } from "@/providers/form/context";
@@ -36,11 +35,13 @@ export function Form() {
       setStep(step + 1);
     } else {
       const allValues = getAllValues();
-      console.log("🚀 ~ nextStep ~ allValues:", allValues);
-      await generatePortfolioPDF({
-        meuPortifolio,
-        theme,
-      });
+      if (allValues) {
+        await generatePortfolioPDF({
+          infoForPortifolio: allValues,
+          imageUrl: user?.imageUrl,
+          theme,
+        });
+      }
     }
   }
 
@@ -94,11 +95,18 @@ export function Form() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            {step === 0 && <HeaderSection />}
+            {step === 0 && (
+              <HeaderSection fullName={user.fullName?.replace("_", " ")} />
+            )}
             {step === 1 && <FeaturesSection />}
             {step === 2 && <ProjectsSection />}
             {step === 3 && <ServicesSection />}
-            {step === 4 && <FooterSection />}
+            {step === 4 && (
+              <FooterSection
+                email={user.emailAddresses[0].emailAddress}
+                phone={user.phoneNumbers[0].phoneNumber}
+              />
+            )}
           </motion.div>
         </AnimatePresence>
 

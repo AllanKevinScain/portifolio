@@ -1,4 +1,3 @@
-import type { MeuPortifolioType } from "@/data/meu-portifolio";
 import { PDFDocument, StandardFonts } from "pdf-lib";
 import { generateProjectPart } from "./projects";
 import { generateServicesPart } from "./services";
@@ -8,17 +7,18 @@ import { generateHeaderPart } from "./header";
 import { generateAvatarPart } from "./avatar";
 import { drawGradientBar } from "./styles";
 import { selectPdfColorsByTheme } from "./styles/select-colors-by-theme";
-import type { ThemeType } from "@/types";
+import type { InfoForPortifolioType, ThemeType } from "@/types";
 
 type GeneratePortfolioPDFParamsType = {
-  meuPortifolio: MeuPortifolioType;
+  infoForPortifolio: InfoForPortifolioType;
+  imageUrl?: string;
   theme: ThemeType;
 };
 
 export async function generatePortfolioPDF(
   params: GeneratePortfolioPDFParamsType,
 ) {
-  const { meuPortifolio, theme } = params;
+  const { infoForPortifolio, theme, imageUrl } = params;
 
   const pdfDoc = await PDFDocument.create();
 
@@ -45,6 +45,7 @@ export async function generatePortfolioPDF(
     page,
     pdfDoc,
     y,
+    imageUrl,
   });
 
   // Cabeçalho
@@ -53,7 +54,7 @@ export async function generatePortfolioPDF(
     font,
     fontBold,
     y,
-    meuPortifolio,
+    infoForPortifolio,
     themeColors,
   });
 
@@ -63,7 +64,7 @@ export async function generatePortfolioPDF(
     font,
     fontBold,
     y: yHeader,
-    meuPortifolio,
+    infoForPortifolio,
     themeColors,
   });
 
@@ -73,7 +74,7 @@ export async function generatePortfolioPDF(
     font,
     fontBold,
     y: yProjects,
-    meuPortifolio,
+    infoForPortifolio,
     themeColors,
   });
 
@@ -83,7 +84,7 @@ export async function generatePortfolioPDF(
     font,
     fontBold,
     y: yServices,
-    meuPortifolio,
+    infoForPortifolio,
     themeColors,
   });
 
@@ -93,7 +94,7 @@ export async function generatePortfolioPDF(
     font,
     fontBold,
     y: yDifferentials,
-    meuPortifolio,
+    infoForPortifolio,
     themeColors,
   });
 

@@ -5,11 +5,17 @@ import { headerSchema, type HeaderSchemaType } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegisterForm } from "@/hooks";
 
-export function HeaderSection() {
-  const methods = useForm({
+interface HeaderSectionProps {
+  fullName?: string;
+}
+
+export function HeaderSection(props: HeaderSectionProps) {
+  const { fullName } = props;
+
+  const methods = useForm<HeaderSchemaType>({
     resolver: yupResolver(headerSchema),
     defaultValues: {
-      name: "Allan Kevin Scain",
+      name: fullName,
       role: "Desenvolvedor Front-end II",
       status: "Disponível para novos projetos",
       headline:
@@ -30,6 +36,7 @@ export function HeaderSection() {
         <div className="flex flex-col gap-2 md:flex-row">
           <Input
             label="Nome completo"
+            disabled={!fullName}
             {...register("name")}
             placeholder="Digite seu nome aqui"
           />

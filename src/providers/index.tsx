@@ -11,7 +11,9 @@ export function Providers(props: ProvidersProps) {
   if (!PUBLISHABLE_KEY) return;
   return (
     <ThemeProvider>
-      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>{children}</ClerkProvider>
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY} signInUrl="/login">
+        {children}
+      </ClerkProvider>
     </ThemeProvider>
   );
 }
