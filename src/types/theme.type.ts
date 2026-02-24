@@ -4,4 +4,13 @@ export type ThemeType =
   | "rocketseat"
   | "minecraft"
   | "alura"
-  | "instagram";
+  | "instagram"
+  | "pinterest"
+  | "spotify"
+  | "netflix"
+  | "discord"
+  | "vercel"
+  | "github"
+  | "twitter"
+  | "linkedin"
+  | "dribbble";

@@ -22,7 +22,7 @@ export function Menu(props: MenuProps) {
           "relative z-50",
           "w-11 h-11 rounded-xl",
           "flex items-center justify-center",
-          "bg-[color-mix(in_srgb,var(--color-surface)_90%,transparent)]",
+          "bg-[color-mix(in_srgb,var(--color-bg)_90%,transparent)]",
           "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
           "hover:bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]",
           "transition-all",
@@ -45,7 +45,7 @@ export function Menu(props: MenuProps) {
               "rounded-2xl",
               "p-6",
               "overflow-hidden",
-              "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-surface)_95%,transparent),color-mix(in_srgb,var(--color-surface)_85%,transparent))]",
+              "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-bg)_95%,transparent),color-mix(in_srgb,var(--color-bg)_85%,transparent))]",
               "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
               "shadow-[0_20px_60px_color-mix(in_srgb,var(--color-primary)_30%,transparent)]",
             )}

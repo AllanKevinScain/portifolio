@@ -17,6 +17,7 @@ export function FormPortifolioProvider({
     differentials_section: null,
     services_section: null,
   });
+  console.log("🚀 ~ FormPortifolioProvider ~ formsState:", formsState);
 
   function registerForm(name: string, methods: unknown) {
     setFormsState((s) => {

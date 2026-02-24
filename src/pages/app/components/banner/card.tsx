@@ -1,7 +1,10 @@
+import { useTheme } from "@/hooks";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
 export function CardTech() {
+  const { theme } = useTheme();
+
   return (
     <motion.div
       animate={{ y: [0, -18, 0] }}
@@ -29,16 +32,16 @@ export function CardTech() {
       />
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <div
+        <img
+          src={`public/${theme || "light"}.png`}
           className={twMerge(
-            "w-44 h-44 rounded-full",
+            "w-60 h-60 rounded-full",
+            "md:w-100 md:h-100",
             "flex items-center justify-center text-5xl",
             "shadow-xl",
-            "bg-linear-to-br from-(--color-primary) to-(--color-secondary) shadow-[0_20px_60px_color-mix(in_srgb,var(--color-primary)_40%,transparent)]",
+            "object-cover",
           )}
-        >
-          ⚡
-        </div>
+        />
       </div>
     </motion.div>
   );

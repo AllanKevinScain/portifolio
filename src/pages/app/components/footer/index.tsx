@@ -6,7 +6,7 @@ export function Rodape() {
     <footer
       className={twMerge(
         "relative mt-24 border-t",
-        "bg-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
+        "bg-[color-mix(in_srgb,#000000_15%,transparent)]",
       )}
     >
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -72,7 +72,7 @@ export function Rodape() {
               className={twMerge(
                 "inline-flex md:ml-auto mt-3 px-3 py-1 rounded-full border",
                 "bg-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
-                "bg-[color-mix(in_srgb,var(--color-surface)_90%,transparent)",
+                "bg-[color-mix(in_srgb,var(--color-bg)_90%,transparent)",
                 "text-[color-mix(in_srgb,var(--color-text)_65%,transparent)]",
               )}
             >

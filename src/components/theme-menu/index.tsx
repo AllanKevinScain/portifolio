@@ -24,7 +24,7 @@ export function ThemeMenu(props: ThemeMenurops) {
           "w-11 h-11 rounded-xl",
           "flex items-center justify-center",
           "cursor-pointer",
-          "bg-[color-mix(in_srgb,var(--color-surface)_90%,transparent)]",
+          "bg-[color-mix(in_srgb,var(--color-bg)_90%,transparent)]",
           "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
           "hover:bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]",
           "transition-all",
@@ -47,7 +47,7 @@ export function ThemeMenu(props: ThemeMenurops) {
               "rounded-2xl",
               "p-6",
               "overflow-hidden",
-              "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-surface)_95%,transparent),color-mix(in_srgb,var(--color-surface)_85%,transparent))]",
+              "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-bg)_95%,transparent),color-mix(in_srgb,var(--color-bg)_85%,transparent))]",
               "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
               "shadow-[0_20px_60px_color-mix(in_srgb,var(--color-primary)_30%,transparent)]",
             )}
@@ -60,7 +60,7 @@ export function ThemeMenu(props: ThemeMenurops) {
               )}
             />
 
-            <nav className="relative flex flex-col gap-4">
+            <nav className="relative flex flex-col gap-4 max-h-75 overflow-auto scroll-div">
               {items.map((item) => (
                 <button
                   key={item.label}
@@ -75,6 +75,8 @@ export function ThemeMenu(props: ThemeMenurops) {
                     "text-(--color-text)",
                     "cursor-pointer",
                     "hover:bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]",
+                    theme === item.value &&
+                      "bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]",
                     "hover:text-(--color-primary)",
                   )}
                 >

@@ -65,13 +65,13 @@ export function FooterSection(props: FooterSectionProps) {
         />
         <Input
           label="Email"
-          disabled={!email}
+          disabled={!!email}
           {...register("contact.email")}
           placeholder="Digite seu e-mail"
         />
         <Input
           label="Telefone"
-          disabled={!phone}
+          disabled={!!phone}
           {...register("contact.phone")}
           placeholder="(99) 9 9999-9999"
         />

@@ -4,6 +4,10 @@ import { ThemeMenu } from "../theme-menu";
 import { MdLogout } from "react-icons/md";
 import { Button } from "../button";
 import { SignOutButton, useSession } from "@clerk/clerk-react";
+import { optionsTheme } from "@/data/theme";
+import { useLocation } from "react-router";
+import { useTheme } from "@/hooks";
+
 interface HeaderProps {
   navItems?: { href: string; label: string }[];
 }
@@ -11,8 +15,10 @@ interface HeaderProps {
 export function Header(props: HeaderProps) {
   const { navItems = [] } = props;
 
-  const { isSignedIn } = useSession();
+  const { pathname } = useLocation();
+  const { isSignedIn, session } = useSession();
 
+  const { theme } = useTheme();
   const { open, scrolled, toggle } = useNavitems();
 
   return (
@@ -29,7 +35,11 @@ export function Header(props: HeaderProps) {
         )}
       >
         <div className="text-(--color-primary) text-2xl font-bold">
-          <a href="/">MeuPortfólio</a>
+          <a href="/">
+            {isSignedIn && pathname.includes("/create")
+              ? session.user.fullName
+              : "Allan Kevin Scain"}
+          </a>
         </div>
 
         <nav className={twMerge("hidden gap-8", "md:flex md:items-center")}>
@@ -54,13 +64,9 @@ export function Header(props: HeaderProps) {
             </SignOutButton>
           )}
           <ThemeMenu
-            items={[
-              { label: "Dark", value: "dark" },
-              { label: "Light", value: "light" },
-              { label: "Rocketseat", value: "rocketseat" },
-              { label: "Minecraft", value: "minecraft" },
-              { label: "Alura", value: "alura" },
-            ]}
+            items={Object.values(optionsTheme)
+              .map(({ icon: _, ...rest }) => rest)
+              .sort((a, _) => (a.value === theme ? -1 : 1))}
           />
         </nav>
 
