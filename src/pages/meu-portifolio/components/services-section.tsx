@@ -8,8 +8,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useFieldArray, useForm, type SubmitHandler } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 import { useRegisterForm } from "@/hooks";
+import { ActionButtons, type ActionButtonsProps } from "./action-buttons";
 
-export function ServicesSection() {
+interface ServicesSectionProps {
+  actionButtons: ActionButtonsProps;
+}
+
+export function ServicesSection(props: ServicesSectionProps) {
   const methods = useForm({
     resolver: yupResolver(servicesSchema),
     defaultValues: {
@@ -26,7 +31,12 @@ export function ServicesSection() {
       ],
     },
   });
-  const { control, handleSubmit, register } = methods;
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { isDirty },
+  } = methods;
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -107,6 +117,7 @@ export function ServicesSection() {
           </div>
         )}
       </form>
+      <ActionButtons {...props.actionButtons} disabled={!isDirty} />
     </>
   );
 }

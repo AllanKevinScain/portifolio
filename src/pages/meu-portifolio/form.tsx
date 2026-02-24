@@ -13,6 +13,7 @@ import { generatePortfolioPDF } from "@/utils";
 import { useTheme } from "@/hooks";
 import { useUser } from "@clerk/clerk-react";
 import { FormPortifolioContext } from "@/providers/form/context";
+import { type ActionButtonsProps } from "./components/action-buttons";
 
 const sections = [
   { id: 0, title: "Cabeçalho" },
@@ -61,27 +62,29 @@ export function Form() {
     return [0];
   }
 
-  async function nextStep() {
-    if (step < sections.length - 1) {
-      setStep(step + 1);
-    } else {
-      const allValues = getAllValues();
-      console.log("🚀 ~ nextStep ~ allValues:", allValues);
-      if (allValues) {
-        await generatePortfolioPDF({
-          infoForPortifolio: allValues,
-          imageUrl: user?.imageUrl,
-          theme,
-        });
+  const actionButtons: ActionButtonsProps = {
+    step,
+    lengthSections: sections.length,
+    nextStep: async () => {
+      if (step < sections.length - 1) {
+        setStep(step + 1);
+      } else {
+        const allValues = getAllValues();
+        if (allValues) {
+          await generatePortfolioPDF({
+            infoForPortifolio: allValues,
+            imageUrl: user?.imageUrl,
+            theme,
+          });
+        }
       }
-    }
-  }
-
-  function prevStep() {
-    if (step > 0) {
-      setStep(step - 1);
-    }
-  }
+    },
+    prevStep: () => {
+      if (step > 0) {
+        setStep(step - 1);
+      }
+    },
+  };
 
   if (!user) return null;
 
@@ -100,7 +103,7 @@ export function Form() {
           return (
             <Button.ghost
               key={section.id}
-              disabled={disableByInteraction().includes(index)}
+              disabled={!disableByInteraction().includes(index)}
               onClick={() => setStep(index)}
               className={twMerge(
                 "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
@@ -132,11 +135,14 @@ export function Form() {
             transition={{ duration: 0.3 }}
           >
             {step === 0 && (
-              <HeaderSection fullName={user.fullName?.replace("_", " ")} />
+              <HeaderSection
+                fullName={user.fullName?.replace("_", " ")}
+                actionButtons={actionButtons}
+              />
             )}
-            {step === 1 && <FeaturesSection />}
-            {step === 2 && <ProjectsSection />}
-            {step === 3 && <ServicesSection />}
+            {step === 1 && <FeaturesSection actionButtons={actionButtons} />}
+            {step === 2 && <ProjectsSection actionButtons={actionButtons} />}
+            {step === 3 && <ServicesSection actionButtons={actionButtons} />}
             {step === 4 && (
               <FooterSection
                 email={user.emailAddresses[0].emailAddress || ""}
@@ -145,20 +151,11 @@ export function Form() {
                     ? user.phoneNumbers[0].phoneNumber
                     : ""
                 }
+                actionButtons={actionButtons}
               />
             )}
           </motion.div>
         </AnimatePresence>
-
-        <div className="flex justify-between mt-8">
-          <Button.ghost onClick={prevStep} disabled={step === 0}>
-            Voltar
-          </Button.ghost>
-
-          <Button.ghost onClick={nextStep}>
-            {step === sections.length - 1 ? "Finalizar" : "Continuar"}
-          </Button.ghost>
-        </div>
       </div>
     </div>
   );

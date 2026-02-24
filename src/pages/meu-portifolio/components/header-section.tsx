@@ -4,13 +4,15 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { headerSchema, type HeaderSchemaType } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegisterForm } from "@/hooks";
+import { ActionButtons, type ActionButtonsProps } from "./action-buttons";
 
 interface HeaderSectionProps {
   fullName?: string;
+  actionButtons: ActionButtonsProps;
 }
 
 export function HeaderSection(props: HeaderSectionProps) {
-  const { fullName } = props;
+  const { fullName, actionButtons } = props;
 
   const methods = useForm<HeaderSchemaType>({
     resolver: yupResolver(headerSchema),
@@ -23,7 +25,11 @@ export function HeaderSection(props: HeaderSectionProps) {
       title: "Seja bem vindo!",
     },
   });
-  const { register, handleSubmit } = methods;
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty },
+  } = methods;
 
   const onSubmit: SubmitHandler<HeaderSchemaType> = (data) => console.log(data);
 
@@ -63,6 +69,7 @@ export function HeaderSection(props: HeaderSectionProps) {
           placeholder="Digite a descricao aqui"
         />
       </form>
+      <ActionButtons {...actionButtons} disabled={!isDirty} />
     </>
   );
 }

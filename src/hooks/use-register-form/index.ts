@@ -7,5 +7,5 @@ export function useRegisterForm(formName: string, methods: unknown) {
   useEffect(() => {
     registerForm(formName, methods);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [formName, methods]);
 }

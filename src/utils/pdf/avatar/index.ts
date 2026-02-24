@@ -1,10 +1,12 @@
-import { PDFDocument, PDFPage, rgb } from "pdf-lib";
+import { PDFDocument, PDFPage } from "pdf-lib";
+import type { PdfThemeColors } from "../styles/select-colors-by-theme";
 
 type GenerateAvatarPartParamsType = {
   page: PDFPage;
   pdfDoc: PDFDocument;
   y: number;
   imageUrl?: string;
+  themeColors: PdfThemeColors;
 };
 
 async function createCircularAvatar(
@@ -45,7 +47,7 @@ async function createCircularAvatar(
 }
 
 export async function generateAvatarPart(params: GenerateAvatarPartParamsType) {
-  const { page, pdfDoc, y, imageUrl } = params;
+  const { page, pdfDoc, y, imageUrl, themeColors } = params;
 
   if (imageUrl) {
     const circularAvatar = await createCircularAvatar(imageUrl);
@@ -65,7 +67,7 @@ export async function generateAvatarPart(params: GenerateAvatarPartParamsType) {
       y: y - 22,
       size: 40,
       borderWidth: 2,
-      borderColor: rgb(0.13, 0.38, 0.89),
+      borderColor: themeColors.border,
     });
   }
 }

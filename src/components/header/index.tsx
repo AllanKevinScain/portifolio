@@ -34,10 +34,20 @@ export function Header(props: HeaderProps) {
           "max-w-7xl mx-auto px-6 py-4",
         )}
       >
-        <div className="text-(--color-primary) text-2xl font-bold">
+        <div
+          className={twMerge(
+            "flex items-center gap-4",
+            "text-(--color-primary) text-2xl font-bold",
+          )}
+        >
+          <img
+            src="/code_icon.png"
+            alt="logo"
+            className="w-10 bg-(--color-border) rounded-4xl p-2"
+          />
           <a href="/">
             {isSignedIn && pathname.includes("/create")
-              ? session.user.fullName
+              ? session.user.fullName?.replace("_", " ")
               : "Allan Kevin Scain"}
           </a>
         </div>

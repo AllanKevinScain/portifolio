@@ -66,6 +66,86 @@ function selectColorsByTheme(theme: ThemeType) {
     border = "#123d6b";
   }
 
+  if (theme === "instagram") {
+    bg = "#000000";
+    text = "#fafafa";
+    primary = "#dd2a7b";
+    secondary = "#8134af";
+    border = "#262626";
+  }
+
+  if (theme === "pinterest") {
+    bg = "#0f0f0f";
+    text = "#ffffff";
+    primary = "#e60023";
+    secondary = "#ff4d6d";
+    border = "#1f1f1f";
+  }
+
+  if (theme === "spotify") {
+    bg = "#121212";
+    text = "#ffffff";
+    primary = "#1db954";
+    secondary = "#1ed760";
+    border = "#282828";
+  }
+
+  if (theme === "netflix") {
+    bg = "#0b0b0b";
+    text = "#ffffff";
+    primary = "#e50914";
+    secondary = "#b20710";
+    border = "#1f1f1f";
+  }
+
+  if (theme === "discord") {
+    bg = "#0f1115";
+    text = "#f2f3f5";
+    primary = "#5865f2";
+    secondary = "#4752c4";
+    border = "#23262a";
+  }
+
+  if (theme === "vercel") {
+    bg = "#000000";
+    text = "#ffffff";
+    primary = "#ffffff";
+    secondary = "#888888";
+    border = "#222222";
+  }
+
+  if (theme === "github") {
+    bg = "#0d1117";
+    text = "#e6edf3";
+    primary = "#2f81f7";
+    secondary = "#8957e5";
+    border = "#30363d";
+  }
+
+  if (theme === "twitter") {
+    bg = "#000000";
+    text = "#e7e9ea";
+    primary = "#1d9bf0";
+    secondary = "#7856ff";
+    border = "#2f3336";
+  }
+
+  if (theme === "linkedin") {
+    bg = "#0a0f14";
+    text = "#e6edf3";
+    primary = "#0a66c2";
+    secondary = "#378fe9";
+    border = "#1f2a33";
+  }
+
+  if (theme === "dribbble") {
+    bg = "#0e0e11";
+    text = "#ffffff";
+    primary = "#ea4c89";
+    secondary = "#ff7ab6";
+    border = "#24242a";
+  }
+
   return { bg, text, primary, secondary, border };
 }
 

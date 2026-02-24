@@ -4,10 +4,12 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { footerSchema, type FooterSchemaType } from "@/schemas/footer.schema";
 import { useRegisterForm } from "@/hooks";
+import { ActionButtons, type ActionButtonsProps } from "./action-buttons";
 
 interface FooterSectionProps {
   email?: string;
   phone?: string;
+  actionButtons: ActionButtonsProps;
 }
 
 export function FooterSection(props: FooterSectionProps) {
@@ -32,7 +34,11 @@ export function FooterSection(props: FooterSectionProps) {
       },
     },
   });
-  const { register, handleSubmit } = methods;
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty },
+  } = methods;
 
   const onSubmit: SubmitHandler<FooterSchemaType> = (data) => console.log(data);
 
@@ -100,6 +106,7 @@ export function FooterSection(props: FooterSectionProps) {
           placeholder="Sua empresa do google"
         />
       </form>
+      <ActionButtons {...props.actionButtons} disabled={!isDirty} />
     </>
   );
 }

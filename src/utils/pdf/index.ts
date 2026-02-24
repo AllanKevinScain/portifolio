@@ -46,6 +46,7 @@ export async function generatePortfolioPDF(
     pdfDoc,
     y,
     imageUrl,
+    themeColors,
   });
 
   // Cabeçalho

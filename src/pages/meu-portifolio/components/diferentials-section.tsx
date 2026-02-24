@@ -8,8 +8,13 @@ import { differentialsSchema, type DifferentialsSchemaType } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { twMerge } from "tailwind-merge";
 import { useRegisterForm } from "@/hooks";
+import { ActionButtons, type ActionButtonsProps } from "./action-buttons";
 
-export function FeaturesSection() {
+interface FeaturesSectionProps {
+  actionButtons: ActionButtonsProps;
+}
+
+export function FeaturesSection(props: FeaturesSectionProps) {
   const methods = useForm({
     resolver: yupResolver(differentialsSchema),
     defaultValues: {
@@ -26,7 +31,12 @@ export function FeaturesSection() {
       ],
     },
   });
-  const { control, handleSubmit, register } = methods;
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { isDirty },
+  } = methods;
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -119,6 +129,7 @@ export function FeaturesSection() {
           </div>
         )}
       </form>
+      <ActionButtons {...props.actionButtons} disabled={!isDirty} />
     </>
   );
 }

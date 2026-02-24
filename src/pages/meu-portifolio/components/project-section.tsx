@@ -8,8 +8,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useFieldArray, useForm, type SubmitHandler } from "react-hook-form";
 import { useRegisterForm } from "@/hooks";
 import { twMerge } from "tailwind-merge";
+import { ActionButtons, type ActionButtonsProps } from "./action-buttons";
 
-export function ProjectsSection() {
+interface ProjectsSectionProps {
+  actionButtons: ActionButtonsProps;
+}
+
+export function ProjectsSection(props: ProjectsSectionProps) {
   const methods = useForm({
     resolver: yupResolver(projectsSchema),
     defaultValues: {
@@ -27,7 +32,12 @@ export function ProjectsSection() {
       ],
     },
   });
-  const { control, handleSubmit, register } = methods;
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { isDirty },
+  } = methods;
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -110,6 +120,7 @@ export function ProjectsSection() {
           </div>
         )}
       </form>
+      <ActionButtons {...props.actionButtons} disabled={!isDirty} />
     </>
   );
 }
