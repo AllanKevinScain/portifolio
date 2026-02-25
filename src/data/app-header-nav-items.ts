@@ -1,6 +1,8 @@
 export const appNavItems: { href: string; label: string }[] = [
-  { href: "#projetos", label: "Projetos" },
-  { href: "#diferenciais", label: "Diferenciais" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#contato", label: "Contato" },
+  { href: "#projects", label: "Projects" },
+  { href: "/about-me", label: "About me" },
+  { href: "#tech", label: "Tech" },
+  { href: "#differentials", label: "Differences" },
+  { href: "#services", label: "Services" },
+  { href: "#contact", label: "Contact" },
 ];

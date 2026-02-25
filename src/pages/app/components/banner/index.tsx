@@ -19,21 +19,17 @@ export function Banner() {
             "bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]",
           )}
         >
-          Disponível para novos projetos
+          Always prepared for new challenges
         </span>
 
         <h1
           className={twMerge(
             "text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight",
             "text-(--color-text)",
+            "bg-linear-to-r from-(--color-primary) to-(--color-secondary) bg-clip-text text-transparent",
           )}
         >
-          Olá, eu sou{" "}
-          <span className="bg-linear-to-r from-(--color-primary) to-(--color-secondary) bg-clip-text text-transparent">
-            Allan Scain
-          </span>
-          <br />
-          Desenvolvedor Front-end
+          Front-end Engineer
         </h1>
 
         <p
@@ -42,16 +38,16 @@ export function Banner() {
             "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
           )}
         >
-          Crio interfaces modernas, performáticas e escaláveis com foco em
-          experiência do usuário e arquitetura sólida.
+          Building high-performance, scalable web interfaces with a focus on
+          User Experience and robust architecture.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
           <CustomLink.solid href="/create-portifolio">
-            Fazer portifólio
+            Here my actual PDF portifolio
           </CustomLink.solid>
-          <CustomLink.outline href="mailto:seu@email.com">
-            Enviar e-mail
+          <CustomLink.outline href="https://www.linkedin.com/in/allan-kevin-scain-19802718a/">
+            Send message
           </CustomLink.outline>
         </div>
       </motion.div>

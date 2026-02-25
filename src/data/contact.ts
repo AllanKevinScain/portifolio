@@ -6,17 +6,17 @@ interface LinkProps extends ComponentProps<"a"> {
 
 export const footerItems: LinkProps[] = [
   {
-    href: "mailto:seu@email.com",
-    label: "Enviar e-mail",
+    href: "mailto:meuemail44allan@email.com",
+    label: "Send e-mail",
   },
   {
-    href: "https://linkedin.com/in/seu-perfil",
+    href: "https://www.linkedin.com/in/allan-kevin-scain-19802718a/",
     label: "LinkedIn",
     target: "_blank",
     rel: "noopener noreferrer",
   },
   {
-    href: "https://github.com/seu-usuario",
+    href: "https://github.com/allankevinscain",
     label: "GitHub",
     target: "_blank",
     rel: "noopener noreferrer",

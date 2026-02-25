@@ -21,7 +21,7 @@ export function ListOfProjects() {
       >
         <header className="mb-14">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-(--color-text)">
-            Projetos em destaque
+            These are my projects
           </h2>
 
           <p
@@ -30,8 +30,8 @@ export function ListOfProjects() {
               "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
             )}
           >
-            Alguns trabalhos e experimentos que demonstram minha experiência com
-            front-end moderno e arquitetura de aplicações.
+            Some works and experiments that demonstrate my experience with
+            modern front-end and application architecture.
           </p>
         </header>
 

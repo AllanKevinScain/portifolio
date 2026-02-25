@@ -5,3 +5,4 @@ export * from "./list-products";
 export * from "./differentials";
 export * from "./footer";
 export * from "./menu";
+export * from "./tech-list";

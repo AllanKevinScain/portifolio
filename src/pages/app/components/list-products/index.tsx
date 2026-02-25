@@ -24,13 +24,13 @@ export function Servicos() {
       </div>
 
       <motion.div
-        className="max-w-7xl mx-auto px-6"
+        className={twMerge("max-w-7xl mx-auto px-6", "flex flex-col gap-24")}
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <header className="mb-14">
+        <header className="">
           <h2 className="text-3xl text-(--color-text) sm:text-4xl font-extrabold">
             Serviços
           </h2>

@@ -1,5 +1,6 @@
 import { RootLayout } from "@/layouts";
 import { AppPage, LoadingPage, MultiStepPage, SocialLoginPage } from "@/pages";
+import AboutMePage from "@/pages/about-me";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         Component: SocialLoginPage,
+      },
+      {
+        path: "/about-me",
+        Component: AboutMePage,
       },
     ],
   },
