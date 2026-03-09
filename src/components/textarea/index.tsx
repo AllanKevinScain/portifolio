@@ -17,7 +17,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       helperText,
       error,
       id,
-      required,
+      required = true,
       className,
       classNameTextarea,
       ...props
@@ -30,8 +30,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <div className={twMerge("flex flex-col gap-1 w-full", className)}>
-        <div className="flex w-full justify-between">
-          {label && (
+        {label && (
+          <div className="flex w-full justify-between">
             <label
               htmlFor={inputId}
               className={twMerge(
@@ -44,13 +44,13 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               {label}
               {required && <span className="ml-1 text-red-500">*</span>}
             </label>
-          )}
-          {helperText && (
-            <Tooltip className="hidden md:inline-flex" content={helperText}>
-              <TbEyeQuestion className="text-(--color-text)" size={22} />
-            </Tooltip>
-          )}
-        </div>
+            {helperText && (
+              <Tooltip className="hidden md:inline-flex" content={helperText}>
+                <TbEyeQuestion className="text-(--color-text)" size={22} />
+              </Tooltip>
+            )}
+          </div>
+        )}
 
         <textarea
           id={inputId}

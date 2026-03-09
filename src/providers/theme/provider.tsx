@@ -4,7 +4,7 @@ import { ThemeContext } from "./context";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setStateTheme] = useState<ThemeType>(() => {
-    return (localStorage.getItem("theme") as ThemeType) || null;
+    return (localStorage.getItem("theme") as ThemeType) || "light";
   });
 
   function setTheme(theme: ThemeType) {

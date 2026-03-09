@@ -16,7 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       helperText,
       error,
       id,
-      required,
+      required = true,
       className,
       classNameInput,
       ...props
@@ -29,8 +29,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={twMerge("flex flex-col gap-1 w-full", className)}>
-        <div className="flex w-full justify-between">
-          {label && (
+        {label && (
+          <div className="flex w-full justify-between">
             <label
               htmlFor={inputId}
               className={twMerge(
@@ -43,13 +43,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               {label}
               {required && <span className="ml-1 text-red-500">*</span>}
             </label>
-          )}
-          {helperText && (
-            <Tooltip className="hidden md:inline-flex" content={helperText}>
-              <TbEyeQuestion className="text-(--color-text)" size={22} />
-            </Tooltip>
-          )}
-        </div>
+            {helperText && (
+              <Tooltip className="hidden md:inline-flex" content={helperText}>
+                <TbEyeQuestion className="text-(--color-text)" size={22} />
+              </Tooltip>
+            )}
+          </div>
+        )}
 
         <input
           id={inputId}

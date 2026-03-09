@@ -77,7 +77,7 @@ export function Tooltip({
               "text-sm whitespace-nowrap text-(--color-text)",
               "px-3 py-1.5 pointer-events-none",
               "rounded-lg shadow-lg backdrop-blur-md",
-              "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-surface)_95%,transparent),color-mix(in_srgb,var(--color-surface)_85%,transparent))]",
+              "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-bg)_95%,transparent),color-mix(in_srgb,var(--color-bg)_85%,transparent))]",
               "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
               positionClasses,
               classNameTootlip,
