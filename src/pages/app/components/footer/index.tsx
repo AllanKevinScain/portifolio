@@ -6,7 +6,7 @@ export function Rodape() {
     <footer
       className={twMerge(
         "relative mt-24 border-t",
-        "bg-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
+        "bg-[color-mix(in_srgb,#000000_15%,transparent)]",
       )}
     >
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -24,7 +24,7 @@ export function Rodape() {
             <h3
               className={twMerge("text-2xl font-bold", "text-(--color-text)")}
             >
-              Vamos conversar?
+              Let's talk
             </h3>
 
             <p
@@ -33,8 +33,8 @@ export function Rodape() {
                 "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
               )}
             >
-              Me chame para falarmos sobre seu projeto, produto ou ideia. Posso
-              ajudar a transformar isso em uma experiência sólida.
+              Call me! That way I can help you transform our ideas into a solid
+              and enjoyable experience.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-4">
@@ -61,22 +61,19 @@ export function Rodape() {
               "text-[color-mix(in_srgb,var(--color-text)_60%,transparent)]",
             )}
           >
-            <p>
-              © {new Date().getFullYear()} Allan Scain. Todos os direitos
-              reservados.
-            </p>
+            <p>© {new Date().getFullYear()} Allan Kewvin Scain</p>
 
-            <p>Construído com React, Vite, TypeScript e Tailwind.</p>
+            <p>Builded with React, Vite, TypeScript e Tailwind.</p>
 
             <div
               className={twMerge(
                 "inline-flex md:ml-auto mt-3 px-3 py-1 rounded-full border",
                 "bg-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
-                "bg-[color-mix(in_srgb,var(--color-surface)_90%,transparent)",
+                "bg-[color-mix(in_srgb,var(--color-bg)_90%,transparent)",
                 "text-[color-mix(in_srgb,var(--color-text)_65%,transparent)]",
               )}
             >
-              Front-end • Performance • UX
+              Front-end Engeener • Performance • UX
             </div>
           </div>
         </div>
@@ -88,7 +85,8 @@ export function Rodape() {
             "text-[color-mix(in_srgb,var(--color-text)_50%,transparent)]",
           )}
         >
-          Interface focada em performance, acessibilidade e experiência.
+          Nothing changes by just waiting. Everything changes when you work for
+          it.
         </div>
       </div>
     </footer>

@@ -4,6 +4,7 @@ import {
   ListOfProjects,
   Rodape,
   Servicos,
+  TechList,
 } from "./components";
 
 export function AppPage() {
@@ -14,26 +15,32 @@ export function AppPage() {
           <Banner />
         </section>
 
-        <section id="projetos">
+        <section id="projects">
           <div className="container">
             <ListOfProjects />
           </div>
         </section>
 
-        <section id="diferenciais">
+        <section id="tech">
+          <div className="container">
+            <TechList />
+          </div>
+        </section>
+
+        <section id="differentials">
           <div className="container">
             <Diferenciais />
           </div>
         </section>
 
-        <section id="servicos">
+        <section id="services">
           <div className="container">
             <Servicos />
           </div>
         </section>
       </div>
 
-      <footer id="contato">
+      <footer id="contact">
         <Rodape />
       </footer>
     </>

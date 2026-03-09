@@ -1,19 +1,17 @@
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { Tag } from "../../pages/app/components/tag";
 import { CustomLink } from "../custom-link";
 
 export type ProjetCardProps = {
   id: string;
   titulo: string;
   descricao: string;
-  tags: string[];
   repo?: string;
   demo?: string;
 };
 
 export function ProjectCard(props: ProjetCardProps) {
-  const { id, titulo, descricao, tags, repo, demo } = props;
+  const { id, titulo, descricao, repo, demo } = props;
 
   return (
     <motion.li
@@ -51,12 +49,6 @@ export function ProjectCard(props: ProjetCardProps) {
         >
           {descricao}
         </p>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((t) => (
-            <Tag key={t}>{t}</Tag>
-          ))}
-        </div>
 
         <div className="mt-6 flex items-center gap-5 text-sm">
           {demo && (

@@ -6,23 +6,18 @@ type SkilType = {
 
 export const skills: SkilType[] = [
   {
-    titulo: "Performance e Acessibilidade",
-    desc: "Páginas leves, rápidas e inclusivas (Lighthouse e boas práticas WCAG).",
+    titulo: "Performance & Core Web Vitals",
+    desc: "Delivering lightning-fast experiences focused on SEO and accessibility (WCAG compliant).",
     icon: "⚡",
   },
   {
-    titulo: "Código Escalável",
-    desc: "Arquitetura limpa, componentes reutilizáveis e padronização.",
+    titulo: "Scalable Architecture",
+    desc: "Clean code and modular component design using industry best practices for long-term maintainability.",
     icon: "🧩",
   },
   {
-    titulo: "Foco no Negócio",
-    desc: "Entendimento de métricas, funil e impacto real no resultado.",
-    icon: "🎯",
-  },
-  {
-    titulo: "Entrega Ágil",
-    desc: "Feedback rápido, iterações curtas e comunicação transparente.",
+    titulo: "Product-Driven Development",
+    desc: "Understanding business metrics and user funnels to deliver technical solutions that drive real impact.",
     icon: "🚀",
   },
 ];

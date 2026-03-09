@@ -21,7 +21,7 @@ export function IconCard(props: IconCardProps) {
       className={twMerge(
         "relative group rounded-2xl p-6 overflow-hidden transition-all",
         "border",
-        "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-surface)_95%,transparent),color-mix(in_srgb,var(--color-surface)_85%,transparent))]",
+        "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-bg)_95%,transparent),color-mix(in_srgb,var(--color-bg)_85%,transparent))]",
         "border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
       )}
     >
