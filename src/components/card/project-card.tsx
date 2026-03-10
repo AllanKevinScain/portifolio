@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { CustomLink } from "../custom-link";
 
-export type ProjetCardProps = {
+type ProjetCardProps = {
   id: string;
   titulo: string;
   descricao: string;

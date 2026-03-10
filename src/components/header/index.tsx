@@ -3,6 +3,7 @@ import { useNavitems } from "./useNavItems";
 import { ThemeMenu } from "../theme-menu";
 import { optionsTheme } from "@/data/theme";
 import { useTheme } from "@/hooks";
+import { Button } from "../button";
 
 interface HeaderProps {
   navItems?: { href: string; label: string }[];
@@ -62,13 +63,13 @@ export function Header(props: HeaderProps) {
           />
         </nav>
 
-        <button
+        <Button.ghost
           onClick={toggle}
-          className={twMerge("text-(--color-primary) text-2xl md:hidden")}
+          className={twMerge("text-(--color-primary) text-2xl", "md:hidden")}
           aria-label="Abrir menu"
         >
           ☰
-        </button>
+        </Button.ghost>
       </div>
 
       {open && (
