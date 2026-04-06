@@ -1,37 +1,6 @@
 import { motion } from "framer-motion";
-
-type Tech = {
-  name: string;
-  description: string;
-};
-
-const techs: Tech[] = [
-  {
-    name: "React",
-    description:
-      "Modern library that build escalable and performant user interfaces",
-  },
-  {
-    name: "TypeScript",
-    description:
-      "Superset of JavaScript that adds static typing and improves maintainability.",
-  },
-  {
-    name: "TailwindCSS",
-    description:
-      "Utility‑first CSS framework that lets you build modern interfaces quickly.",
-  },
-  {
-    name: "Vite",
-    description:
-      "Extremely fast build tool with an excellent developer experience.",
-  },
-  {
-    name: "Node.js",
-    description:
-      "JavaScript‑based backend environment focused on performance and scalability.",
-  },
-];
+import { techs, useTech } from "./use-tech";
+import { EmptyState } from "@/components";
 
 type Props = {
   tech: {
@@ -99,6 +68,7 @@ function TechListItem({ tech, index }: Props) {
 }
 
 export function TechList() {
+  useTech();
   return (
     <>
       <div className="absolute inset-0 -z-10">
@@ -126,9 +96,14 @@ export function TechList() {
         </header>
 
         <ul className="flex flex-col">
-          {techs.map((tech, index) => (
-            <TechListItem key={tech.name} tech={tech} index={index} />
-          ))}
+          {techs.length !== 0 &&
+            techs.map((tech, index) => (
+              <TechListItem key={tech.name} tech={tech} index={index} />
+            ))}
+
+          {techs.length === 0 && (
+            <EmptyState description="Nenhuma habilidade cadastrada!" />
+          )}
         </ul>
       </div>
     </>

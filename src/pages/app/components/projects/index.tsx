@@ -1,9 +1,10 @@
-import { projetos } from "../../../../data/projetos";
+import { Card, EmptyState } from "@/components";
+import { projects, useProjects } from "./use-projects";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { Card } from "../../../../components/card";
 
 export function ListOfProjects() {
+  useProjects();
   return (
     <section>
       <motion.div
@@ -36,9 +37,14 @@ export function ListOfProjects() {
         </header>
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projetos.map((p) => (
-            <Card.project key={p.descricao + p.id} {...p} />
-          ))}
+          {projects.length !== 0 &&
+            projects.map((p) => (
+              <Card.project key={p.descricao + p.id} {...p} />
+            ))}
+
+          {projects.length === 0 && (
+            <EmptyState description="Nenhum projeto particular cadastrado!" />
+          )}
         </ul>
       </motion.div>
     </section>

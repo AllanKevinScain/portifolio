@@ -1,9 +1,9 @@
 import {
   Banner,
-  Diferenciais,
+  Diferentials,
   ListOfProjects,
-  Rodape,
-  Servicos,
+  CustomFooter,
+  WorkAndEvents,
   TechList,
 } from "./components";
 
@@ -29,19 +29,19 @@ export function AppPage() {
 
         <section id="differentials">
           <div className="container">
-            <Diferenciais />
+            <Diferentials />
           </div>
         </section>
 
         <section id="services">
           <div className="container">
-            <Servicos />
+            <WorkAndEvents />
           </div>
         </section>
       </div>
 
       <footer id="contact">
-        <Rodape />
+        <CustomFooter />
       </footer>
     </>
   );

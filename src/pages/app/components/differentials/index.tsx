@@ -1,16 +1,10 @@
-import { skills } from "@/data/skills";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { Card } from "../../../../components/card";
+import { Card, EmptyState } from "@/components";
+import { differential, useDifferential } from "./use-differential";
 
-export function Diferenciais() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.12 },
-    },
-  };
+export function Diferentials() {
+  useDifferential();
 
   return (
     <section className="relative">
@@ -25,7 +19,13 @@ export function Diferenciais() {
 
       <motion.div
         className="max-w-7xl mx-auto px-6"
-        variants={container}
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: { staggerChildren: 0.12 },
+          },
+        }}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
@@ -37,7 +37,7 @@ export function Diferenciais() {
               "text-(--color-text)",
             )}
           >
-            Diferenciais
+            Diferentials
           </h2>
 
           <p
@@ -46,15 +46,17 @@ export function Diferenciais() {
               "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
             )}
           >
-            Práticas e mentalidade que guiam minhas decisões técnicas e de
-            produto.
+            Practices and mindset that guide my technical and product decisions.
           </p>
         </header>
 
         <ul className="grid sm:grid-cols-2 xl:grid-cols-4 gap-8">
-          {skills.map((i) => (
-            <Card.icon key={i.desc} {...i} />
-          ))}
+          {differential.length !== 0 &&
+            differential.map((i) => <Card.icon key={i.desc} {...i} />)}
+
+          {differential.length === 0 && (
+            <EmptyState description="Nenhum diferencial cadastrado!" />
+          )}
         </ul>
       </motion.div>
     </section>

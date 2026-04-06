@@ -1,7 +1,7 @@
 import { footerItems } from "@/data/contact";
 import { twMerge } from "tailwind-merge";
 
-export function Rodape() {
+export function CustomFooter() {
   return (
     <footer
       className={twMerge(

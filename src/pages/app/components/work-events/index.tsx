@@ -1,17 +1,10 @@
 import { motion } from "framer-motion";
-import { products } from "@/data/products";
 import { twMerge } from "tailwind-merge";
-import { Card } from "../../../../components/card";
+import { Card, EmptyState } from "@/components";
+import { useWorkEvents, worksAndEvents } from "./use-works-events";
 
-export function Servicos() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
-
+export function WorkAndEvents() {
+  useWorkEvents();
   return (
     <section className="relative">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -25,14 +18,20 @@ export function Servicos() {
 
       <motion.div
         className={twMerge("max-w-7xl mx-auto px-6", "flex flex-col gap-24")}
-        variants={container}
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: { staggerChildren: 0.15 },
+          },
+        }}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
         <header className="">
           <h2 className="text-3xl text-(--color-text) sm:text-4xl font-extrabold">
-            Serviços
+            Worked and Events
           </h2>
 
           <p
@@ -41,15 +40,18 @@ export function Servicos() {
               "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
             )}
           >
-            Soluções focadas em resultado, performance e escalabilidade — do
-            site institucional ao front-end de aplicações complexas.
+            Involvement in academic and career development projects.
+            Participation in events and collaborative initiatives.
           </p>
         </header>
 
         <ul className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
-          {products.map((s) => (
-            <Card.product key={s.desc} {...s} />
-          ))}
+          {worksAndEvents.length !== 0 &&
+            worksAndEvents.map((s) => <Card.product key={s.desc} {...s} />)}
+
+          {worksAndEvents.length === 0 && (
+            <EmptyState description="Nenhum evento ou trabalho cadastrado!" />
+          )}
         </ul>
       </motion.div>
     </section>
