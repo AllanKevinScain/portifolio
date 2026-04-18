@@ -1,10 +1,24 @@
+import { EmptyState, Skeleton } from "@/components";
+import { queryKeys } from "@/hooks";
+import { differentialService } from "@/services";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { Card, EmptyState } from "@/components";
-import { differential, useDifferential } from "./use-differential";
+import { DifferentialCard } from "./item";
 
 export function Diferentials() {
-  useDifferential();
+  const {
+    data: differentials = [],
+    isPending,
+    isLoading,
+  } = useQuery({
+    queryKey: queryKeys.differentials,
+    queryFn: differentialService.getAll,
+  });
+
+  if (isPending || isLoading) {
+    return <Skeleton />;
+  }
 
   return (
     <section className="relative">
@@ -51,10 +65,10 @@ export function Diferentials() {
         </header>
 
         <ul className="grid sm:grid-cols-2 xl:grid-cols-4 gap-8">
-          {differential.length !== 0 &&
-            differential.map((i) => <Card.icon key={i.desc} {...i} />)}
+          {differentials.length !== 0 &&
+            differentials.map((i) => <DifferentialCard key={i.id} {...i} />)}
 
-          {differential.length === 0 && (
+          {differentials.length === 0 && (
             <EmptyState description="Nenhum diferencial cadastrado!" />
           )}
         </ul>

@@ -1,17 +1,10 @@
+import { CustomLink } from "@/components";
+import type { Project } from "@/hooks";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { CustomLink } from "../custom-link";
 
-type ProjetCardProps = {
-  id: string;
-  titulo: string;
-  descricao: string;
-  repo?: string;
-  demo?: string;
-};
-
-export function ProjectCard(props: ProjetCardProps) {
-  const { id, titulo, descricao, repo, demo } = props;
+export function ProjectCard(props: Project) {
+  const { id, title, description, demo, repository } = props;
 
   return (
     <motion.li
@@ -38,7 +31,7 @@ export function ProjectCard(props: ProjetCardProps) {
 
       <div className="p-5">
         <h3 className="text-lg font-semibold transition text-(--color-text)">
-          {titulo}
+          {title}
         </h3>
 
         <p
@@ -47,7 +40,7 @@ export function ProjectCard(props: ProjetCardProps) {
             "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
           )}
         >
-          {descricao}
+          {description}
         </p>
 
         <div className="mt-6 flex items-center gap-5 text-sm">
@@ -62,9 +55,9 @@ export function ProjectCard(props: ProjetCardProps) {
             </CustomLink.ghost>
           )}
 
-          {repo && (
+          {repository && (
             <CustomLink.ghost
-              href={repo}
+              href={repository}
               target="_blank"
               rel="noreferrer"
               className="text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]"

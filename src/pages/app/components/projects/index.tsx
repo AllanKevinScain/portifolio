@@ -1,10 +1,25 @@
-import { Card, EmptyState } from "@/components";
-import { projects, useProjects } from "./use-projects";
+import { EmptyState, Skeleton } from "@/components";
+import { queryKeys } from "@/hooks";
+import { projectService } from "@/services";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
+import { ProjectCard } from "./item";
 
 export function ListOfProjects() {
-  useProjects();
+  const {
+    data: projects = [],
+    isPending,
+    isLoading,
+  } = useQuery({
+    queryKey: queryKeys.projects,
+    queryFn: projectService.getAll,
+  });
+
+  if (isPending || isLoading) {
+    return <Skeleton />;
+  }
+
   return (
     <section>
       <motion.div
@@ -38,9 +53,7 @@ export function ListOfProjects() {
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.length !== 0 &&
-            projects.map((p) => (
-              <Card.project key={p.descricao + p.id} {...p} />
-            ))}
+            projects.map((p) => <ProjectCard key={p.id} {...p} />)}
 
           {projects.length === 0 && (
             <EmptyState description="Nenhum projeto particular cadastrado!" />

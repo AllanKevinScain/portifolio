@@ -32,7 +32,6 @@ export function EmptyState(props: EmptyStateProps) {
         "bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)]",
       )}
     >
-      {/* ICON */}
       <div
         className={twMerge(
           "mb-6 flex items-center justify-center",
@@ -45,10 +44,8 @@ export function EmptyState(props: EmptyStateProps) {
         {icon || "📭"}
       </div>
 
-      {/* TITLE */}
       <h3 className="text-lg font-semibold text-(--color-text)">{title}</h3>
 
-      {/* DESCRIPTION */}
       <p
         className={twMerge(
           "mt-2 max-w-md text-sm",
@@ -58,7 +55,6 @@ export function EmptyState(props: EmptyStateProps) {
         {description}
       </p>
 
-      {/* ACTION */}
       {actionLabel && onAction && (
         <button
           onClick={onAction}

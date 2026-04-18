@@ -1,17 +1,13 @@
+import type { Work } from "@/hooks";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
-type ProductCardProps = {
-  titulo: string;
-  desc: string;
-};
-
-export function ProductCard(props: ProductCardProps) {
-  const { titulo, desc } = props;
+export function WorkCard(props: Work) {
+  const { title, description, image: _ } = props;
 
   return (
     <motion.li
-      key={titulo}
+      key={title}
       variants={{
         hidden: { opacity: 0, y: 28 },
         show: { opacity: 1, y: 0 },
@@ -33,7 +29,7 @@ export function ProductCard(props: ProductCardProps) {
       />
 
       <h3 className="text-xl font-semibold transition text-(--color-text)">
-        {titulo}
+        {title}
       </h3>
 
       <p
@@ -42,7 +38,7 @@ export function ProductCard(props: ProductCardProps) {
           "text-[color-mix(in_srgb,var(--color-text)_65%,transparent)]",
         )}
       >
-        {desc}
+        {description}
       </p>
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition pointer-events-none">
         <div

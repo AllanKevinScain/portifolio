@@ -1,85 +1,35 @@
-import { motion } from "framer-motion";
-import { techs, useTech } from "./use-tech";
-import { EmptyState } from "@/components";
-
-type Props = {
-  tech: {
-    name: string;
-    description: string;
-  };
-  index: number;
-};
-
-function TechListItem({ tech, index }: Props) {
-  return (
-    <motion.li
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.05 }}
-      viewport={{ once: true }}
-      className="
-        group
-        relative
-        py-6
-        border-b
-        border-[color-mix(in_srgb,var(--color-border)_60%,transparent)]
-      "
-    >
-      <div
-        className="
-          absolute inset-0 opacity-0 group-hover:opacity-100 transition
-          bg-[color-mix(in_srgb,var(--color-primary)_5%,transparent)]
-          pointer-events-none
-        "
-      />
-
-      <div
-        className="
-          absolute left-0 top-0 bottom-0 w-0.5
-          bg-[linear-gradient(to_bottom,var(--color-primary),var(--color-secondary))]
-          opacity-0 group-hover:opacity-100
-          transition
-        "
-      />
-
-      <div className="relative pl-4">
-        <h3
-          className="
-            text-lg font-semibold
-            text-(--color-text)
-            group-hover:text-(--color-primary)
-            transition
-          "
-        >
-          {tech.name}
-        </h3>
-
-        <p
-          className="
-            mt-1 text-sm leading-relaxed
-            text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]
-          "
-        >
-          {tech.description}
-        </p>
-      </div>
-    </motion.li>
-  );
-}
+import { EmptyState, Skeleton } from "@/components";
+import { queryKeys } from "@/hooks";
+import { techService } from "@/services";
+import { useQuery } from "@tanstack/react-query";
+import { twMerge } from "tailwind-merge";
+import { TechListItem } from "./item";
 
 export function TechList() {
-  useTech();
+  const {
+    data: techs = [],
+    isPending,
+    isLoading,
+  } = useQuery({
+    queryKey: queryKeys.techs,
+    queryFn: techService.getAll,
+  });
+
+  if (isPending || isLoading) {
+    return <Skeleton />;
+  }
+
   return (
     <>
       <div className="absolute inset-0 -z-10">
         <div
-          className="
-            absolute left-1/2 -translate-x-1/2 top-0
-            w-200 h-100
-            bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]
-            blur-[140px]
-            rounded-full
-          "
+          className={twMerge(
+            "absolute left-1/2 -translate-x-1/2 top-0",
+            "w-200 h-100",
+            "bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]",
+            "blur-[140px]",
+            "rounded-full",
+          )}
         />
       </div>
 
@@ -98,7 +48,7 @@ export function TechList() {
         <ul className="flex flex-col">
           {techs.length !== 0 &&
             techs.map((tech, index) => (
-              <TechListItem key={tech.name} tech={tech} index={index} />
+              <TechListItem key={tech.id} index={index} {...tech} />
             ))}
 
           {techs.length === 0 && (

@@ -1,10 +1,25 @@
+import { EmptyState, Skeleton } from "@/components";
+import { queryKeys } from "@/hooks";
+import { workService } from "@/services";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { Card, EmptyState } from "@/components";
-import { useWorkEvents, worksAndEvents } from "./use-works-events";
+import { WorkCard } from "./item";
 
 export function WorkAndEvents() {
-  useWorkEvents();
+  const {
+    data: worksAndEvents = [],
+    isPending,
+    isLoading,
+  } = useQuery({
+    queryKey: queryKeys.works,
+    queryFn: workService.getAll,
+  });
+
+  if (isPending || isLoading) {
+    return <Skeleton />;
+  }
+
   return (
     <section className="relative">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -47,7 +62,7 @@ export function WorkAndEvents() {
 
         <ul className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
           {worksAndEvents.length !== 0 &&
-            worksAndEvents.map((s) => <Card.product key={s.desc} {...s} />)}
+            worksAndEvents.map((s) => <WorkCard key={s.id} {...s} />)}
 
           {worksAndEvents.length === 0 && (
             <EmptyState description="Nenhum evento ou trabalho cadastrado!" />
