@@ -1,35 +1,7 @@
 import { queryKeys } from "@/hooks";
+import type { CreateDifferentialInput } from "@/schemas";
 import { differentialService } from "@/services";
-import { BaseSchema } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { z } from "zod";
-
-// Differential
-export const DifferentialSchema = BaseSchema.extend({
-  title: z.string().min(1, "Título é obrigatório"),
-  description: z.string().min(1, "Descrição é obrigatória"),
-});
-
-export type Differential = z.infer<typeof DifferentialSchema>;
-export type CreateDifferentialInput = Omit<
-  Differential,
-  "id" | "createdAt" | "updatedAt"
->;
-
-/* export function useDifferentialsQuery() {
-  return useQuery({
-    queryKey: queryKeys.differentials,
-    queryFn: differentialService.getAll,
-  });
-}
-
-export function useDifferentialByIdQuery(id: string) {
-  return useQuery({
-    queryKey: queryKeys.differential(id),
-    queryFn: () => differentialService.getById(id),
-    enabled: !!id,
-  });
-} */
 
 export function useCDifferential() {
   const queryClient = useQueryClient();

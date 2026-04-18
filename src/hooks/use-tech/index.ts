@@ -1,34 +1,7 @@
 import { queryKeys } from "@/hooks";
+import type { CreateTechInput } from "@/schemas";
 import { techService } from "@/services";
-import { BaseSchema } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { z } from "zod";
-
-export const TechSchema = BaseSchema.extend({
-  name: z.string().min(1, "Nome é obrigatório"),
-  description: z.string().min(1, "Descrição é obrigatória"),
-  nivel: z
-    .enum(["junior", "mid", "senior", "stack"])
-    .nonoptional("Nível é obrigatório"),
-});
-
-export type Tech = z.infer<typeof TechSchema>;
-export type CreateTechInput = Omit<Tech, "id" | "createdAt" | "updatedAt">;
-
-/* export function useTechsQuery() {
-  return useQuery({
-    queryKey: queryKeys.techs,
-    queryFn: techService.getAll,
-  });
-}
-
-export function useTechByIdQuery(id: string) {
-  return useQuery({
-    queryKey: queryKeys.tech(id),
-    queryFn: () => techService.getById(id),
-    enabled: !!id,
-  });
-} */
 
 export function useTech() {
   const queryClient = useQueryClient();

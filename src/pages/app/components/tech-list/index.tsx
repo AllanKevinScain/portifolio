@@ -45,7 +45,7 @@ export function TechList() {
           </p>
         </header>
 
-        <ul className="flex flex-col">
+        <ul className="flex w-full flex-col">
           {techs.length !== 0 &&
             techs.map((tech, index) => (
               <TechListItem key={tech.id} index={index} {...tech} />
