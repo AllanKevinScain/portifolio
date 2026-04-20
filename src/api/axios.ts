@@ -10,11 +10,20 @@ export const api = axios.create({
 api.interceptors.request.use((config) => {
   const isGet = config.method?.toLowerCase() === "get";
   const lastSegment = config.url?.split("/").pop() || "";
-  const isId = /^[0-9a-fA-F-]+$/.test(lastSegment) || /^\d+$/.test(lastSegment);
 
-  const isPublicListing = isGet && !isId;
+  // Verifica se o último segmento é um ID (UUID ou Numérico)
+  const hasId =
+    /^[0-9a-fA-F-]+$/.test(lastSegment) || /^\d+$/.test(lastSegment);
 
-  if (!isPublicListing && apiKey) {
+  const isPrivateAction = !isGet || (isGet && hasId);
+
+  // Validação de token
+  const cookies = document.cookie.split("; ");
+  const isAuthenticated = cookies.some((row) =>
+    row.startsWith("portfolio_auth_token=authenticated_session"),
+  );
+
+  if (isPrivateAction && isAuthenticated && apiKey) {
     config.headers["x-api-key"] = apiKey;
   }
 
