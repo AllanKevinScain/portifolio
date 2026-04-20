@@ -1,7 +1,8 @@
 import { RootLayout } from "@/layouts";
-import { AppPage, LoadingPage, NotFoundPage } from "@/pages";
+import { AppPage, DashboardPage, LoadingPage, LoginPage, NotFoundPage } from "@/pages";
 import AboutMePage from "@/pages/about-me";
 import { createBrowserRouter } from "react-router";
+import { ProtectedRoute } from "./protected-route";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,20 @@ export const router = createBrowserRouter([
       {
         path: "/about-me",
         Component: AboutMePage,
+      },
+      {
+        path: "/login",
+        Component: LoginPage,
+      },
+      {
+        path: "/admin",
+        Component: ProtectedRoute,
+        children: [
+          {
+            index: true,
+            Component: DashboardPage,
+          },
+        ],
       },
     ],
   },

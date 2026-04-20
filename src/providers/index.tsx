@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "./theme";
+import { AuthProvider } from "./auth/provider";
 
 const queryClient = new QueryClient();
 
@@ -12,7 +13,9 @@ export function Providers(props: ProvidersProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>{children}</ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider>{children}</ThemeProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
