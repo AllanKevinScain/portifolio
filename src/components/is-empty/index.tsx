@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
+import { Button } from "../button";
+import { Text } from "../text";
 
 interface EmptyStateProps {
   title?: string;
@@ -44,29 +46,17 @@ export function EmptyState(props: EmptyStateProps) {
         {icon || "📭"}
       </div>
 
-      <h3 className="text-lg font-semibold text-(--color-text)">{title}</h3>
+      <Text variant="h3">{title}</Text>
 
-      <p
-        className={twMerge(
-          "mt-2 max-w-md text-sm",
-          "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
-        )}
-      >
-        {description}
-      </p>
+      <Text variant="p">{description}</Text>
 
       {actionLabel && onAction && (
-        <button
+        <Button.solid
           onClick={onAction}
-          className={twMerge(
-            "mt-6 px-5 py-2.5 rounded-lg",
-            "text-white font-medium",
-            "bg-[linear-gradient(to_right,var(--color-primary),var(--color-secondary))]",
-            "hover:scale-105 transition-all",
-          )}
+          className="mt-6 px-5 py-2.5 rounded-lg"
         >
           {actionLabel}
-        </button>
+        </Button.solid>
       )}
     </motion.div>
   );
