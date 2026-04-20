@@ -1,4 +1,4 @@
-import { Button } from "@/components";
+import { Button, Text } from "@/components";
 import { useAuth } from "@/hooks";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -45,45 +45,41 @@ export function LoginPage() {
           "sm:shadow-xl sm:border sm:border-(--color-border)",
         )}
       >
-        <h1 className="text-2xl font-bold mb-6 text-(--color-text)">
-          Admin Login
-        </h1>
+        <Text variant="h1">Login</Text>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-sm text-(--color-text) opacity-70">
-              Email
-            </label>
+            <Text variant="label">Email</Text>
             <input
               type="email"
               {...register("email", { required: "Email é obrigatório" })}
               className="p-2 rounded bg-(--color-bg) border border-(--color-border) text-(--color-text) focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.email && (
-              <span className="text-red-500 text-sm">
+              <Text variant="span" className="text-red-500">
                 {errors.email.message}
-              </span>
+              </Text>
             )}
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm text-(--color-text) opacity-70">
-              Senha
-            </label>
+            <Text variant="label">Senha</Text>
             <input
               type="password"
               {...register("password", { required: "Senha é obrigatória" })}
               className="p-2 rounded bg-(--color-bg) border border-(--color-border) text-(--color-text) focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.password && (
-              <span className="text-red-500 text-sm">
+              <Text variant="span" className="text-red-500">
                 {errors.password.message}
-              </span>
+              </Text>
             )}
           </div>
 
           {errors.root && (
-            <span className="text-red-500 text-sm">{errors.root.message}</span>
+            <Text variant="span" className="text-red-500">
+              {errors.root.message}
+            </Text>
           )}
 
           <Button.solid type="submit" className="mt-4">

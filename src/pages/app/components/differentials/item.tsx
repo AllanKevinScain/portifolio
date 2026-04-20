@@ -1,9 +1,12 @@
+import { Text } from "@/components";
 import type { Differential } from "@/schemas";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
 export function DifferentialCard(props: Differential) {
   const { title, description } = props;
+
+  const icons = ["⭐", "🚀", "💎", "⚡", "🧠", "🛠️", "🎯", "🔥", "🧩", "🏆"];
 
   return (
     <motion.li
@@ -35,26 +38,14 @@ export function DifferentialCard(props: Differential) {
           "shadow-[0_10px_30px_color-mix(in_srgb,var(--color-primary)_40%,transparent)]",
         )}
       >
-        "'--'"
+        {icons[title.length % icons.length]}
       </div>
 
-      <h3
-        className={twMerge(
-          "mt-5 text-lg font-semibold transition",
-          "text-(--color-text)",
-        )}
-      >
+      <Text variant="h3" className="mt-5">
         {title}
-      </h3>
+      </Text>
 
-      <p
-        className={twMerge(
-          "mt-2 text-sm leading-relaxed",
-          "text-[color-mix(in_srgb,var(--color-text)_65%,transparent)]",
-        )}
-      >
-        {description}
-      </p>
+      <Text className="mt-2">{description}</Text>
 
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition pointer-events-none">
         <div

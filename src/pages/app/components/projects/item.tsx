@@ -1,4 +1,4 @@
-import { CustomLink } from "@/components";
+import { CustomLink, Text } from "@/components";
 import type { Project } from "@/schemas";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
@@ -30,18 +30,9 @@ export function ProjectCard(props: Project) {
       </div>
 
       <div className="p-5">
-        <h3 className="text-lg font-semibold transition text-(--color-text)">
-          {title}
-        </h3>
+        <Text variant="h3">{title}</Text>
 
-        <p
-          className={twMerge(
-            "mt-2 text-sm",
-            "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
-          )}
-        >
-          {description}
-        </p>
+        <Text className="mt-2 text-sm">{description}</Text>
 
         <div className="mt-6 flex items-center gap-5 text-sm">
           {demo && (

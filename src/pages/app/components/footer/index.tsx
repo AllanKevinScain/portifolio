@@ -1,3 +1,4 @@
+import { Text } from "@/components";
 import { footerItems } from "@/data/contact";
 import { twMerge } from "tailwind-merge";
 
@@ -21,21 +22,12 @@ export function CustomFooter() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <h3
-              className={twMerge("text-2xl font-bold", "text-(--color-text)")}
-            >
-              Let's talk
-            </h3>
+            <Text variant="h2">Let's talk</Text>
 
-            <p
-              className={twMerge(
-                "mt-3 max-w-md",
-                "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
-              )}
-            >
+            <Text className="mt-3">
               Call me! That way I can help you transform our ideas into a solid
               and enjoyable experience.
-            </p>
+            </Text>
 
             <div className="mt-6 flex flex-wrap gap-4">
               {footerItems.map((item) => (
@@ -61,9 +53,9 @@ export function CustomFooter() {
               "text-[color-mix(in_srgb,var(--color-text)_60%,transparent)]",
             )}
           >
-            <p>© {new Date().getFullYear()} Allan Kewvin Scain</p>
+            <Text>© {new Date().getFullYear()} Allan Kewvin Scain</Text>
 
-            <p>Builded with React, Vite, TypeScript e Tailwind.</p>
+            <Text>Builded with React, Vite, TypeScript e Tailwind.</Text>
 
             <div
               className={twMerge(
@@ -78,16 +70,15 @@ export function CustomFooter() {
           </div>
         </div>
 
-        <div
+        <Text
           className={twMerge(
             "mt-14 py-6 border-t text-xs text-center",
             "bg-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
-            "text-[color-mix(in_srgb,var(--color-text)_50%,transparent)]",
           )}
         >
           Nothing changes by just waiting. Everything changes when you work for
           it.
-        </div>
+        </Text>
       </div>
     </footer>
   );

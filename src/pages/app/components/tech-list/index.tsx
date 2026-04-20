@@ -1,4 +1,4 @@
-import { EmptyState, Skeleton } from "@/components";
+import { EmptyState, Skeleton, Text } from "@/components";
 import { queryKeys } from "@/hooks";
 import { techService } from "@/services";
 import { useQuery } from "@tanstack/react-query";
@@ -35,14 +35,12 @@ export function TechList() {
 
       <div className="max-w-7xl mx-auto px-6">
         <header className="mb-14">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-(--color-text)">
-            About Me {"(Tech Stack)"}
-          </h2>
+          <Text variant="h2">About Me {"(Tech Stack)"}</Text>
 
-          <p className="mt-3 text-[color-mix(in_srgb,var(--color-text)_70%,transparent)] max-w-xl">
+          <Text className="mt-3 max-w-xl">
             Tools and tecnologies that i use to build modern, performant and
             scalable applications.
-          </p>
+          </Text>
         </header>
 
         <ul className="flex w-full flex-col">

@@ -1,3 +1,4 @@
+import { Text } from "@/components";
 import type { Tech } from "@/schemas";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -22,9 +23,7 @@ export function TechListItem(props: Tech & { index: number }) {
       <div className="absolute left-0 top-0 bottom-0 w-0.5 opacity-100 transition bg-[linear-gradient(to_bottom,var(--color-primary),var(--color-secondary))]" />
 
       <div className="relative pl-4">
-        <h3 className="text-lg font-semibold text-(--color-text) group-hover:text-(--color-primary) transition">
-          {name}
-        </h3>
+        <Text variant="h3">{name}</Text>
 
         <motion.div
           animate={hovered ? "open" : "closed"}
@@ -43,9 +42,7 @@ export function TechListItem(props: Tech & { index: number }) {
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
         >
-          <p className="mt-2 text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]">
-            {description}
-          </p>
+          <Text className="mt-2 text-xs">{description}</Text>
         </motion.div>
       </div>
     </motion.li>

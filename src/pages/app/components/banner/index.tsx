@@ -1,7 +1,7 @@
+import { CustomLink, Text } from "@/components";
 import { motion } from "framer-motion";
-import { CardTech } from "./card";
 import { twMerge } from "tailwind-merge";
-import { CustomLink } from "@/components";
+import { CardTech } from "./card";
 
 export function Banner() {
   return (
@@ -11,7 +11,8 @@ export function Banner() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <span
+        <Text
+          variant="span"
           className={twMerge(
             "mb-4 px-4 py-1 inline-block text-xs uppercase tracking-widest rounded-full border",
             "text-(--color-primary)",
@@ -20,9 +21,10 @@ export function Banner() {
           )}
         >
           Always prepared for new challenges
-        </span>
+        </Text>
 
-        <h1
+        <Text
+          variant="h1"
           className={twMerge(
             "text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight",
             "text-(--color-text)",
@@ -30,17 +32,12 @@ export function Banner() {
           )}
         >
           Front-end Engineer
-        </h1>
+        </Text>
 
-        <p
-          className={twMerge(
-            "mt-6 text-lg max-w-xl",
-            "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
-          )}
-        >
+        <Text>
           Building high-performance, scalable web interfaces with a focus on
           User Experience and robust architecture.
-        </p>
+        </Text>
 
         <div className="mt-10 flex flex-wrap gap-4">
           <CustomLink.solid href="/">Download</CustomLink.solid>

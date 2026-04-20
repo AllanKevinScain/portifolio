@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { Text } from "@/components";
 import { twMerge } from "tailwind-merge";
 
 export function SkillGroup({
@@ -10,13 +10,16 @@ export function SkillGroup({
 }) {
   return (
     <div className="space-y-3">
-      <h3 className="text-sm font-semibold uppercase tracking-wider text-(--color-primary)">
+      <Text
+        variant="h3"
+        className=" text-sm uppercase tracking-wider text-(--color-primary)"
+      >
         {title}
-      </h3>
+      </Text>
 
       <div className="flex flex-wrap gap-3">
         {items.map((item) => (
-          <motion.div
+          <Text
             key={item}
             className={twMerge(
               "px-4 py-2 rounded-lg",
@@ -25,7 +28,7 @@ export function SkillGroup({
             )}
           >
             {item}
-          </motion.div>
+          </Text>
         ))}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { EmptyState, Skeleton } from "@/components";
+import { EmptyState, Skeleton, Text } from "@/components";
 import { queryKeys } from "@/hooks";
 import { workService } from "@/services";
 import { useQuery } from "@tanstack/react-query";
@@ -45,19 +45,12 @@ export function WorkAndEvents() {
         viewport={{ once: true, amount: 0.2 }}
       >
         <header className="">
-          <h2 className="text-3xl text-(--color-text) sm:text-4xl font-extrabold">
-            Worked and Events
-          </h2>
+          <Text variant="h2">Worked and Events</Text>
 
-          <p
-            className={twMerge(
-              "mt-3 max-w-xl",
-              "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
-            )}
-          >
+          <Text className="mt-3 max-w-xl">
             Involvement in academic and career development projects.
             Participation in events and collaborative initiatives.
-          </p>
+          </Text>
         </header>
 
         <ul className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">

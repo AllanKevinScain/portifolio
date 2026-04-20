@@ -1,3 +1,4 @@
+import { Text } from "@/components";
 import type { Work } from "@/schemas";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
@@ -28,18 +29,9 @@ export function WorkCard(props: Work) {
         )}
       />
 
-      <h3 className="text-xl font-semibold transition text-(--color-text)">
-        {title}
-      </h3>
+      <Text variant="h3">{title}</Text>
 
-      <p
-        className={twMerge(
-          "mt-3 text-sm leading-relaxed flex-1",
-          "text-[color-mix(in_srgb,var(--color-text)_65%,transparent)]",
-        )}
-      >
-        {description}
-      </p>
+      <Text className="mt-3 text-sm leading-relaxed flex-1">{description}</Text>
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition pointer-events-none">
         <div
           className={twMerge(

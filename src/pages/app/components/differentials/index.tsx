@@ -1,4 +1,4 @@
-import { EmptyState, Skeleton } from "@/components";
+import { EmptyState, Skeleton, Text } from "@/components";
 import { queryKeys } from "@/hooks";
 import { differentialService } from "@/services";
 import { useQuery } from "@tanstack/react-query";
@@ -45,23 +45,16 @@ export function Diferentials() {
         viewport={{ once: true, amount: 0.2 }}
       >
         <header className="mb-14">
-          <h2
-            className={twMerge(
-              "text-3xl sm:text-4xl font-extrabold",
-              "text-(--color-text)",
-            )}
+          <Text
+            variant="h2"
+            className={twMerge("text-3xl sm:text-4xl font-extrabold")}
           >
             Diferentials
-          </h2>
+          </Text>
 
-          <p
-            className={twMerge(
-              "mt-3 max-w-xl",
-              "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
-            )}
-          >
+          <Text className="mt-3">
             Practices and mindset that guide my technical and product decisions.
-          </p>
+          </Text>
         </header>
 
         <ul className="grid sm:grid-cols-2 xl:grid-cols-4 gap-8">

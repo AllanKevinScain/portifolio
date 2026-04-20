@@ -1,3 +1,4 @@
+import { Text } from "@/components";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { twMerge } from "tailwind-merge";
@@ -40,15 +41,17 @@ export function NotFoundPage() {
           )}
         />
 
-        <h1 className="text-5xl md:text-6xl font-bold tracking-tight">404</h1>
+        <Text variant="h1" className="-tight">
+          404
+        </Text>
 
-        <p className="text-xl md:text-2xl text-(--color-text)/80">
+        <Text className="text-xl md:text-2xl text-(--color-text)/80">
           Esta página não existe
-        </p>
+        </Text>
 
-        <p className="text-(--color-text)/60">
+        <Text className="text-(--color-text)/60">
           Parece que nem o gênio conseguiu encontrar essa página.
-        </p>
+        </Text>
 
         <Link
           to="/"

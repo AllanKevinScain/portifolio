@@ -1,6 +1,7 @@
+import { Text } from "@/components";
 import { motion } from "framer-motion";
-import { twMerge } from "tailwind-merge";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 import { SkillGroup } from "./skill-group";
 
 export default function AboutMePage() {
@@ -118,20 +119,27 @@ export default function AboutMePage() {
             transition={{ delay: 0.3, duration: 1 }}
             className="space-y-6"
           >
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            <Text
+              variant="h1"
+              className={twMerge(
+                "text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight",
+                "text-(--color-text)",
+                "bg-linear-to-r from-(--color-primary) to-(--color-secondary) bg-clip-text text-transparent",
+              )}
+            >
               Front-end Engineer
-            </h1>
+            </Text>
 
-            <p className="text-lg text-(--color-text)/80 leading-relaxed">
+            <Text className="text-(--color-text)/80 leading-relaxed">
               I build high-performance, accessible and scalable web
               applications, bridging complex backend systems with exceptional
               user experiences.
-            </p>
+            </Text>
 
-            <p className="text-lg text-(--color-text)/80 leading-relaxed">
+            <Text className="text-(--color-text)/80 leading-relaxed">
               Focused on architecture, performance, and clean design systems —
               delivering products that scale and drive real business impact.
-            </p>
+            </Text>
 
             <motion.a
               whileHover={{
@@ -161,7 +169,9 @@ export default function AboutMePage() {
           transition={{ delay: 0.6 }}
           className="space-y-10"
         >
-          <h2 className="text-2xl font-semibold">Skills & Competencies</h2>
+          <Text variant="h2" className="text-2xl font-semibold">
+            Skills & Competencies
+          </Text>
 
           <div className="space-y-8">
             <SkillGroup

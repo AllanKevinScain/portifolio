@@ -1,9 +1,8 @@
-import { EmptyState, Skeleton } from "@/components";
+import { EmptyState, Skeleton, Text } from "@/components";
 import { queryKeys } from "@/hooks";
 import { projectService } from "@/services";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { twMerge } from "tailwind-merge";
 import { ProjectCard } from "./item";
 
 export function ListOfProjects() {
@@ -36,19 +35,12 @@ export function ListOfProjects() {
         }}
       >
         <header className="mb-14">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-(--color-text)">
-            These are my projects
-          </h2>
+          <Text variant="h2">These are my projects</Text>
 
-          <p
-            className={twMerge(
-              "mt-3 max-w-xl",
-              "text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]",
-            )}
-          >
+          <Text className="mt-3 max-w-xl">
             Some works and experiments that demonstrate my experience with
             modern front-end and application architecture.
-          </p>
+          </Text>
         </header>
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
