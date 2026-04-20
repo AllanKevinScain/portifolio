@@ -1,4 +1,4 @@
-import type { CreateProjectInput, Project } from "@/hooks";
+import type { CreateProjectInput, Project } from "@/schemas";
 import { api } from "../api/axios";
 
 export const projectService = {

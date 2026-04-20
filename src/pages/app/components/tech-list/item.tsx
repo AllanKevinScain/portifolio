@@ -1,4 +1,4 @@
-import type { Tech } from "@/hooks";
+import type { Tech } from "@/schemas";
 import { motion } from "framer-motion";
 import { useState } from "react";
 

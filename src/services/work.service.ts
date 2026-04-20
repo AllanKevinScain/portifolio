@@ -1,4 +1,4 @@
-import type { CreateWorkInput, Work } from "@/hooks";
+import type { CreateWorkInput, Work } from "@/schemas";
 import { api } from "../api/axios";
 
 export const workService = {

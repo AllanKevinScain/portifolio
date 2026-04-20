@@ -1,5 +1,5 @@
 import { CustomLink } from "@/components";
-import type { Project } from "@/hooks";
+import type { Project } from "@/schemas";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 

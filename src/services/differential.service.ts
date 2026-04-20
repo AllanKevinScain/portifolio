@@ -1,4 +1,4 @@
-import type { CreateDifferentialInput, Differential } from "@/hooks";
+import type { CreateDifferentialInput, Differential } from "@/schemas";
 import { api } from "../api/axios";
 
 export const differentialService = {

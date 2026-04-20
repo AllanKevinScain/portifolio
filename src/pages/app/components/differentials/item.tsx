@@ -1,4 +1,4 @@
-import type { Differential } from "@/hooks";
+import type { Differential } from "@/schemas";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 

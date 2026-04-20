@@ -1,4 +1,4 @@
-import type { CreateTechInput, Tech } from "@/hooks";
+import type { CreateTechInput, Tech } from "@/schemas";
 import { api } from "../api/axios";
 
 export const techService = {

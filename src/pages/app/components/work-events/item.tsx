@@ -1,4 +1,4 @@
-import type { Work } from "@/hooks";
+import type { Work } from "@/schemas";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
