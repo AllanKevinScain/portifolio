@@ -1,9 +1,10 @@
-import { twMerge } from "tailwind-merge";
-import { useNavitems } from "./useNavItems";
-import { ThemeMenu } from "../theme-menu";
 import { optionsTheme } from "@/data/theme";
 import { useTheme } from "@/hooks";
+import { twMerge } from "tailwind-merge";
 import { Button } from "../button";
+import { ThemeMenu } from "../theme-menu";
+import { FlipIcon } from "./flip-icon";
+import { useNavitems } from "./useNavItems";
 
 interface HeaderProps {
   navItems?: { href: string; label: string }[];
@@ -34,11 +35,7 @@ export function Header(props: HeaderProps) {
             "text-(--color-primary) text-2xl font-bold",
           )}
         >
-          <img
-            src="/code_icon.png"
-            alt="logo"
-            className="w-10 bg-(--color-border) rounded-4xl p-2"
-          />
+          <FlipIcon />
           <a href="/">Allan Kevin Scain</a>
         </div>
 
