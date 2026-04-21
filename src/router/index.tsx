@@ -1,8 +1,19 @@
 import { RootLayout } from "@/layouts";
-import { AppPage, DashboardPage, LoadingPage, LoginPage, NotFoundPage } from "@/pages";
-import AboutMePage from "@/pages/about-me";
+import { LoadingPage, NotFoundPage } from "@/pages";
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router";
 import { ProtectedRoute } from "./protected-route";
+
+const AppPage = lazy(() =>
+  import("@/pages/app").then((m) => ({ default: m.AppPage })),
+);
+const AboutMePage = lazy(() => import("@/pages/about-me"));
+const LoginPage = lazy(() =>
+  import("@/pages/admin/login").then((m) => ({ default: m.LoginPage })),
+);
+const DashboardPage = lazy(() =>
+  import("@/pages/admin/dashboard").then((m) => ({ default: m.DashboardPage })),
+);
 
 export const router = createBrowserRouter([
   {
@@ -12,15 +23,27 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        Component: AppPage,
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <AppPage />
+          </Suspense>
+        ),
       },
       {
         path: "/about-me",
-        Component: AboutMePage,
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <AboutMePage />
+          </Suspense>
+        ),
       },
       {
         path: "/login",
-        Component: LoginPage,
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <LoginPage />
+          </Suspense>
+        ),
       },
       {
         path: "/admin",
@@ -28,7 +51,11 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            Component: DashboardPage,
+            element: (
+              <Suspense fallback={<LoadingPage />}>
+                <DashboardPage />
+              </Suspense>
+            ),
           },
         ],
       },
