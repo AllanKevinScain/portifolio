@@ -102,7 +102,7 @@ export default function AboutMePage() {
                 transition={{ duration: 0.4 }}
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
-                src={isHover ? "/eu_real.jpeg" : "/eu_ia.png"}
+                src={isHover ? "/eu_real.jpeg" : "/eu_ia.webp"}
                 className={twMerge(
                   "w-64 h-64 md:w-105 md:h-105",
                   "rounded-full object-cover",

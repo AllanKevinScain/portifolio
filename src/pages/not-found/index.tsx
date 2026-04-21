@@ -33,7 +33,7 @@ export function NotFoundPage() {
         className="relative z-10 text-center max-w-xl space-y-8"
       >
         <motion.img
-          src="/not-found-genious-question.png"
+          src="/not-found-genious-question.webp"
           alt="Genie"
           className={twMerge(
             "mx-auto w-48 md:w-64",
