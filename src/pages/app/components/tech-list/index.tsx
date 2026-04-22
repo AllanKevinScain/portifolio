@@ -1,9 +1,8 @@
-import { EmptyState, Skeleton, Text } from "@/components";
-import { queryKeys } from "@/hooks";
-import { techService } from "@/services";
-import { useQuery } from "@tanstack/react-query";
-import { twMerge } from "tailwind-merge";
-import { TechListItem } from "./item";
+import { EmptyState, Skeleton, Text } from '@/components';
+import { queryKeys } from '@/hooks';
+import { techService } from '@/services';
+import { useQuery } from '@tanstack/react-query';
+import { TechListItem } from './item';
 
 export function TechList() {
   const {
@@ -22,20 +21,12 @@ export function TechList() {
   return (
     <>
       <div className="absolute inset-0 -z-10">
-        <div
-          className={twMerge(
-            "absolute left-1/2 -translate-x-1/2 top-0",
-            "w-200 h-100",
-            "bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]",
-            "blur-[140px]",
-            "rounded-full",
-          )}
-        />
+        <div className="absolute top-0 left-1/2 h-100 w-200 -translate-x-1/2 rounded-full bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)] blur-[140px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="mx-auto max-w-7xl px-6">
         <header className="mb-14">
-          <Text variant="h2">About Me {"(Tech Stack)"}</Text>
+          <Text variant="h2">About Me {'(Tech Stack)'}</Text>
 
           <Text className="mt-3 max-w-xl">
             Tools and tecnologies that i use to build modern, performant and

@@ -1,6 +1,5 @@
-import { Text } from "@/components";
-import { motion } from "framer-motion";
-import { twMerge } from "tailwind-merge";
+import { Text } from '@/components';
+import { motion } from 'framer-motion';
 
 interface ItemProps {
   id: string;
@@ -19,40 +18,13 @@ export function Item(props: ItemProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05 }}
       viewport={{ once: true }}
-      className={twMerge(
-        "group",
-        "relative",
-        "py-6",
-        "border-b",
-        "border-[color-mix(in_srgb,var(--color-border)_60%,transparent)]",
-      )}
-    >
-      <div
-        className={twMerge(
-          "absolute inset-0 opacity-0 group-hover:opacity-100 transition",
-          "bg-[color-mix(in_srgb,var(--color-primary)_5%,transparent)]",
-          "pointer-events-none",
-        )}
-      />
+      className="group relative border-b border-[color-mix(in_srgb,var(--color-border)_60%,transparent)] py-6">
+      <div className="pointer-events-none absolute inset-0 bg-[color-mix(in_srgb,var(--color-primary)_5%,transparent)] opacity-0 transition group-hover:opacity-100" />
 
-      <div
-        className={twMerge(
-          "absolute left-0 top-0 bottom-0 w-0.5",
-          "bg-[linear-gradient(to_bottom,var(--color-primary),var(--color-secondary))]",
-          "opacity-0 group-hover:opacity-100",
-          "transition",
-        )}
-      />
+      <div className="absolute top-0 bottom-0 left-0 w-0.5 bg-[linear-gradient(to_bottom,var(--color-primary),var(--color-secondary))] opacity-0 transition group-hover:opacity-100" />
 
       <div className="relative pl-4">
-        <h3
-          className={twMerge(
-            "text-lg font-semibold",
-            "text-(--color-text)",
-            "group-hover:text-(--color-primary)",
-            "transition",
-          )}
-        >
+        <h3 className="text-lg font-semibold text-(--color-text) transition group-hover:text-(--color-primary)">
           {name}
         </h3>
 

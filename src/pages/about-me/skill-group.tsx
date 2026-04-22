@@ -1,5 +1,4 @@
 import { Text } from "@/components";
-import { twMerge } from "tailwind-merge";
 
 export function SkillGroup({
   title,
@@ -12,7 +11,7 @@ export function SkillGroup({
     <div className="space-y-3">
       <Text
         variant="h3"
-        className=" text-sm uppercase tracking-wider text-(--color-primary)"
+        className="text-sm uppercase tracking-wider text-(--color-primary)"
       >
         {title}
       </Text>
@@ -21,11 +20,7 @@ export function SkillGroup({
         {items.map((item) => (
           <Text
             key={item}
-            className={twMerge(
-              "px-4 py-2 rounded-lg",
-              "border border-(--color-border)",
-              "bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)]",
-            )}
+            className="px-4 py-2 border border-(--color-border) rounded-lg bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)]"
           >
             {item}
           </Text>

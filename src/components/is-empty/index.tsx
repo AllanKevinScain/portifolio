@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { twMerge } from "tailwind-merge";
 import { Button } from "../button";
 import { Text } from "../text";
 
@@ -25,24 +24,9 @@ export function EmptyState(props: EmptyStateProps) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className={twMerge(
-        "w-full flex flex-col items-center justify-center",
-        "text-center",
-        "py-16 px-6",
-        "rounded-2xl",
-        "border border-(--color-border)",
-        "bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)]",
-      )}
+      className="w-full flex flex-col items-center justify-center bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)] border border-(--color-border) text-center py-16 px-6 rounded-2xl"
     >
-      <div
-        className={twMerge(
-          "mb-6 flex items-center justify-center",
-          "w-16 h-16 rounded-xl",
-          "bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]",
-          "text-(--color-primary)",
-          "text-2xl",
-        )}
-      >
+      <div className="mb-6 w-16 h-16 rounded-xl flex items-center justify-center text-2xl text-(--color-primary) bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]">
         {icon || "📭"}
       </div>
 

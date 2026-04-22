@@ -1,10 +1,9 @@
-import { EmptyState, Skeleton, Text } from "@/components";
-import { queryKeys } from "@/hooks";
-import { workService } from "@/services";
-import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
-import { twMerge } from "tailwind-merge";
-import { WorkCard } from "./item";
+import { EmptyState, Skeleton, Text } from '@/components';
+import { queryKeys } from '@/hooks';
+import { workService } from '@/services';
+import { useQuery } from '@tanstack/react-query';
+import { motion } from 'framer-motion';
+import { WorkCard } from './item';
 
 export function WorkAndEvents() {
   const {
@@ -23,16 +22,11 @@ export function WorkAndEvents() {
   return (
     <section className="relative">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div
-          className={twMerge(
-            "absolute left-0 bottom-0 w-175 h-175 blur-[160px] rounded-full",
-            "bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]",
-          )}
-        />
+        <div className="absolute bottom-0 left-0 h-175 w-175 rounded-full bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)] blur-[160px]" />
       </div>
 
       <motion.div
-        className={twMerge("max-w-7xl mx-auto px-6", "flex flex-col gap-24")}
+        className="mx-auto flex max-w-7xl flex-col gap-24 px-6"
         variants={{
           hidden: { opacity: 0 },
           show: {
@@ -42,8 +36,7 @@ export function WorkAndEvents() {
         }}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-      >
+        viewport={{ once: true, amount: 0.2 }}>
         <header className="">
           <Text variant="h2">Worked and Events</Text>
 
@@ -53,7 +46,7 @@ export function WorkAndEvents() {
           </Text>
         </header>
 
-        <ul className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <ul className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {worksAndEvents.length !== 0 &&
             worksAndEvents.map((s) => <WorkCard key={s.id} {...s} />)}
 

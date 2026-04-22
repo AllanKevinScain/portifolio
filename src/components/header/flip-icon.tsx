@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { twMerge } from "tailwind-merge";
 
 export function FlipIcon() {
   const [hovered, setHovered] = useState(false);
@@ -33,12 +32,7 @@ export function FlipIcon() {
         <button
           type="button"
           onClick={() => router("/login")}
-          className={twMerge(
-            "absolute inset-0",
-            "flex items-center justify-center",
-            "rounded-full p-2 bg-(--color-border)",
-            "cursor-pointer",
-          )}
+          className="flex items-center justify-center absolute inset-0 rounded-full p-2 bg-(--color-border) cursor-pointer"
           style={{
             transform: "rotateY(180deg)",
             backfaceVisibility: "hidden",
