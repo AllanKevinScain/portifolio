@@ -1,32 +1,32 @@
 import { Button, Skeleton } from "@/components";
-import { queryKeys, useProject } from "@/hooks";
-import type { CreateProjectInput } from "@/schemas";
-import { projectService } from "@/services";
+import { queryKeys, useCreateWorkMutation } from "@/hooks";
+import type { CreateWorkInput } from "@/schemas";
+import { workService } from "@/services";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { HandleExcludeModal, HeaderCreateItem } from "../components";
 import { SectionItems } from "../components/section-items";
-import { HandleProjectModal } from "./handle-modal";
+import { HandleWorkModal } from "./handle-modal";
 
-export function ProjectsManagementPage() {
+export function WorksManagementPage() {
   const navigate = useNavigate();
 
-  const { createProjectMutation, updateProjectMutation, deleteProjectMutation } = useProject();
+  const { createWorkMutation, updateWorkMutation, deleteWorkMutation } = useCreateWorkMutation();
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isExcludeOpen, setIsExcludeOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<string>("");
+  const [selectedWork, setSelectedWork] = useState<string>("");
 
-  const projects = useQuery({
-    queryKey: queryKeys.projects,
-    queryFn: projectService.getAll,
+  const works = useQuery({
+    queryKey: queryKeys.works,
+    queryFn: workService.getAll,
     select: (data) =>
-      data.map((project) => ({
-        id: project.id!,
-        title: project.title,
-        description: project.description,
+      data.map((work) => ({
+        id: work.id!,
+        name: work.title,
+        description: work.description,
       })),
   });
 
@@ -36,12 +36,12 @@ export function ProjectsManagementPage() {
   function handleExcludeModal() {
     setIsExcludeOpen((s) => !s);
   }
-  async function handleProject(data: CreateProjectInput) {
+  async function handleWork(data: CreateWorkInput) {
     try {
-      if (selectedProject) {
-        await updateProjectMutation.mutateAsync({ id: selectedProject, data });
+      if (selectedWork) {
+        await updateWorkMutation.mutateAsync({ id: selectedWork, data });
       } else {
-        await createProjectMutation.mutateAsync(data);
+        await createWorkMutation.mutateAsync(data);
       }
     } catch (error) {
       console.log(error);
@@ -49,10 +49,10 @@ export function ProjectsManagementPage() {
       handleFormModal();
     }
   }
-  async function handleRemoveProject() {
+  async function handleRemoveWork() {
     try {
-      if (selectedProject) {
-        await deleteProjectMutation.mutateAsync(selectedProject);
+      if (selectedWork) {
+        await deleteWorkMutation.mutateAsync(selectedWork);
       }
     } catch (error) {
       console.log(error);
@@ -61,7 +61,7 @@ export function ProjectsManagementPage() {
     }
   }
 
-  if (projects.isPending || projects.isLoading) {
+  if (works.isPending || works.isLoading) {
     return <Skeleton />;
   }
 
@@ -76,44 +76,39 @@ export function ProjectsManagementPage() {
 
           <HeaderCreateItem
             handleAdd={() => {
-              setSelectedProject("");
+              setSelectedWork("");
               handleFormModal();
             }}
-            title="Gerenciar Projetos"
-            buttonDescription="Novo Projeto"
+            title="Gerenciar Eventos e Trabalhos"
+            buttonDescription="Novo Evento/Trabalho"
           />
         </header>
 
         <SectionItems
-          name="Projetos Cadastrados"
-          items={projects?.data || []}
+          name="Eventos e Trabalhos Cadastrados"
+          items={works?.data || []}
           onEdit={(id) => {
-            setSelectedProject(id);
+            setSelectedWork(id);
             handleFormModal();
           }}
           onDelete={(id) => {
-            setSelectedProject(id);
+            setSelectedWork(id);
             handleExcludeModal();
           }}
         />
       </div>
 
       {isFormOpen && (
-        <HandleProjectModal
-          id={selectedProject}
-          isOpen={isFormOpen}
-          onClose={handleFormModal}
-          onSubmit={handleProject}
-        />
+        <HandleWorkModal id={selectedWork} isOpen={isFormOpen} onClose={handleFormModal} onSubmit={handleWork} />
       )}
 
       {isExcludeOpen && (
         <HandleExcludeModal
           isOpen={isExcludeOpen}
           onClose={handleExcludeModal}
-          textContent="Deseja mesmo excluir esse projeto?"
-          isLoading={deleteProjectMutation.isPending}
-          onSubmit={handleRemoveProject}
+          textContent="Deseja mesmo excluir esse evento/trabalho?"
+          isLoading={deleteWorkMutation.isPending}
+          onSubmit={handleRemoveWork}
         />
       )}
     </>

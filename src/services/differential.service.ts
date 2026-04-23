@@ -1,5 +1,11 @@
+import { api } from "@/api/axios";
 import type { CreateDifferentialInput, Differential } from "@/schemas";
-import { api } from "../api/axios";
+import type { MessageExtensionType } from "@/types";
+
+type DifferentialResponse = {
+  success: boolean;
+  data: Differential & MessageExtensionType;
+};
 
 export const differentialService = {
   async getAll(): Promise<Differential[]> {
@@ -8,17 +14,17 @@ export const differentialService = {
   },
 
   async getById(id: string): Promise<Differential> {
-    const { data } = await api.get<Differential>(`/differential/${id}`);
+    const { data } = await api.get<DifferentialResponse>(`/differential/${id}`);
+    return data.data;
+  },
+
+  async create(differential: CreateDifferentialInput): Promise<DifferentialResponse> {
+    const { data } = await api.post<DifferentialResponse>("/differential", differential);
     return data;
   },
 
-  async create(differential: CreateDifferentialInput): Promise<Differential> {
-    const { data } = await api.post<Differential>("/differential", differential);
-    return data;
-  },
-
-  async update(id: string, differential: Partial<CreateDifferentialInput>): Promise<Differential> {
-    const { data } = await api.put<Differential>(`/differential/${id}`, differential);
+  async update(id: string, differential: Partial<CreateDifferentialInput>): Promise<DifferentialResponse> {
+    const { data } = await api.patch<DifferentialResponse>(`/differential/${id}`, differential);
     return data;
   },
 

@@ -1,7 +1,6 @@
+import { api } from "@/api/axios";
 import type { CreateProjectInput, Project } from "@/schemas";
-import { api } from "../api/axios";
-
-type MessageExtensionType = { message?: string };
+import type { MessageExtensionType } from "@/types";
 
 type ProjectResponse = {
   success: boolean;
@@ -15,7 +14,7 @@ export const projectService = {
   },
 
   async getById(id: string | null): Promise<Project> {
-    const { data } = await api.get<{ success: boolean; data: Project }>(`/project/${id}`);
+    const { data } = await api.get<ProjectResponse>(`/project/${id}`);
     return data.data;
   },
 

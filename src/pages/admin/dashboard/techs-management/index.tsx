@@ -1,32 +1,32 @@
 import { Button, Skeleton } from "@/components";
-import { queryKeys, useProject } from "@/hooks";
-import type { CreateProjectInput } from "@/schemas";
-import { projectService } from "@/services";
+import { queryKeys, useTech } from "@/hooks";
+import type { CreateTechInput } from "@/schemas";
+import { techService } from "@/services";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { HandleExcludeModal, HeaderCreateItem } from "../components";
 import { SectionItems } from "../components/section-items";
-import { HandleProjectModal } from "./handle-modal";
+import { HandleTechModal } from "./handle-modal";
 
-export function ProjectsManagementPage() {
+export function TechsManagementPage() {
   const navigate = useNavigate();
 
-  const { createProjectMutation, updateProjectMutation, deleteProjectMutation } = useProject();
+  const { createTechMutation, updateTechMutation, deleteTechMutation } = useTech();
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isExcludeOpen, setIsExcludeOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<string>("");
+  const [selectedTech, setSelectedTech] = useState<string>("");
 
-  const projects = useQuery({
-    queryKey: queryKeys.projects,
-    queryFn: projectService.getAll,
+  const techs = useQuery({
+    queryKey: queryKeys.techs,
+    queryFn: techService.getAll,
     select: (data) =>
-      data.map((project) => ({
-        id: project.id!,
-        title: project.title,
-        description: project.description,
+      data.map((tech) => ({
+        id: tech.id!,
+        name: tech.name,
+        description: tech.description,
       })),
   });
 
@@ -36,12 +36,12 @@ export function ProjectsManagementPage() {
   function handleExcludeModal() {
     setIsExcludeOpen((s) => !s);
   }
-  async function handleProject(data: CreateProjectInput) {
+  async function handleTech(data: CreateTechInput) {
     try {
-      if (selectedProject) {
-        await updateProjectMutation.mutateAsync({ id: selectedProject, data });
+      if (selectedTech) {
+        await updateTechMutation.mutateAsync({ id: selectedTech, data });
       } else {
-        await createProjectMutation.mutateAsync(data);
+        await createTechMutation.mutateAsync(data);
       }
     } catch (error) {
       console.log(error);
@@ -49,10 +49,10 @@ export function ProjectsManagementPage() {
       handleFormModal();
     }
   }
-  async function handleRemoveProject() {
+  async function handleRemoveTech() {
     try {
-      if (selectedProject) {
-        await deleteProjectMutation.mutateAsync(selectedProject);
+      if (selectedTech) {
+        await deleteTechMutation.mutateAsync(selectedTech);
       }
     } catch (error) {
       console.log(error);
@@ -61,7 +61,7 @@ export function ProjectsManagementPage() {
     }
   }
 
-  if (projects.isPending || projects.isLoading) {
+  if (techs.isPending || techs.isLoading) {
     return <Skeleton />;
   }
 
@@ -76,44 +76,39 @@ export function ProjectsManagementPage() {
 
           <HeaderCreateItem
             handleAdd={() => {
-              setSelectedProject("");
+              setSelectedTech("");
               handleFormModal();
             }}
-            title="Gerenciar Projetos"
-            buttonDescription="Novo Projeto"
+            title="Gerenciar Tecnologias"
+            buttonDescription="Nova Tecnologia"
           />
         </header>
 
         <SectionItems
-          name="Projetos Cadastrados"
-          items={projects?.data || []}
+          name="Tecnologias Cadastradas"
+          items={techs?.data || []}
           onEdit={(id) => {
-            setSelectedProject(id);
+            setSelectedTech(id);
             handleFormModal();
           }}
           onDelete={(id) => {
-            setSelectedProject(id);
+            setSelectedTech(id);
             handleExcludeModal();
           }}
         />
       </div>
 
       {isFormOpen && (
-        <HandleProjectModal
-          id={selectedProject}
-          isOpen={isFormOpen}
-          onClose={handleFormModal}
-          onSubmit={handleProject}
-        />
+        <HandleTechModal id={selectedTech} isOpen={isFormOpen} onClose={handleFormModal} onSubmit={handleTech} />
       )}
 
       {isExcludeOpen && (
         <HandleExcludeModal
           isOpen={isExcludeOpen}
           onClose={handleExcludeModal}
-          textContent="Deseja mesmo excluir esse projeto?"
-          isLoading={deleteProjectMutation.isPending}
-          onSubmit={handleRemoveProject}
+          textContent="Deseja mesmo excluir essa tecnologia?"
+          isLoading={deleteTechMutation.isPending}
+          onSubmit={handleRemoveTech}
         />
       )}
     </>

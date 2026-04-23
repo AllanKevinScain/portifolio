@@ -1,5 +1,11 @@
+import { api } from "@/api/axios";
 import type { CreateTechInput, Tech } from "@/schemas";
-import { api } from "../api/axios";
+import type { MessageExtensionType } from "@/types";
+
+type TechResponse = {
+  success: boolean;
+  data: Tech & MessageExtensionType;
+};
 
 export const techService = {
   async getAll(): Promise<Tech[]> {
@@ -8,17 +14,17 @@ export const techService = {
   },
 
   async getById(id: string): Promise<Tech> {
-    const { data } = await api.get<Tech>(`/tech/${id}`);
+    const { data } = await api.get<TechResponse>(`/tech/${id}`);
+    return data.data;
+  },
+
+  async create(tech: CreateTechInput): Promise<TechResponse> {
+    const { data } = await api.post<TechResponse>("/tech", tech);
     return data;
   },
 
-  async create(tech: CreateTechInput): Promise<Tech> {
-    const { data } = await api.post<Tech>("/tech", tech);
-    return data;
-  },
-
-  async update(id: string, tech: Partial<CreateTechInput>): Promise<Tech> {
-    const { data } = await api.put<Tech>(`/tech/${id}`, tech);
+  async update(id: string, tech: Partial<CreateTechInput>): Promise<TechResponse> {
+    const { data } = await api.patch<TechResponse>(`/tech/${id}`, tech);
     return data;
   },
 
