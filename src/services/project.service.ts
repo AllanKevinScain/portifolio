@@ -1,27 +1,31 @@
 import type { CreateProjectInput, Project } from "@/schemas";
 import { api } from "../api/axios";
 
+type MessageExtensionType = { message?: string };
+
+type ProjectResponse = {
+  success: boolean;
+  data: Project & MessageExtensionType;
+};
+
 export const projectService = {
   async getAll(): Promise<Project[]> {
     const { data } = await api.get<Project[]>("/project");
     return data;
   },
 
-  async getById(id: string): Promise<Project> {
-    const { data } = await api.get<Project>(`/project/${id}`);
+  async getById(id: string | null): Promise<Project> {
+    const { data } = await api.get<{ success: boolean; data: Project }>(`/project/${id}`);
+    return data.data;
+  },
+
+  async create(project: CreateProjectInput): Promise<ProjectResponse> {
+    const { data } = await api.post<ProjectResponse>("/project", project);
     return data;
   },
 
-  async create(project: CreateProjectInput): Promise<Project> {
-    const { data } = await api.post<Project>("/project", project);
-    return data;
-  },
-
-  async update(
-    id: string,
-    project: Partial<CreateProjectInput>,
-  ): Promise<Project> {
-    const { data } = await api.put<Project>(`/project/${id}`, project);
+  async update(id: string, project: Partial<CreateProjectInput>): Promise<ProjectResponse> {
+    const { data } = await api.patch<ProjectResponse>(`/project/${id}`, project);
     return data;
   },
 

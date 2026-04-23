@@ -7,21 +7,15 @@ export function useCDifferential() {
   const queryClient = useQueryClient();
 
   const createDifferentialMutation = useMutation({
-    mutationFn: (newDifferential: CreateDifferentialInput) =>
-      differentialService.create(newDifferential),
+    mutationFn: (newDifferential: CreateDifferentialInput) => differentialService.create(newDifferential),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.differentials });
     },
   });
 
   const updateDifferentialMutation = useMutation({
-    mutationFn: ({
-      id,
-      data,
-    }: {
-      id: string;
-      data: Partial<CreateDifferentialInput>;
-    }) => differentialService.update(id, data),
+    mutationFn: ({ id, data }: { id: string; data: Partial<CreateDifferentialInput> }) =>
+      differentialService.update(id, data),
     onSuccess: (_, { id }) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.differentials });
       queryClient.invalidateQueries({ queryKey: queryKeys.differential(id) });

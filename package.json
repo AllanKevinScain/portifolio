@@ -12,13 +12,16 @@
     "format": "prettier --config .prettierrc.cjs --write \"src/**/*.ts\" --ignore-path .prettierignore"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-query": "^5.99.0",
     "axios": "^1.15.0",
     "framer-motion": "^12.29.2",
+    "lucide-react": "^1.8.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.72.1",
+    "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
     "react-router": "^7.13.0",
     "tailwind-merge": "^3.4.0",

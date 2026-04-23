@@ -13,21 +13,12 @@ export const differentialService = {
   },
 
   async create(differential: CreateDifferentialInput): Promise<Differential> {
-    const { data } = await api.post<Differential>(
-      "/differential",
-      differential,
-    );
+    const { data } = await api.post<Differential>("/differential", differential);
     return data;
   },
 
-  async update(
-    id: string,
-    differential: Partial<CreateDifferentialInput>,
-  ): Promise<Differential> {
-    const { data } = await api.put<Differential>(
-      `/differential/${id}`,
-      differential,
-    );
+  async update(id: string, differential: Partial<CreateDifferentialInput>): Promise<Differential> {
+    const { data } = await api.put<Differential>(`/differential/${id}`, differential);
     return data;
   },
 

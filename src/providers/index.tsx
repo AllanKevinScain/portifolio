@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./auth/provider";
 import { ThemeProvider } from "./theme";
 
@@ -21,6 +22,13 @@ export function Providers(props: ProvidersProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          removeDelay: 1000,
+        }}
+      />
       <AuthProvider>
         <ThemeProvider>{children}</ThemeProvider>
       </AuthProvider>

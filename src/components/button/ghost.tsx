@@ -1,24 +1,20 @@
-import { motion, type HTMLMotionProps } from 'framer-motion';
-import { twMerge } from 'tailwind-merge';
+import { motion, type HTMLMotionProps } from "framer-motion";
+import { twMerge } from "tailwind-merge";
 
-export function GhostButton(props: HTMLMotionProps<'button'>) {
+export function GhostButton(props: HTMLMotionProps<"button">) {
   const { children, className, ...rest } = props;
   return (
     <motion.button
       {...rest}
-      whileHover={{ scale: 1.06 }}
-      whileTap={{ scale: 0.96 }}
       className={twMerge(
-        'inline-flex items-center gap-2',
-        'text-(--color-text)',
-        'rounded-xl px-4 py-2 transition disabled:opacity-40',
-        'border border-[color-mix(in_srgb,var(--color-text)_20%,transparent)]',
-        'cursor-pointer',
-        rest.disabled && 'disabled:border-neutral-500',
-        rest.disabled && 'disabled:text-neutral-500',
-        rest.disabled && 'disabled:cursor-not-allowed',
+        "inline-flex w-fit cursor-pointer items-center gap-2 rounded-xl text-(--color-text) opacity-70 transition-opacity",
+        "disabled:opacity-40",
+        "hover:opacity-100",
+        rest.disabled && "disabled:text-neutral-500",
+        rest.disabled && "disabled:cursor-not-allowed",
         className,
-      )}>
+      )}
+    >
       {children}
     </motion.button>
   );

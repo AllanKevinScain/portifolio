@@ -14,13 +14,7 @@ export function useTech() {
   });
 
   const updateTechMutation = useMutation({
-    mutationFn: ({
-      id,
-      data,
-    }: {
-      id: string;
-      data: Partial<CreateTechInput>;
-    }) => techService.update(id, data),
+    mutationFn: ({ id, data }: { id: string; data: Partial<CreateTechInput> }) => techService.update(id, data),
     onSuccess: (_, { id }) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.techs });
       queryClient.invalidateQueries({ queryKey: queryKeys.tech(id) });

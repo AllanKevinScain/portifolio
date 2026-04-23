@@ -14,13 +14,7 @@ export function useCreateWorkMutation() {
   });
 
   const updateWorkMutation = useMutation({
-    mutationFn: ({
-      id,
-      data,
-    }: {
-      id: string;
-      data: Partial<CreateWorkInput>;
-    }) => workService.update(id, data),
+    mutationFn: ({ id, data }: { id: string; data: Partial<CreateWorkInput> }) => workService.update(id, data),
     onSuccess: (_, { id }) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.works });
       queryClient.invalidateQueries({ queryKey: queryKeys.work(id) });

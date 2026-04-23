@@ -12,16 +12,13 @@ api.interceptors.request.use((config) => {
   const lastSegment = config.url?.split("/").pop() || "";
 
   // Verifica se o último segmento é um ID (UUID ou Numérico)
-  const hasId =
-    /^[0-9a-fA-F-]+$/.test(lastSegment) || /^\d+$/.test(lastSegment);
+  const hasId = /^[0-9a-fA-F-]+$/.test(lastSegment) || /^\d+$/.test(lastSegment);
 
   const isPrivateAction = !isGet || (isGet && hasId);
 
   // Validação de token
   const cookies = document.cookie.split("; ");
-  const isAuthenticated = cookies.some((row) =>
-    row.startsWith("portfolio_auth_token=authenticated_session"),
-  );
+  const isAuthenticated = cookies.some((row) => row.startsWith("portfolio_auth_token=authenticated_session"));
 
   if (isPrivateAction && isAuthenticated && apiKey) {
     config.headers["x-api-key"] = apiKey;

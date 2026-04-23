@@ -7,7 +7,4 @@ export const DifferentialSchema = BaseSchema.extend({
 });
 
 export type Differential = z.infer<typeof DifferentialSchema>;
-export type CreateDifferentialInput = Omit<
-  Differential,
-  "id" | "createdAt" | "updatedAt"
->;
+export type CreateDifferentialInput = Omit<Differential, "id" | "createdAt" | "updatedAt">;

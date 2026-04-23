@@ -14,6 +14,26 @@ const LoginPage = lazy(() =>
 const DashboardPage = lazy(() =>
   import("@/pages/admin/dashboard").then((m) => ({ default: m.DashboardPage })),
 );
+const ProjectsManagementPage = lazy(() =>
+  import("@/pages/admin/dashboard/projects-management").then((m) => ({
+    default: m.ProjectsManagementPage,
+  })),
+);
+const TechsManagementPage = lazy(() =>
+  import("@/pages/admin/dashboard/techs-management").then((m) => ({
+    default: m.TechsManagementPage,
+  })),
+);
+const DifferentialsManagementPage = lazy(() =>
+  import("@/pages/admin/dashboard/differentials-management").then((m) => ({
+    default: m.DifferentialsManagementPage,
+  })),
+);
+const WorksManagementPage = lazy(() =>
+  import("@/pages/admin/dashboard/works-management").then((m) => ({
+    default: m.WorksManagementPage,
+  })),
+);
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +74,38 @@ export const router = createBrowserRouter([
             element: (
               <Suspense fallback={<LoadingPage />}>
                 <DashboardPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "projects",
+            element: (
+              <Suspense fallback={<LoadingPage />}>
+                <ProjectsManagementPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "techs",
+            element: (
+              <Suspense fallback={<LoadingPage />}>
+                <TechsManagementPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "differentials",
+            element: (
+              <Suspense fallback={<LoadingPage />}>
+                <DifferentialsManagementPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "works",
+            element: (
+              <Suspense fallback={<LoadingPage />}>
+                <WorksManagementPage />
               </Suspense>
             ),
           },
