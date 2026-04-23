@@ -29,6 +29,7 @@ export function CardTech() {
       <div className="absolute inset-0 flex items-center justify-center">
         <img
           src={`/${theme || "light"}.webp`}
+          alt="Avatar de Allan Kevin"
           className="w-60 h-60 rounded-full md:w-100 md:h-100 object-cover shadow-xl"
         />
       </div>

@@ -13,12 +13,10 @@ export function Section(props: SectionProps) {
   return (
     <Link
       to={path}
-      className="p-6 bg-(--color-card) rounded-lg border border-(--color-border) hover:border-(--color-primary) transition-colors group"
+      aria-label={`Gerenciar ${name}`}
+      className="group rounded-lg border border-(--color-border) bg-(--color-card) p-6 transition-colors hover:border-(--color-primary)"
     >
-      <Text
-        variant="h3"
-        className="mb-2 group-hover:text-(--color-primary) transition-colors"
-      >
+      <Text variant="h3" className="mb-2 transition-colors group-hover:text-(--color-primary)">
         {name}
       </Text>
       <Text variant="p" className="opacity-70">

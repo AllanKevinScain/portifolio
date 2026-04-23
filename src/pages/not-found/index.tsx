@@ -1,6 +1,6 @@
-import { Text } from '@/components';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router';
+import { Text } from "@/components";
+import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 export function NotFoundPage() {
   return (
@@ -13,7 +13,8 @@ export function NotFoundPage() {
         initial={{ opacity: 0, scale: 0.8, y: 40 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-xl space-y-8 text-center">
+        className="relative z-10 max-w-xl space-y-8 text-center"
+      >
         <motion.img
           src="/not-found-genious-question.webp"
           alt="Genie"
@@ -24,17 +25,15 @@ export function NotFoundPage() {
           404
         </Text>
 
-        <Text className="text-xl text-(--color-text)/80 md:text-2xl">
-          Esta página não existe
-        </Text>
+        <Text className="text-xl text-(--color-text)/80 md:text-2xl">Esta página não existe</Text>
 
-        <Text className="text-(--color-text)/60">
-          Parece que nem o gênio conseguiu encontrar essa página.
-        </Text>
+        <Text className="text-(--color-text)/60">Parece que nem o gênio conseguiu encontrar essa página.</Text>
 
         <Link
           to="/"
-          className="inline-flex items-center justify-center rounded-xl bg-[linear-gradient(to_right,var(--color-primary),var(--color-secondary))] px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105">
+          aria-label="Back to begining"
+          className="inline-flex items-center justify-center rounded-xl bg-[linear-gradient(to_right,var(--color-primary),var(--color-secondary))] px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105"
+        >
           Voltar para o início
         </Link>
       </motion.div>

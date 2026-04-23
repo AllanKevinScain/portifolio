@@ -42,6 +42,7 @@ export function Item(props: ItemProps) {
           {onEdit && (
             <Button.ghost
               onClick={() => onEdit(id)}
+              aria-label={`Editar ${displayName}`}
               className="h-auto p-2 text-(--color-text) hover:text-(--color-primary)"
             >
               <Pencil size={18} />
@@ -50,6 +51,7 @@ export function Item(props: ItemProps) {
           {onDelete && (
             <Button.ghost
               onClick={() => onDelete(id)}
+              aria-label={`Excluir ${displayName}`}
               className="h-auto p-2 text-red-500 hover:text-red-600"
             >
               <Trash2 size={18} />
