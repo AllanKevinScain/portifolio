@@ -1,4 +1,4 @@
-import { Button, Text } from "@/components";
+import { Button, Input, Text, Textarea } from "@/components";
 import { queryKeys } from "@/hooks";
 import type { CreateDifferentialInput } from "@/schemas/differential.schema";
 import { DifferentialSchema } from "@/schemas/differential.schema";
@@ -21,12 +21,8 @@ const defaultValues: CreateDifferentialInput = {
 
 export function HandleDifferentialModal(props: HandleDifferentialModalProps) {
   const { id, onSubmit, onClose, isOpen } = props;
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<CreateDifferentialInput>({
+
+  const { control, handleSubmit, reset } = useForm<CreateDifferentialInput>({
     resolver: zodResolver(DifferentialSchema.omit({ id: true, createdAt: true, updatedAt: true })),
     defaultValues,
   });
@@ -38,9 +34,7 @@ export function HandleDifferentialModal(props: HandleDifferentialModalProps) {
   });
 
   useEffect(() => {
-    if (id && differential.data) {
-      reset(differential.data);
-    }
+    if (id && differential.data) reset(differential.data);
   }, [id, differential.data, reset]);
 
   return (
@@ -57,30 +51,11 @@ export function HandleDifferentialModal(props: HandleDifferentialModalProps) {
         </Text>
 
         <div className="flex flex-col gap-1">
-          <Text variant="label">Título</Text>
-          <input
-            {...register("title")}
-            className="rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-(--color-primary) focus:outline-none"
-          />
-          {errors.title && (
-            <Text variant="span" className="text-sm text-red-500">
-              {errors.title.message}
-            </Text>
-          )}
+          <Input name="title" control={control} label="Title" />
         </div>
 
         <div className="flex flex-col gap-1">
-          <Text variant="label">Descrição</Text>
-          <textarea
-            {...register("description")}
-            rows={4}
-            className="resize-none rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-(--color-primary) focus:outline-none"
-          />
-          {errors.description && (
-            <Text variant="span" className="text-sm text-red-500">
-              {errors.description.message}
-            </Text>
-          )}
+          <Textarea name="description" control={control} label="Description" />
         </div>
 
         <div className="mt-4 flex justify-end gap-3">
@@ -91,9 +66,9 @@ export function HandleDifferentialModal(props: HandleDifferentialModalProps) {
               reset(defaultValues);
             }}
           >
-            Cancelar
+            Cancel
           </Button.outline>
-          <Button.solid type="submit">Salvar</Button.solid>
+          <Button.solid type="submit">Save</Button.solid>
         </div>
       </form>
     </dialog>

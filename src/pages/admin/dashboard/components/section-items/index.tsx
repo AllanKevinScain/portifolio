@@ -33,7 +33,7 @@ export function SectionItems(props: SectionItemsProps) {
           {items.length !== 0 &&
             items.map((i, index) => <Item key={i.id} index={index} {...i} onEdit={onEdit} onDelete={onDelete} />)}
 
-          {items.length === 0 && <EmptyState description="Nenhum item cadastrado!" />}
+          {items.length === 0 && <EmptyState description="Nothing here yet!" />}
         </ul>
       </div>
     </div>

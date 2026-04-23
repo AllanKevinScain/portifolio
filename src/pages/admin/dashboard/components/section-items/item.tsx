@@ -15,7 +15,7 @@ interface ItemProps {
 
 export function Item(props: ItemProps) {
   const { id, index, name, title, description, onEdit, onDelete } = props;
-  const displayName = title || name || "Sem título";
+  const displayName = title || name || "No title";
 
   return (
     <motion.li
@@ -42,7 +42,7 @@ export function Item(props: ItemProps) {
           {onEdit && (
             <Button.ghost
               onClick={() => onEdit(id)}
-              aria-label={`Editar ${displayName}`}
+              aria-label={`Update ${displayName}`}
               className="h-auto p-2 text-(--color-text) hover:text-(--color-primary)"
             >
               <Pencil size={18} />
@@ -51,7 +51,7 @@ export function Item(props: ItemProps) {
           {onDelete && (
             <Button.ghost
               onClick={() => onDelete(id)}
-              aria-label={`Excluir ${displayName}`}
+              aria-label={`Remove ${displayName}`}
               className="h-auto p-2 text-red-500 hover:text-red-600"
             >
               <Trash2 size={18} />

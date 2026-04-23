@@ -20,7 +20,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
 
     if (email === adminEmail && password === adminPassword) {
-      const timestemp = Date.now() + 60 * 60 * 3000; // 3 hora
+      const timestemp = Date.now() + 60 * 60 * 3000; // 3 horas
 
       const expires = new Date(Date.now() + timestemp).toUTCString();
       document.cookie = `${COOKIE_NAME}=${AUTH_TOKEN}; path=/; expires=${expires}; SameSite=Strict`;
@@ -40,9 +40,5 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setCookie();
   }, [setCookie]);
 
-  return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ isAuthenticated, login, logout }}>{children}</AuthContext.Provider>;
 }

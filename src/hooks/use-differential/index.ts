@@ -29,7 +29,7 @@ export function useDifferential() {
     mutationFn: (id: string) => differentialService.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.differentials });
-      toast.success("Diferencial removido com susesso!");
+      toast.success("Differential removed successfully!");
     },
   });
 

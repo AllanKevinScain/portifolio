@@ -2,9 +2,9 @@ import { z } from "zod";
 import { BaseSchema } from "./base.schema";
 
 export const TechSchema = BaseSchema.extend({
-  name: z.string().min(1, "Nome é obrigatório"),
-  description: z.string().min(1, "Descrição é obrigatória"),
-  nivel: z.enum(["junior", "mid", "senior", "stack"]).nonoptional("Nível é obrigatório"),
+  name: z.string().min(1, "Nam is required"),
+  description: z.string().min(1, "Description is required"),
+  nivel: z.enum(["junior", "mid", "senior", "stack"]).nonoptional("Nivel is required"),
 });
 
 export type Tech = z.infer<typeof TechSchema>;

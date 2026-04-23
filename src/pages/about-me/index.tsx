@@ -1,4 +1,7 @@
-import { Text } from "@/components";
+import { Skeleton, Text } from "@/components";
+import { queryKeys } from "@/hooks";
+import { techService } from "@/services";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router";
@@ -9,6 +12,15 @@ const LinkMotion = motion(Link);
 export default function AboutMePage() {
   const [isHover, setIsHover] = useState(false);
 
+  const {
+    data: techs = [],
+    isPending,
+    isLoading,
+  } = useQuery({
+    queryKey: queryKeys.techs,
+    queryFn: techService.getAll,
+  });
+
   const whatsappNumber = "5551995368765";
 
   const whatsappMessage = encodeURIComponent(
@@ -16,6 +28,10 @@ export default function AboutMePage() {
   );
 
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+  if (isPending || isLoading) {
+    return <Skeleton />;
+  }
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-(--color-bg) text-(--color-text)">
@@ -135,11 +151,7 @@ export default function AboutMePage() {
           </Text>
 
           <div className="space-y-8">
-            <SkillGroup title="Core" items={["React.js", "TypeScript", "Next.js", "JavaScript (ES6+)", "Vite"]} />
-
-            <SkillGroup title="Styling & UI" items={["Tailwind CSS", "Styled Components", "Framer Motion"]} />
-
-            <SkillGroup title="Tooling & Testing" items={["Git", "Jest", "Cypress", "Docker"]} />
+            <SkillGroup title="Core, Styling & UI and Tooling & Testing" items={techs.map((tech) => tech.name) || []} />
           </div>
         </motion.section>
       </div>

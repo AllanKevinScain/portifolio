@@ -28,7 +28,7 @@ export function useTech() {
     mutationFn: (id: string) => techService.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.techs });
-      toast.success("Tecnologia removida com sucesso!");
+      toast.success("Technology removed successfully!");
     },
   });
 

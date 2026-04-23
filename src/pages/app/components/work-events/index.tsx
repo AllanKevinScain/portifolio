@@ -1,9 +1,9 @@
-import { EmptyState, Skeleton, Text } from '@/components';
-import { queryKeys } from '@/hooks';
-import { workService } from '@/services';
-import { useQuery } from '@tanstack/react-query';
-import { motion } from 'framer-motion';
-import { WorkCard } from './item';
+import { EmptyState, Skeleton, Text } from "@/components";
+import { queryKeys } from "@/hooks";
+import { workService } from "@/services";
+import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
+import { WorkCard } from "./item";
 
 export function WorkAndEvents() {
   const {
@@ -36,23 +36,21 @@ export function WorkAndEvents() {
         }}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}>
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <header className="">
           <Text variant="h2">Worked and Events</Text>
 
           <Text className="mt-3 max-w-xl">
-            Involvement in academic and career development projects.
-            Participation in events and collaborative initiatives.
+            Involvement in academic and career development projects. Participation in events and collaborative
+            initiatives.
           </Text>
         </header>
 
         <ul className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-          {worksAndEvents.length !== 0 &&
-            worksAndEvents.map((s) => <WorkCard key={s.id} {...s} />)}
+          {worksAndEvents.length !== 0 && worksAndEvents.map((s) => <WorkCard key={s.id} {...s} />)}
 
-          {worksAndEvents.length === 0 && (
-            <EmptyState description="Nenhum evento ou trabalho cadastrado!" />
-          )}
+          {worksAndEvents.length === 0 && <EmptyState description="Nothing here yet!" />}
         </ul>
       </motion.div>
     </section>

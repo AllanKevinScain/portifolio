@@ -2,8 +2,8 @@ import { z } from "zod";
 import { BaseSchema } from "./base.schema";
 
 export const DifferentialSchema = BaseSchema.extend({
-  title: z.string().min(1, "Título é obrigatório"),
-  description: z.string().min(1, "Descrição é obrigatória"),
+  title: z.string().min(1, "Title is required"),
+  description: z.string().min(1, "Description is required"),
 });
 
 export type Differential = z.infer<typeof DifferentialSchema>;

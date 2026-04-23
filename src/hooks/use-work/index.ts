@@ -28,7 +28,7 @@ export function useCreateWorkMutation() {
     mutationFn: (id: string) => workService.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.works });
-      toast.success("Evento ou trabalho removido com sucesso!");
+      toast.success("Work or event removed successfully!");
     },
   });
 
