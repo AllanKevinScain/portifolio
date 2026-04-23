@@ -8,7 +8,7 @@ export function RootLayout() {
   const { pathname } = useLocation();
 
   return (
-    <div className="bg-(--color-bg)">
+    <div className="min-h-screen bg-(--color-bg)">
       <Header navItems={pathname === "/" ? appNavItems : []} />
 
       <main>

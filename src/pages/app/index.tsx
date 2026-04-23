@@ -1,47 +1,47 @@
 import {
   Banner,
-  Diferenciais,
+  CustomFooter,
+  Diferentials,
   ListOfProjects,
-  Rodape,
-  Servicos,
   TechList,
+  WorkAndEvents,
 } from "./components";
 
 export function AppPage() {
   return (
     <>
       <div className="flex flex-col gap-24">
-        <section id="home">
+        <section className="flex flex-col items-center" id="home">
           <Banner />
         </section>
 
-        <section id="projects">
+        <section className="flex flex-col items-center" id="projects">
           <div className="container">
             <ListOfProjects />
           </div>
         </section>
 
-        <section id="tech">
+        <section className="flex flex-col items-center" id="tech">
           <div className="container">
             <TechList />
           </div>
         </section>
 
-        <section id="differentials">
+        <section className="flex flex-col items-center" id="differentials">
           <div className="container">
-            <Diferenciais />
+            <Diferentials />
           </div>
         </section>
 
-        <section id="services">
+        <section className="flex flex-col items-center" id="services">
           <div className="container">
-            <Servicos />
+            <WorkAndEvents />
           </div>
         </section>
       </div>
 
       <footer id="contact">
-        <Rodape />
+        <CustomFooter />
       </footer>
     </>
   );

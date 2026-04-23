@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { twMerge } from "tailwind-merge";
+import { optionsTheme } from "@/data/theme";
 import { useTheme } from "@/hooks";
 import type { ThemeType } from "@/types";
-import { optionsTheme } from "@/data/theme";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import { MdLightMode } from "react-icons/md";
+import { twMerge } from "tailwind-merge";
 
 interface ThemeMenurops {
   items: { label: string; value: ThemeType; icon?: Element }[];
@@ -19,16 +19,7 @@ export function ThemeMenu(props: ThemeMenurops) {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className={twMerge(
-          "relative z-50",
-          "w-11 h-11 rounded-xl",
-          "flex items-center justify-center",
-          "cursor-pointer",
-          "bg-[color-mix(in_srgb,var(--color-bg)_90%,transparent)]",
-          "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
-          "hover:bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]",
-          "transition-all",
-        )}
+        className="relative z-50 transition-all hover:bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)] w-11 h-11 rounded-xl flex items-center justify-center cursor-pointer bg-[color-mix(in_srgb,var(--color-bg)_90%,transparent)]"
       >
         <div className="space-y-1">
           {optionsTheme[theme].icon || <MdLightMode size={22} />}
@@ -42,23 +33,9 @@ export function ThemeMenu(props: ThemeMenurops) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.25 }}
-            className={twMerge(
-              "absolute right-0 mt-4 w-64",
-              "rounded-2xl",
-              "p-6",
-              "overflow-hidden",
-              "bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-bg)_95%,transparent),color-mix(in_srgb,var(--color-bg)_85%,transparent))]",
-              "border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)]",
-              "shadow-[0_20px_60px_color-mix(in_srgb,var(--color-primary)_30%,transparent)]",
-            )}
+            className="absolute right-0 mt-4 w-64 shadow-[0_20px_60px_color-mix(in_srgb,var(--color-primary)_30%,transparent)] border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)] bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-bg)_95%,transparent),color-mix(in_srgb,var(--color-bg)_85%,transparent))] overflow-hidden p-6 rounded-2xl"
           >
-            <div
-              className={twMerge(
-                "absolute inset-0 opacity-20 pointer-events-none",
-                "bg-[linear-gradient(to_right,color-mix(in_srgb,var(--color-text)_10%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_srgb,var(--color-text)_10%,transparent)_1px,transparent_1px)]",
-                "bg-size-[28px_28px]",
-              )}
-            />
+            <div className="absolute inset-0 opacity-20 pointer-events-none bg-size-[28px_28px] bg-[linear-gradient(to_right,color-mix(in_srgb,var(--color-text)_10%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_srgb,var(--color-text)_10%,transparent)_1px,transparent_1px)]" />
 
             <nav className="relative flex flex-col gap-4 max-h-75 overflow-auto scroll-div">
               {items.map((item) => (
@@ -86,12 +63,7 @@ export function ThemeMenu(props: ThemeMenurops) {
             </nav>
 
             <div className="absolute inset-0 pointer-events-none">
-              <div
-                className={twMerge(
-                  "absolute -inset-1 rounded-2xl blur-xl opacity-30",
-                  "bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]",
-                )}
-              />
+              <div className="absolute -inset-1 rounded-2xl blur-xl opacity-30 bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]" />
             </div>
           </motion.div>
         )}
