@@ -48,7 +48,7 @@ export function HandleTechModal(props: HandleTechModalProps) {
         className="flex w-full max-w-lg flex-col gap-4 rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 shadow-2xl"
       >
         <Text variant="h3" className="mb-2">
-          {id ? "Editar Tecnologia" : "Nova Tecnologia"}
+          {id ? "Edit form" : "New technology"}
         </Text>
 
         <div className="flex flex-col gap-1">

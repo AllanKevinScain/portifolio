@@ -30,7 +30,7 @@ export function LoginPage() {
     } else {
       setError("root", {
         type: "manual",
-        message: "Credenciais inválidas",
+        message: "Invalid credentials",
       });
     }
   };

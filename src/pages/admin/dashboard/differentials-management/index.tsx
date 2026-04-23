@@ -71,7 +71,7 @@ export function DifferentialsManagementPage() {
         <header className="mb-8 flex flex-col gap-4">
           <Button.ghost onClick={() => navigate("/admin")}>
             <ArrowLeft size={20} />
-            Voltar para o Dashboard
+            Back to Dashboard
           </Button.ghost>
 
           <HeaderCreateItem
@@ -79,13 +79,13 @@ export function DifferentialsManagementPage() {
               setSelectedDifferential("");
               handleFormModal();
             }}
-            title="Gerenciar Diferenciais"
-            buttonDescription="Novo Diferencial"
+            title="Managing Differentiators"
+            buttonDescription="New Differential"
           />
         </header>
 
         <SectionItems
-          name="Diferenciais Cadastrados"
+          name="Registered Features"
           items={differentials?.data || []}
           onEdit={(id) => {
             setSelectedDifferential(id);
@@ -111,7 +111,7 @@ export function DifferentialsManagementPage() {
         <HandleExcludeModal
           isOpen={isExcludeOpen}
           onClose={handleExcludeModal}
-          textContent="Deseja mesmo excluir esse diferencial?"
+          textContent="Do you really want to eliminate this feature?"
           isLoading={deleteDifferentialMutation.isPending}
           onSubmit={handleRemoveDifferential}
         />

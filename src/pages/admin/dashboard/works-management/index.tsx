@@ -71,7 +71,7 @@ export function WorksManagementPage() {
         <header className="mb-8 flex flex-col gap-4">
           <Button.ghost onClick={() => navigate("/admin")}>
             <ArrowLeft size={20} />
-            Voltar para o Dashboard
+            Back to Dashboard
           </Button.ghost>
 
           <HeaderCreateItem
@@ -79,13 +79,13 @@ export function WorksManagementPage() {
               setSelectedWork("");
               handleFormModal();
             }}
-            title="Gerenciar Eventos e Trabalhos"
-            buttonDescription="Novo Evento/Trabalho"
+            title="Manage Events and Jobs"
+            buttonDescription="New Event/Job"
           />
         </header>
 
         <SectionItems
-          name="Eventos e Trabalhos Cadastrados"
+          name="Registered Events and Jobs"
           items={works?.data || []}
           onEdit={(id) => {
             setSelectedWork(id);
@@ -106,7 +106,7 @@ export function WorksManagementPage() {
         <HandleExcludeModal
           isOpen={isExcludeOpen}
           onClose={handleExcludeModal}
-          textContent="Deseja mesmo excluir esse evento/trabalho?"
+          textContent="Do you really want to delete this event/job?"
           isLoading={deleteWorkMutation.isPending}
           onSubmit={handleRemoveWork}
         />

@@ -16,14 +16,14 @@ export function DashboardPage() {
       </header>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Section name="Projetos" description="Gerencie os projetos exibidos no portfólio." path="/admin/projects" />
-        <Section name="Tecnologias" description="Edite suas habilidades e tecnologias." path="/admin/techs" />
+        <Section name="Projects" description="Manage the projects displayed in the portfolio." path="/admin/projects" />
+        <Section name="Technology" description="Edit your skills and technologies." path="/admin/techs" />
         <Section
-          name="Diferenciais"
-          description="Altere os diferenciais do seu trabalho."
+          name="Differentials"
+          description="Change the distinguishing features of your work."
           path="/admin/differentials"
         />
-        <Section name="Eventos e Trabalhos" description="Gerencie sua experiência profissional." path="/admin/works" />
+        <Section name="Events and works" description="Manage your professional experience." path="/admin/works" />
       </div>
     </div>
   );

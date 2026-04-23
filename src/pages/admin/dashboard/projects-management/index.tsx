@@ -71,7 +71,7 @@ export function ProjectsManagementPage() {
         <header className="mb-8 flex flex-col gap-4">
           <Button.ghost onClick={() => navigate("/admin")}>
             <ArrowLeft size={20} />
-            Voltar para o Dashboard
+            Back to Dashboard
           </Button.ghost>
 
           <HeaderCreateItem
@@ -79,13 +79,13 @@ export function ProjectsManagementPage() {
               setSelectedProject("");
               handleFormModal();
             }}
-            title="Gerenciar Projetos"
-            buttonDescription="Novo Projeto"
+            title="Managing Projects"
+            buttonDescription="New project"
           />
         </header>
 
         <SectionItems
-          name="Projetos Cadastrados"
+          name="Registered Projects"
           items={projects?.data || []}
           onEdit={(id) => {
             setSelectedProject(id);
@@ -111,7 +111,7 @@ export function ProjectsManagementPage() {
         <HandleExcludeModal
           isOpen={isExcludeOpen}
           onClose={handleExcludeModal}
-          textContent="Deseja mesmo excluir esse projeto?"
+          textContent="Do you really want to delete this project?"
           isLoading={deleteProjectMutation.isPending}
           onSubmit={handleRemoveProject}
         />

@@ -47,7 +47,7 @@ export function HandleDifferentialModal(props: HandleDifferentialModalProps) {
         className="flex w-full max-w-lg flex-col gap-4 rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 shadow-2xl"
       >
         <Text variant="h3" className="mb-2">
-          {id ? "Editar Diferencial" : "Novo Diferencial"}
+          {id ? "Edit form" : "New differential"}
         </Text>
 
         <div className="flex flex-col gap-1">

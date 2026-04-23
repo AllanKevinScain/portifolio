@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export function LoadingPage() {
   return (
@@ -13,7 +13,7 @@ export function LoadingPage() {
           transition={{
             duration: 1,
             repeat: Infinity,
-            ease: 'linear',
+            ease: "linear",
           }}
           className="h-14 w-14 rounded-full border-4 border-[color-mix(in_srgb,var(--color-primary)_30%,transparent)] border-t-(--color-primary)"
         />
@@ -22,8 +22,9 @@ export function LoadingPage() {
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-sm text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]">
-          Carregando interface...
+          className="text-sm text-[color-mix(in_srgb,var(--color-text)_70%,transparent)]"
+        >
+          Loading...
         </motion.p>
       </div>
     </div>

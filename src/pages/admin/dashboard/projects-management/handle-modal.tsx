@@ -50,7 +50,7 @@ export function HandleProjectModal(props: HandleProjectModalProps) {
         className="flex w-full max-w-lg flex-col gap-4 rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 shadow-2xl"
       >
         <Text variant="h3" className="mb-2">
-          {id ? "Editar Projeto" : "Novo Projeto"}
+          {id ? "Edit form" : "New project"}
         </Text>
 
         <div className="flex flex-col gap-1">

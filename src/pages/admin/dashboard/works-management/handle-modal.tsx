@@ -48,7 +48,7 @@ export function HandleWorkModal(props: HandleWorkModalProps) {
         className="flex w-full max-w-lg flex-col gap-4 rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 shadow-2xl"
       >
         <Text variant="h3" className="mb-2">
-          {id ? "Editar Evento/Trabalho" : "Novo Evento/Trabalho"}
+          {id ? "Edit form" : "New work/event"}
         </Text>
 
         <Input name="title" control={control} label="Title" />

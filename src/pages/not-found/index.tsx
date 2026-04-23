@@ -25,16 +25,16 @@ export function NotFoundPage() {
           404
         </Text>
 
-        <Text className="text-xl text-(--color-text)/80 md:text-2xl">Esta página não existe</Text>
+        <Text className="text-xl text-(--color-text)/80 md:text-2xl">This page does not exist</Text>
 
-        <Text className="text-(--color-text)/60">Parece que nem o gênio conseguiu encontrar essa página.</Text>
+        <Text className="text-(--color-text)/60">It seems that not even a genius could find this page.</Text>
 
         <Link
           to="/"
           aria-label="Back to begining"
           className="inline-flex items-center justify-center rounded-xl bg-[linear-gradient(to_right,var(--color-primary),var(--color-secondary))] px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105"
         >
-          Voltar para o início
+          Back to begining
         </Link>
       </motion.div>
     </main>
