@@ -5,7 +5,7 @@ export const ProjectSchema = BaseSchema.extend({
   title: z.string().min(1, "Title is required"),
   description: z.string().min(1, "Description is required"),
   repository: z.url("Invalid repository URL"),
-  demo: z.url("Invalid demo URL"),
+  demo: z.url("Invalid demo URL").nullish(),
 });
 
 export type Project = z.infer<typeof ProjectSchema>;
