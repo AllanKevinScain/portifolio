@@ -71,7 +71,7 @@ export function TechsManagementPage() {
         <header className="mb-8 flex flex-col gap-4">
           <Button.ghost onClick={() => navigate("/admin")}>
             <ArrowLeft size={20} />
-            Voltar para o Dashboard
+            Back to Dashboard
           </Button.ghost>
 
           <HeaderCreateItem
@@ -79,13 +79,13 @@ export function TechsManagementPage() {
               setSelectedTech("");
               handleFormModal();
             }}
-            title="Gerenciar Tecnologias"
-            buttonDescription="Nova Tecnologia"
+            title="Managing Technologies"
+            buttonDescription="New technology"
           />
         </header>
 
         <SectionItems
-          name="Tecnologias Cadastradas"
+          name="Registered Technologies"
           items={techs?.data || []}
           onEdit={(id) => {
             setSelectedTech(id);
@@ -106,7 +106,7 @@ export function TechsManagementPage() {
         <HandleExcludeModal
           isOpen={isExcludeOpen}
           onClose={handleExcludeModal}
-          textContent="Deseja mesmo excluir essa tecnologia?"
+          textContent="Do you really want to delete this technology?"
           isLoading={deleteTechMutation.isPending}
           onSubmit={handleRemoveTech}
         />

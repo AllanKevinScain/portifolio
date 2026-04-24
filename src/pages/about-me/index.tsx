@@ -1,21 +1,37 @@
-import { Text } from '@/components';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { Link } from 'react-router';
-import { SkillGroup } from './skill-group';
+import { Skeleton, Text } from "@/components";
+import { queryKeys } from "@/hooks";
+import { techService } from "@/services";
+import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Link } from "react-router";
+import { SkillGroup } from "./skill-group";
 
 const LinkMotion = motion(Link);
 
 export default function AboutMePage() {
   const [isHover, setIsHover] = useState(false);
 
-  const whatsappNumber = '5551995368765';
+  const {
+    data: techs = [],
+    isPending,
+    isLoading,
+  } = useQuery({
+    queryKey: queryKeys.techs,
+    queryFn: techService.getAll,
+  });
+
+  const whatsappNumber = "5551995368765";
 
   const whatsappMessage = encodeURIComponent(
-    'Hello! I saw your portfolio and would like to talk about a project or collaboration.',
+    "Hello! I saw your portfolio and would like to talk about a project or collaboration.",
   );
 
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+  if (isPending || isLoading) {
+    return <Skeleton />;
+  }
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-(--color-bg) text-(--color-text)">
@@ -39,8 +55,9 @@ export default function AboutMePage() {
         <motion.section
           initial={{ opacity: 0, y: 120 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          className="grid min-h-[80vh] items-center gap-16 md:grid-cols-2">
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="grid min-h-[80vh] items-center gap-16 md:grid-cols-2"
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.7, rotate: -8 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -51,7 +68,8 @@ export default function AboutMePage() {
             whileHover={{
               scale: 1.03,
             }}
-            className="relative aspect-square overflow-hidden rounded-2xl border border-(--color-border) bg-[linear-gradient(to_bottom_right,var(--color-secondary),var(--color-bg))] shadow-2xl">
+            className="relative aspect-square overflow-hidden rounded-2xl border border-(--color-border) bg-[linear-gradient(to_bottom_right,var(--color-secondary),var(--color-bg))] shadow-2xl"
+          >
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-size-[32px_32px] opacity-20" />
 
             <motion.div
@@ -62,20 +80,21 @@ export default function AboutMePage() {
               transition={{
                 duration: 8,
                 repeat: Infinity,
-                ease: 'easeInOut',
+                ease: "easeInOut",
               }}
               className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-[color-mix(in_srgb,var(--color-primary)_30%,transparent)] blur-3xl"
             />
 
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.img
-                key={isHover ? 'real' : 'ai'}
+                key={isHover ? "real" : "ai"}
                 initial={isHover ? { opacity: 0 } : { opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
-                src={isHover ? '/eu_real.jpeg' : '/eu_ia.webp'}
+                src={isHover ? "/eu_real.jpeg" : "/eu_ia.webp"}
+                alt={isHover ? "Foto real de Allan Kevin" : "Avatar gerado por IA de Allan Kevin"}
                 className="h-64 w-64 rounded-full border border-(--color-border) object-cover shadow-2xl md:h-105 md:w-105"
               />
             </div>
@@ -85,34 +104,37 @@ export default function AboutMePage() {
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="space-y-6">
+            className="space-y-6"
+          >
             <Text
               variant="h1"
-              className="bg-linear-to-r from-(--color-primary) to-(--color-secondary) bg-clip-text text-4xl leading-tight font-extrabold text-(--color-text) sm:text-5xl lg:text-6xl">
+              className="bg-linear-to-r from-(--color-primary) to-(--color-secondary) bg-clip-text text-4xl leading-tight font-extrabold text-(--color-text) sm:text-5xl lg:text-6xl"
+            >
               Front-end Engineer
             </Text>
 
             <Text className="leading-relaxed text-(--color-text)/80">
-              I build high-performance, accessible and scalable web
-              applications, bridging complex backend systems with exceptional
-              user experiences.
+              I build high-performance, accessible and scalable web applications, bridging complex backend systems with
+              exceptional user experiences.
             </Text>
 
             <Text className="leading-relaxed text-(--color-text)/80">
-              Focused on architecture, performance, and clean design systems —
-              delivering products that scale and drive real business impact.
+              Focused on architecture, performance, and clean design systems — delivering products that scale and drive
+              real business impact.
             </Text>
 
             <LinkMotion
               whileHover={{
                 scale: 1.05,
-                boxShadow:
-                  '0 20px 60px color-mix(in srgb, var(--color-primary) 40%, transparent)',
+                boxShadow: "0 20px 60px color-mix(in srgb, var(--color-primary) 40%, transparent)",
               }}
               whileTap={{ scale: 0.96 }}
               to={whatsappLink}
               target="_blank"
-              className="inline-flex items-center gap-3 rounded-xl bg-[linear-gradient(to_right,var(--color-primary),var(--color-secondary))] px-7 py-4 font-medium text-white transition-all duration-300">
+              rel="noreferrer"
+              aria-label="Contact me on WhatsApp"
+              className="inline-flex items-center gap-3 rounded-xl bg-[linear-gradient(to_right,var(--color-primary),var(--color-secondary))] px-7 py-4 font-medium text-white transition-all duration-300"
+            >
               Contact me on WhatsApp
             </LinkMotion>
           </motion.div>
@@ -122,32 +144,14 @@ export default function AboutMePage() {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="space-y-10">
+          className="space-y-10"
+        >
           <Text variant="h2" className="text-2xl font-semibold">
             Skills & Competencies
           </Text>
 
           <div className="space-y-8">
-            <SkillGroup
-              title="Core"
-              items={[
-                'React.js',
-                'TypeScript',
-                'Next.js',
-                'JavaScript (ES6+)',
-                'Vite',
-              ]}
-            />
-
-            <SkillGroup
-              title="Styling & UI"
-              items={['Tailwind CSS', 'Styled Components', 'Framer Motion']}
-            />
-
-            <SkillGroup
-              title="Tooling & Testing"
-              items={['Git', 'Jest', 'Cypress', 'Docker']}
-            />
+            <SkillGroup title="Core, Styling & UI and Tooling & Testing" items={techs.map((tech) => tech.name) || []} />
           </div>
         </motion.section>
       </div>

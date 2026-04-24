@@ -29,7 +29,7 @@ export function useProject() {
     mutationFn: (id: string) => projectService.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.projects });
-      toast.success("Projeto removido com sucesso!");
+      toast.success("Project removed successfully!");
     },
   });
 

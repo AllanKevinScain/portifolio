@@ -1,18 +1,9 @@
 import { Text } from "@/components";
 
-export function SkillGroup({
-  title,
-  items,
-}: {
-  title: string;
-  items: string[];
-}) {
+export function SkillGroup({ title, items }: { title: string; items: string[] }) {
   return (
     <div className="space-y-3">
-      <Text
-        variant="h3"
-        className="text-sm uppercase tracking-wider text-(--color-primary)"
-      >
+      <Text variant="h3" className="text-sm tracking-wider text-(--color-primary) uppercase">
         {title}
       </Text>
 
@@ -20,7 +11,7 @@ export function SkillGroup({
         {items.map((item) => (
           <Text
             key={item}
-            className="px-4 py-2 border border-(--color-border) rounded-lg bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)]"
+            className="rounded-lg border border-(--color-border) bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)] px-4 py-2"
           >
             {item}
           </Text>

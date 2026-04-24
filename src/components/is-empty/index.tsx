@@ -11,22 +11,16 @@ interface EmptyStateProps {
 }
 
 export function EmptyState(props: EmptyStateProps) {
-  const {
-    title = "Nada por aqui ainda",
-    description = "Nenhum item cadastrado nessa lista.",
-    actionLabel,
-    onAction,
-    icon,
-  } = props;
+  const { title = "Nothing here yet.", description = "Any item registered here.", actionLabel, onAction, icon } = props;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="w-full flex flex-col items-center justify-center bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)] border border-(--color-border) text-center py-16 px-6 rounded-2xl"
+      className="flex w-full flex-col items-center justify-center rounded-2xl border border-(--color-border) bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)] px-6 py-16 text-center"
     >
-      <div className="mb-6 w-16 h-16 rounded-xl flex items-center justify-center text-2xl text-(--color-primary) bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)]">
+      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)] text-2xl text-(--color-primary)">
         {icon || "📭"}
       </div>
 
@@ -35,10 +29,7 @@ export function EmptyState(props: EmptyStateProps) {
       <Text variant="p">{description}</Text>
 
       {actionLabel && onAction && (
-        <Button.solid
-          onClick={onAction}
-          className="mt-6 px-5 py-2.5 rounded-lg"
-        >
+        <Button.solid onClick={onAction} className="mt-6 rounded-lg px-5 py-2.5">
           {actionLabel}
         </Button.solid>
       )}

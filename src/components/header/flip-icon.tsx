@@ -32,6 +32,7 @@ export function FlipIcon() {
         <button
           type="button"
           onClick={() => router("/login")}
+          aria-label="Ir para o Login"
           className="flex items-center justify-center absolute inset-0 rounded-full p-2 bg-(--color-border) cursor-pointer"
           style={{
             transform: "rotateY(180deg)",

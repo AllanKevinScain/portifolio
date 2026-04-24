@@ -1,4 +1,4 @@
-import { Button, Text } from "@/components";
+import { Button, Input, Text, Textarea } from "@/components";
 import { queryKeys } from "@/hooks";
 import type { CreateProjectInput } from "@/schemas/project.schema";
 import { ProjectSchema } from "@/schemas/project.schema";
@@ -23,12 +23,7 @@ const defaultValues = {
 
 export function HandleProjectModal(props: HandleProjectModalProps) {
   const { id, onSubmit, onClose, isOpen } = props;
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<CreateProjectInput>({
+  const { control, handleSubmit, reset } = useForm<CreateProjectInput>({
     resolver: zodResolver(ProjectSchema.omit({ id: true, createdAt: true, updatedAt: true })),
     defaultValues,
   });
@@ -55,60 +50,23 @@ export function HandleProjectModal(props: HandleProjectModalProps) {
         className="flex w-full max-w-lg flex-col gap-4 rounded-2xl border border-(--color-border) bg-(--color-bg) p-6 shadow-2xl"
       >
         <Text variant="h3" className="mb-2">
-          {id ? "Editar Projeto" : "Novo Projeto"}
+          {id ? "Edit form" : "New project"}
         </Text>
 
         <div className="flex flex-col gap-1">
-          <Text variant="label">Título</Text>
-          <input
-            {...register("title")}
-            className="rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-(--color-primary) focus:outline-none"
-          />
-          {errors.title && (
-            <Text variant="span" className="text-sm text-red-500">
-              {errors.title.message}
-            </Text>
-          )}
+          <Input name="title" control={control} label="Title" />
         </div>
 
         <div className="flex flex-col gap-1">
-          <Text variant="label">Descrição</Text>
-          <textarea
-            {...register("description")}
-            rows={4}
-            className="resize-none rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-(--color-primary) focus:outline-none"
-          />
-          {errors.description && (
-            <Text variant="span" className="text-sm text-red-500">
-              {errors.description.message}
-            </Text>
-          )}
+          <Textarea name="description" control={control} label="Description" />
         </div>
 
         <div className="flex flex-col gap-1">
-          <Text variant="label">URL do Repositório</Text>
-          <input
-            {...register("repository")}
-            className="rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-(--color-primary) focus:outline-none"
-          />
-          {errors.repository && (
-            <Text variant="span" className="text-sm text-red-500">
-              {errors.repository.message}
-            </Text>
-          )}
+          <Input name="repository" control={control} label="Repository URL" />
         </div>
 
         <div className="flex flex-col gap-1">
-          <Text variant="label">URL de Demo</Text>
-          <input
-            {...register("demo")}
-            className="rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-(--color-primary) focus:outline-none"
-          />
-          {errors.demo && (
-            <Text variant="span" className="text-sm text-red-500">
-              {errors.demo.message}
-            </Text>
-          )}
+          <Input name="demo" control={control} label="Demo URL" />
         </div>
 
         <div className="mt-4 flex justify-end gap-3">
@@ -119,9 +77,9 @@ export function HandleProjectModal(props: HandleProjectModalProps) {
               reset(defaultValues);
             }}
           >
-            Cancelar
+            Cancel
           </Button.outline>
-          <Button.solid type="submit">Salvar</Button.solid>
+          <Button.solid type="submit">Save</Button.solid>
         </div>
       </form>
     </dialog>

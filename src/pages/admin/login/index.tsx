@@ -1,39 +1,42 @@
-import { Button, Text } from '@/components';
-import { useAuth } from '@/hooks';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router';
-
-type LoginFormData = {
-  email: string;
-  password: string;
-};
+import { Button, Input, Text } from "@/components";
+import { useAuth } from "@/hooks";
+import { LoginSchema, type Login } from "@/schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
 export function LoginPage() {
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<LoginFormData>();
+  } = useForm<Login>({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
-  const onSubmit = (data: LoginFormData) => {
+  const onSubmit = (data: Login) => {
     const success = login(data.email, data.password);
 
     if (success) {
-      navigate('/admin');
+      navigate("/admin");
     } else {
-      setError('root', {
-        type: 'manual',
-        message: 'Credenciais inválidas',
+      setError("root", {
+        type: "manual",
+        message: "Invalid credentials",
       });
     }
   };
 
   if (isAuthenticated) {
-    navigate('/admin');
+    navigate("/admin");
   }
 
   return (
@@ -43,31 +46,11 @@ export function LoginPage() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <Text variant="label">Email</Text>
-            <input
-              type="email"
-              {...register('email', { required: 'Email é obrigatório' })}
-              className="rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
-            {errors.email && (
-              <Text variant="span" className="text-red-500">
-                {errors.email.message}
-              </Text>
-            )}
+            <Input name="email" control={control} label="Email" />
           </div>
 
           <div className="flex flex-col gap-1">
-            <Text variant="label">Senha</Text>
-            <input
-              type="password"
-              {...register('password', { required: 'Senha é obrigatória' })}
-              className="rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
-            {errors.password && (
-              <Text variant="span" className="text-red-500">
-                {errors.password.message}
-              </Text>
-            )}
+            <Input name="password" control={control} label="Password" type="password" />
           </div>
 
           {errors.root && (
@@ -77,7 +60,7 @@ export function LoginPage() {
           )}
 
           <Button.solid type="submit" className="mt-4">
-            Entrar
+            Login
           </Button.solid>
         </form>
       </div>

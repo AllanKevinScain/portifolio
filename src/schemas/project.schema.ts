@@ -2,10 +2,10 @@ import { z } from "zod";
 import { BaseSchema } from "./base.schema";
 
 export const ProjectSchema = BaseSchema.extend({
-  title: z.string().min(1, "Título é obrigatório"),
-  description: z.string().min(1, "Descrição é obrigatória"),
-  repository: z.url("URL do repositório inválida"),
-  demo: z.url("URL de demonstração inválida"),
+  title: z.string().min(1, "Title is required"),
+  description: z.string().min(1, "Description is required"),
+  repository: z.url("Invalid repository URL"),
+  demo: z.url("Invalid demo URL"),
 });
 
 export type Project = z.infer<typeof ProjectSchema>;

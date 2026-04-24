@@ -19,6 +19,7 @@ export function ThemeMenu(props: ThemeMenurops) {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
+        aria-label="Alternar tema"
         className="relative z-50 transition-all hover:bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)] border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)] w-11 h-11 rounded-xl flex items-center justify-center cursor-pointer bg-[color-mix(in_srgb,var(--color-bg)_90%,transparent)]"
       >
         <div className="space-y-1">

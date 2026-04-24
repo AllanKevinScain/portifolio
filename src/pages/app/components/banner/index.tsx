@@ -1,6 +1,6 @@
-import { CustomLink, Text } from '@/components';
-import { motion } from 'framer-motion';
-import { CardTech } from './card';
+import { CustomLink, Text } from "@/components";
+import { motion } from "framer-motion";
+import { CardTech } from "./card";
 
 export function Banner() {
   return (
@@ -8,25 +8,28 @@ export function Banner() {
       <motion.div
         initial={{ opacity: 0, x: -60 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}>
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <Text
           variant="span"
-          className="mb-4 inline-block rounded-full border border-[color-mix(in_srgb,var(--color-primary)_30%,transparent)] bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)] px-4 py-1 text-xs tracking-widest text-(--color-primary) uppercase">
+          className="mb-4 inline-block rounded-full border border-[color-mix(in_srgb,var(--color-primary)_30%,transparent)] bg-[color-mix(in_srgb,var(--color-primary)_10%,transparent)] px-4 py-1 text-xs tracking-widest text-(--color-primary) uppercase"
+        >
           Always prepared for new challenges
         </Text>
 
         <Text
           variant="h1"
-          className="bg-linear-to-r from-(--color-primary) to-(--color-secondary) bg-clip-text text-4xl leading-tight font-extrabold text-(--color-text) sm:text-5xl lg:text-6xl">
+          className="bg-linear-to-r from-(--color-primary) to-(--color-secondary) bg-clip-text text-4xl leading-tight font-extrabold text-(--color-text) sm:text-5xl lg:text-6xl"
+        >
           Front-end Engineer
         </Text>
 
         <Text>
-          Building high-performance, scalable web interfaces with a focus on
-          User Experience and robust architecture.
+          Building high-performance, scalable web interfaces with a focus on User Experience and robust architecture.
         </Text>
 
         <div className="mt-10 flex flex-wrap gap-4">
+          <CustomLink.solid href="/about-me">About of me</CustomLink.solid>
           <CustomLink.solid href="/">Download</CustomLink.solid>
           <CustomLink.outline href="https://generate-resume-seven.vercel.app/">
             Send message Build yours
