@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 export function useProject() {
   const queryClient = useQueryClient();
 
+  // TODO allan - precisa fazer tratamento de erro - query nao identifica 400 como erro - e não é mas deve tratar como um
   const createProjectMutation = useMutation({
     mutationFn: (newProject: CreateProjectInput) => projectService.create(newProject),
     onSuccess: (e) => {

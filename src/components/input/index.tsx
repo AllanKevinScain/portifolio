@@ -27,6 +27,7 @@ export function Input<T extends FieldValues>(props: InputProps<T>) {
 
       <input
         {...field}
+        value={field.value || ""}
         type={type ?? "text"}
         aria-label={label}
         className="rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-(--color-primary) focus:outline-none"

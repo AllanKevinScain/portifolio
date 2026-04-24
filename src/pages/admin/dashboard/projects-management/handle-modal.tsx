@@ -15,10 +15,10 @@ interface HandleProjectModalProps extends ModalProps {
 }
 
 const defaultValues = {
-  demo: "",
+  title: "",
   description: "",
   repository: "",
-  title: "",
+  demo: undefined,
 };
 
 export function HandleProjectModal(props: HandleProjectModalProps) {
