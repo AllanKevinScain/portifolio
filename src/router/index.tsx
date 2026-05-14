@@ -34,6 +34,9 @@ const WorksManagementPage = lazy(() =>
     default: m.WorksManagementPage,
   })),
 );
+const PrivacyPage = lazy(() =>
+  import("@/pages/privacy").then((m) => ({ default: m.PrivacyPage })),
+);
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +57,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<LoadingPage />}>
             <AboutMePage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/privacy",
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <PrivacyPage />
           </Suspense>
         ),
       },

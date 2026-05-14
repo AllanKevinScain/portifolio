@@ -35,6 +35,13 @@ export function CustomFooter() {
 
             <Text>Builded with React, Vite, TypeScript e Tailwind.</Text>
 
+            <a
+              href="/privacy"
+              className="mt-2 block hover:text-[var(--color-primary)] hover:underline"
+            >
+              Privacy Policy
+            </a>
+
             <div className="bg-[color-mix(in_srgb,var(--color-bg)_90%,transparent) mt-3 inline-flex rounded-full border bg-[color-mix(in_srgb,var(--color-text)_15%,transparent)] px-3 py-1 text-[color-mix(in_srgb,var(--color-text)_65%,transparent)] md:ml-auto">
               Front-end Engeener • Performance • UX
             </div>
