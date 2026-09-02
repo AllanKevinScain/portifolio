@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useNavigate } from "react-router";
 
 export function FlipIcon() {
   const [hovered, setHovered] = useState(false);
-
-  const router = useNavigate();
 
   return (
     <div
@@ -29,18 +26,16 @@ export function FlipIcon() {
         </div>
 
         {/* BACK */}
-        <button
-          type="button"
-          onClick={() => router("/login")}
-          aria-label="Ir para o Login"
-          className="flex items-center justify-center absolute inset-0 rounded-full p-2 bg-(--color-border) cursor-pointer"
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 flex items-center justify-center rounded-full bg-(--color-border) p-2"
           style={{
             transform: "rotateY(180deg)",
             backfaceVisibility: "hidden",
           }}
         >
           <img src="/login_icon.png" alt="login" />
-        </button>
+        </div>
       </motion.div>
     </div>
   );

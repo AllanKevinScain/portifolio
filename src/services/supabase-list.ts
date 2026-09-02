@@ -5,8 +5,28 @@ type SupabaseRow = Record<string, unknown> & {
   updated_at?: string;
 };
 
-export async function listFromSupabase<T>(table: string): Promise<T[]> {
-  const { data, error } = await supabase.from(table).select("*").order("created_at", { ascending: false });
+type ListOptions = {
+  onlyActive?: boolean;
+  onlyVisible?: boolean;
+  limit?: number;
+};
+
+export async function listFromSupabase<T>(table: string, options: ListOptions = {}): Promise<T[]> {
+  let query = supabase.from(table).select("*").order("created_at", { ascending: false });
+
+  if (options.onlyVisible) {
+    query = query.eq("is_visible", true);
+  }
+
+  if (options.onlyActive) {
+    query = query.eq("status", true);
+  }
+
+  if (options.limit) {
+    query = query.limit(options.limit);
+  }
+
+  const { data, error } = await query;
 
   if (error) throw error;
 

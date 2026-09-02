@@ -46,7 +46,7 @@ export function Diferentials() {
           <Text className="mt-3">Practices and mindset that guide my technical and product decisions.</Text>
         </header>
 
-        <ul className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
+        <ul className="grid auto-rows-fr gap-8 sm:grid-cols-2 xl:grid-cols-4">
           {differentials.length !== 0 && differentials.map((i) => <DifferentialCard key={i.id} {...i} />)}
 
           {differentials.length === 0 && <EmptyState description="Nothing here yet!" />}

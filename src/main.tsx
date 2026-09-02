@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router";
+import "safira-ui/styles.css";
 import "./index.css";
 import { router } from "@/router";
 import { Providers } from "./providers";

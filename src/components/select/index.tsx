@@ -26,7 +26,7 @@ export function Select<T extends FieldValues>(props: SelectProps<T>) {
       <select
         {...field}
         aria-label={label}
-        className="rounded border border-(--color-border) bg-(--color-bg) p-2 text-(--color-text) focus:ring-2 focus:ring-(--color-primary) focus:outline-none"
+        className="sf-select"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

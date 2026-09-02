@@ -15,8 +15,7 @@ export function Skeleton(props: SkeletonProps) {
         height: typeof height === "number" ? `${height}px` : height,
       }}
       className={twMerge(
-        "relative w-full overflow-hidden rounded-2xl",
-        "border border-(--color-border)",
+        "sf-card relative w-full overflow-hidden",
         "bg-[color-mix(in_srgb,var(--color-bg)_80%,transparent)]",
         className,
       )}

@@ -1,6 +1,7 @@
 import { CustomLink, Text } from "@/components";
 import type { Project } from "@/schemas";
 import { motion } from "framer-motion";
+import { Card } from "safira-ui/react";
 
 export function ProjectCard(props: Project) {
   const { id, title, description, demo, repository } = props;
@@ -13,11 +14,12 @@ export function ProjectCard(props: Project) {
         visible: { y: 0, opacity: 1 },
       }}
       whileHover={{ y: -12 }}
-      className="group relative overflow-hidden rounded-2xl border border-(--color-border) shadow-xl transition-all"
+      className="group"
     >
-      <div className="relative h-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom_right,color-mix(in_srgb,var(--color-primary)_25%,transparent),color-mix(in_srgb,var(--color-secondary)_25%,transparent))] opacity-80 transition group-hover:opacity-100" />
-      </div>
+      <Card elevation="raised" className="relative overflow-hidden p-0 transition-all">
+        <div className="relative h-10 overflow-hidden">
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom_right,color-mix(in_srgb,var(--color-primary)_25%,transparent),color-mix(in_srgb,var(--color-secondary)_25%,transparent))] opacity-80 transition group-hover:opacity-100" />
+        </div>
 
       <div className="p-5">
         <Text variant="h3">{title}</Text>
@@ -49,9 +51,10 @@ export function ProjectCard(props: Project) {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
-        <div className="absolute -inset-1 rounded-2xl bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] blur-xl" />
-      </div>
+        <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
+          <div className="absolute -inset-1 rounded-2xl bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] blur-xl" />
+        </div>
+      </Card>
     </motion.li>
   );
 }
