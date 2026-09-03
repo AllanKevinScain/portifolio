@@ -83,8 +83,8 @@ export default function AboutMePage() {
 
             <div className="absolute inset-0 flex items-center justify-center">
               <Image
-                src="https://github.com/allankevinscain.png?size=512"
-                highResolutionSrc="https://github.com/allankevinscain.png?size=1024"
+                src="/reacao-4.webp"
+                highResolutionSrc="/reacao-4.webp"
                 sizes="(min-width: 768px) 26.25rem, 16rem"
                 alt="Foto de Allan Kevin Scain"
                 fit="cover"
