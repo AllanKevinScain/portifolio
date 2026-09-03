@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
-import { AuthProvider } from "./auth/provider";
 import { ThemeProvider } from "./theme";
 
 const queryClient = new QueryClient({
@@ -29,9 +28,7 @@ export function Providers(props: ProvidersProps) {
           removeDelay: 1000,
         }}
       />
-      <AuthProvider>
         <ThemeProvider>{children}</ThemeProvider>
-      </AuthProvider>
     </QueryClientProvider>
   );
 }

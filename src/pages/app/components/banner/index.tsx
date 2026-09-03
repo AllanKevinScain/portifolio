@@ -31,7 +31,11 @@ export function Banner() {
         <div className="mt-10 flex flex-wrap gap-4">
           <CustomLink.solid href="/about-me">About of me</CustomLink.solid>
           <CustomLink.solid href="/">Download</CustomLink.solid>
-          <CustomLink.outline href="https://generate-resume-seven.vercel.app/">
+          <CustomLink.outline
+            href="https://wa.me/5551995368765"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Send message Build yours
           </CustomLink.outline>
         </div>

@@ -38,6 +38,18 @@ html {
   --color-primary: #3b82f6;
   --color-secondary: #a855f7;
   --color-border: #1f2937;
+  --sf-color-canvas: var(--color-bg);
+  --sf-color-surface: color-mix(in srgb, var(--color-bg) 92%, var(--color-text));
+  --sf-color-surface-raised: color-mix(in srgb, var(--color-bg) 85%, var(--color-text));
+  --sf-color-text: var(--color-text);
+  --sf-color-text-soft: color-mix(in srgb, var(--color-text) 68%, transparent);
+  --sf-color-border: var(--color-border);
+  --sf-color-border-strong: var(--color-border);
+  --sf-color-primary: var(--color-primary);
+  --sf-color-primary-hover: var(--color-secondary);
+  --sf-color-secondary: var(--color-secondary);
+  --sf-color-primary-soft: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  --sf-color-focus: var(--color-secondary);
 }
 
 /* LIGHT */

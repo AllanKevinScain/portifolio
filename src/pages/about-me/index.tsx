@@ -3,15 +3,13 @@ import { queryKeys } from "@/hooks";
 import { techService } from "@/services";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Link } from "react-router";
+import { Image } from "safira-ui/react";
 import { SkillGroup } from "./skill-group";
 
 const LinkMotion = motion(Link);
 
 export default function AboutMePage() {
-  const [isHover, setIsHover] = useState(false);
-
   const {
     data: techs = [],
     isPending,
@@ -65,9 +63,7 @@ export default function AboutMePage() {
               duration: 1.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            whileHover={{
-              scale: 1.03,
-            }}
+            whileHover={{ scale: 1.03 }}
             className="relative aspect-square overflow-hidden rounded-2xl border border-(--color-border) bg-[linear-gradient(to_bottom_right,var(--color-secondary),var(--color-bg))] shadow-2xl"
           >
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-size-[32px_32px] opacity-20" />
@@ -86,16 +82,14 @@ export default function AboutMePage() {
             />
 
             <div className="absolute inset-0 flex items-center justify-center">
-              <motion.img
-                key={isHover ? "real" : "ai"}
-                initial={isHover ? { opacity: 0 } : { opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
-                onMouseEnter={() => setIsHover(true)}
-                onMouseLeave={() => setIsHover(false)}
-                src={isHover ? "/eu_real.jpeg" : "/eu_ia.webp"}
-                alt={isHover ? "Foto real de Allan Kevin" : "Avatar gerado por IA de Allan Kevin"}
-                className="h-64 w-64 rounded-full border border-(--color-border) object-cover shadow-2xl md:h-105 md:w-105"
+              <Image
+                src="/reacao-4.webp"
+                highResolutionSrc="/reacao-4.webp"
+                sizes="(min-width: 768px) 26.25rem, 16rem"
+                alt="Foto de Allan Kevin Scain"
+                fit="cover"
+                radius="full"
+                className="h-64 w-64 border border-(--color-border) shadow-2xl md:h-105 md:w-105"
               />
             </div>
           </motion.div>
@@ -152,6 +146,21 @@ export default function AboutMePage() {
 
           <div className="space-y-8">
             <SkillGroup title="Core, Styling & UI and Tooling & Testing" items={techs.map((tech) => tech.name) || []} />
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="pt-10"
+            >
+              <Image
+                src="/allan-kevin scain.png"
+                alt="Código QR de Allan Kevin Scain"
+                fit="contain"
+                radius="large"
+                className="mx-auto w-full max-w-xs animate-pulse bg-white p-3 shadow-2xl"
+              />
+            </motion.div>
           </div>
         </motion.section>
       </div>

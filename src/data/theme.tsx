@@ -9,31 +9,31 @@ export const optionsTheme: Record<ThemeType, { label: string; value: ThemeType; 
   light: {
     label: "Light",
     value: "light",
-    icon: <MdLightMode size={22} className="text-(--color-primary)" />,
+    icon: <MdLightMode size={22} className="text-(--color-text)" />,
   },
   dark: {
     label: "Dark",
     value: "dark",
-    icon: <MdDarkMode size={22} className="text-(--color-primary)" />,
+    icon: <MdDarkMode size={22} className="text-(--color-text)" />,
   },
   rocketseat: {
     label: "Rocketseat",
     value: "rocketseat",
-    icon: <FaRocket size={22} className="text-(--color-primary)" />,
+    icon: <FaRocket size={22} className="text-(--color-text)" />,
   },
   minecraft: {
     label: "Minecraft",
     value: "minecraft",
-    icon: <TbBrandMinecraft size={22} className="text-(--color-primary)" />,
+    icon: <TbBrandMinecraft size={22} className="text-(--color-text)" />,
   },
   alura: {
     label: "Alura",
     value: "alura",
-    icon: <TbCircleLetterAFilled size={22} className="text-(--color-primary)" />,
+    icon: <TbCircleLetterAFilled size={22} className="text-(--color-text)" />,
   },
   instagram: {
     label: "Instagram",
     value: "instagram",
-    icon: <BsInstagram size={22} className="text-(--color-primary)" />,
+    icon: <BsInstagram size={22} className="text-(--color-text)" />,
   },
 };

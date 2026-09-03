@@ -4,7 +4,6 @@ import {
   Diferentials,
   ListOfProjects,
   TechList,
-  WorkAndEvents,
 } from "./components";
 
 export function AppPage() {
@@ -30,12 +29,6 @@ export function AppPage() {
         <section className="flex flex-col items-center" id="differentials">
           <div className="container">
             <Diferentials />
-          </div>
-        </section>
-
-        <section className="flex flex-col items-center" id="services">
-          <div className="container">
-            <WorkAndEvents />
           </div>
         </section>
       </div>

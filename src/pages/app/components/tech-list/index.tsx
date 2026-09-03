@@ -10,8 +10,8 @@ export function TechList() {
     isPending,
     isLoading,
   } = useQuery({
-    queryKey: queryKeys.techs,
-    queryFn: techService.getAll,
+    queryKey: queryKeys.activeTechs,
+    queryFn: techService.getActive,
   });
 
   if (isPending || isLoading) {
@@ -34,7 +34,7 @@ export function TechList() {
         </header>
 
         <ul className="flex w-full flex-col">
-          {techs.length !== 0 && techs.map((tech, index) => <TechListItem key={tech.id} index={index} {...tech} />)}
+          {techs.length !== 0 && techs.map((tech) => <TechListItem key={tech.id} {...tech} />)}
 
           {techs.length === 0 && <EmptyState description="Nothing here yet!" />}
         </ul>

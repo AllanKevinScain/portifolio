@@ -18,7 +18,7 @@ export function IconCard(props: IconCardProps) {
         show: { opacity: 1, y: 0 },
       }}
       whileHover={{ y: -10 }}
-      className="group relative overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--color-text)_15%,transparent)] bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-bg)_95%,transparent),color-mix(in_srgb,var(--color-bg)_85%,transparent))] p-6 transition-all"
+      className="sf-card group relative overflow-hidden p-6 transition-all"
     >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,color-mix(in_srgb,var(--color-text)_10%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_srgb,var(--color-text)_10%,transparent)_1px,transparent_1px)] bg-size-[28px_28px] opacity-20" />
 

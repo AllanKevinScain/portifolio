@@ -1,8 +1,7 @@
 import { motion, type HTMLMotionProps } from 'framer-motion';
-import { Link } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 
-const LinkMotion = motion(Link);
+const LinkMotion = motion.a;
 
 export function OutlineLink(props: HTMLMotionProps<'a'>) {
   const { children, className, ...rest } = props;
